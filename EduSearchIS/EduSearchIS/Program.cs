@@ -19,9 +19,9 @@ namespace EduSearchIS
              //Stephen
                 // @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
              //Soam
-                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
-             //Aaron
-                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+               // @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+            //Aaron
+                @"H:\IFN647\Assignment\collection\crandocs";
             List<string> fileList = WalkDirectoryTree(path);
 //            List<string> l = new List<string>();
 //            l.Add("The magical world of oz");
@@ -33,12 +33,12 @@ namespace EduSearchIS
 
             // Index code
             string indexPath =
-             //Stephen
-                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+            //Stephen
+            //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
             //Soam
-                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
+            //@"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
             //Aaron
-               //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+            @"H:\IFN647\Assignment\collection\Documents";
             myLuceneApp.CreateIndex(indexPath);
             System.Console.WriteLine("Adding Documents to Index");
             int docID = 0;
