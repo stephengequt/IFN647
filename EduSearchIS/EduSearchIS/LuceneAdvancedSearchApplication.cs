@@ -17,7 +17,7 @@ namespace EduSearchIS
         Lucene.Net.Index.IndexWriter writer;
         IndexSearcher searcher;
         QueryParser parser;
-        Similarity newSimilarity;// Activity 9
+        Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "Text";
