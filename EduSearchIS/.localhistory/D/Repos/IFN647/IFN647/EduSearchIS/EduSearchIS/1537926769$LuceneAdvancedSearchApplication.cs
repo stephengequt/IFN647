@@ -107,7 +107,6 @@ namespace EduSearchIS
                 // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
 //                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
                 Console.WriteLine("Rank " + rank);
-                Console.WriteLine("Content " + myFieldValue );
 
                 //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //System.Console.WriteLine(e.ToString());

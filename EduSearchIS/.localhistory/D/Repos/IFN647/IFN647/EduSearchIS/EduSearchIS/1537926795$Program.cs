@@ -44,7 +44,21 @@ namespace EduSearchIS
             // Searching Code
             myLuceneApp.CreateSearcher();
            
-            myLuceneApp.SearchText("similarity laws");
+            myLuceneApp.SearchText("similarity");
+            
+            // Activity 7
+            //myLuceneApp.SearchText("magic");
+            
+            // Activity 8
+            //myLuceneApp.SearchText("mad");
+            //myLuceneApp.SearchText("world");
+            //myLuceneApp.SearchText("mad world");
+            //myLuceneApp.SearchText("\"mad world\"");
+            //myLuceneApp.SearchText("\"mad world\" mad world");
+            //myLuceneApp.SearchText("mad^2 world");
+
+            // Activity 9
+            //myLuceneApp.SearchText("mad");
 
             myLuceneApp.CleanUpSearcher();
 

@@ -105,9 +105,7 @@ namespace EduSearchIS
                 Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
                 string myFieldValue = doc.Get(TEXT_FN).ToString();
                 // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
-//                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
-                Console.WriteLine("Rank " + rank);
-                Console.WriteLine("Content " + myFieldValue );
+                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
 
                 //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //System.Console.WriteLine(e.ToString());
