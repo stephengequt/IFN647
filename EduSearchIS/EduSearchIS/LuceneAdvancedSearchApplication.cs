@@ -96,8 +96,11 @@ namespace EduSearchIS
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
             Query query = parser.Parse(querytext);
+            
 
             TopDocs results = searcher.Search(query, 100);
+            
+            // Display the number of results
             System.Console.WriteLine("Number of results is " + results.TotalHits);
              int rank = 0;
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
@@ -108,13 +111,47 @@ namespace EduSearchIS
                 // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
 //                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
                 Console.WriteLine("Rank " + rank);
+                
                 Console.WriteLine("Content " + myFieldValue );
 
                 //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //System.Console.WriteLine(e.ToString());
 
             }
-//            Console.WriteLine(DisplayFinialQuery(query));
+
+//            Console.WriteLine(DisplayFinialQuery(query)); //Test display final query
+
+            var continueVal = false;
+            var pageIndex = 0;
+            do
+            {
+                var operation = Console.ReadLine();
+                if (operation != "end")
+                {
+                    switch (operation)
+                    {
+                        case "next":
+                            pageIndex++;
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            Console.WriteLine();
+                            break;
+                        case "previous":
+                            pageIndex--;
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            Console.WriteLine();
+                            break;
+                        default:
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            break;
+                    }
+                }
+                else
+                {
+                    continueVal = true;
+                }
+                
+            } while (continueVal == false);
+
         }
 
         /// <summary>
@@ -133,6 +170,15 @@ namespace EduSearchIS
         public string DisplayFinialQuery(Query query)
         {
             return query.ToString();
+        }
+
+        public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
+        {
+            var totalNumOfDocs = docList.Length;
+            for (int i = 0 + 10*pageIndex; i < 10 + 10*pageIndex; i++)
+            {
+                Console.WriteLine("Rank{0}: {1}", i+1, docList[i]);
+            }
         }
     }
 }
