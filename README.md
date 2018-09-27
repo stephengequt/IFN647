@@ -2,7 +2,7 @@
 Information Retrieval
 
 ## TO-DO
-### 1. Display final query after processing. (input: string - user query, output: string - final query).
+### ~~1. Display final query after processing. (input: string - user query, output: string - final query).~~
 ### 2. Multi-term processing (User will have the option to choose yes or no, input: bool value, if statement to choose different analyser).
 ### ~~3. Insert TIME for seaching and indexing.~~
 ### 4. Present top 10 relevant documents with 
