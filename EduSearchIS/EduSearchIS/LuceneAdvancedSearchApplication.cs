@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
@@ -57,7 +58,6 @@ namespace EduSearchIS
         /// <param name="text">The text to index</param>
         public void IndexText(string text)
         {
-
             Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             Lucene.Net.Documents.Document doc = new Document();
             doc.Add(field);
@@ -107,14 +107,12 @@ namespace EduSearchIS
                 // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
 //                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
                 Console.WriteLine("Rank " + rank);
-                Console.WriteLine("Content " + myFieldValue );
-
+                //Console.WriteLine("Content " + myFieldValue );
+                OutputSections(myFieldValue);
                 //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //System.Console.WriteLine(e.ToString());
 
             }
-
-
         }
 
         /// <summary>
@@ -123,6 +121,37 @@ namespace EduSearchIS
         public void CleanUpSearcher()
         {
             searcher.Dispose();
+        }
+
+        public static string[] SeparateString(string text)
+        {
+            string[] sections = text.Split(new string[] { ".I", ".T", ".A", ".B", ".W" }, StringSplitOptions.RemoveEmptyEntries);
+            //foreach (var word in words)
+            //Console.WriteLine(word);
+            return sections;
+        }
+
+        public static void OutputSections(string str)
+        {
+            // Console.WriteLine("Tokens: ");
+            string[] sections = SeparateString(str);
+
+            //remove the title from the chunk of text
+            sections[4] = sections[4].Replace(sections[1], "");
+
+            //obtain the first line of text as the abstract
+            var firstLine = sections[4].Split('.')[0];
+
+            //outout the paper information with appropriate headings
+            Console.WriteLine("Document ID:" + sections[0]);
+            Console.WriteLine("Title: " + sections[1]);
+            Console.WriteLine("Author: " + sections[2]);
+            Console.WriteLine("Bibliographic Information: " + sections[3]);
+            Console.WriteLine("Abstract: " + firstLine);
+            //foreach (string s in sections)
+            //{
+            //    System.Console.WriteLine(s);
+            //}
         }
     }
 }

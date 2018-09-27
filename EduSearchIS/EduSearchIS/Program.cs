@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EduSearchIS
 {
     class Program
-    {
+    {  
         private static void Main(string[] args)
         {
             System.Console.WriteLine("Hello Lucene.Net");
@@ -16,12 +16,12 @@ namespace EduSearchIS
 
             // source collection
             string path =
-             //Stephen
+                //Stephen
                 // @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
-             //Soam
-               // @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
-            //Aaron
-                @"H:\IFN647\Assignment\collection\crandocs";
+                //Soam
+                // @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+                //Aaron
+                @"H:\IFN647\Assignment\collection\test";
             List<string> fileList = WalkDirectoryTree(path);
 //            List<string> l = new List<string>();
 //            l.Add("The magical world of oz");
@@ -45,7 +45,7 @@ namespace EduSearchIS
             foreach (string s in fileList)
             {
 
-                System.Console.WriteLine("Adding doc " + docID + "to Index");
+                System.Console.WriteLine("Adding doc " + docID + " to Index");
                 myLuceneApp.IndexText(s);
                 docID++;
             }
@@ -55,10 +55,9 @@ namespace EduSearchIS
             // Searching Code
             myLuceneApp.CreateSearcher();
            
-            myLuceneApp.SearchText("similarity laws");
+            myLuceneApp.SearchText("investigation");
 
             myLuceneApp.CleanUpSearcher();
-
 
             Console.ReadLine();
         }
