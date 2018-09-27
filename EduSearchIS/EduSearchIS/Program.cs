@@ -11,16 +11,14 @@ namespace EduSearchIS
     {  
         private static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello Lucene.Net");
-
             LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
             // source collection
             string path =
                 //Stephen
-                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
             //Soam
-//                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+                   @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
@@ -30,9 +28,9 @@ namespace EduSearchIS
             // Index code
             string indexPath =
                 //Stephen
-                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
             //Soam
-//                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
+                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
 
@@ -44,7 +42,7 @@ namespace EduSearchIS
             int docID = 0;
             foreach (string s in fileList)
             {
-                System.Console.WriteLine("Adding doc " + docID + "to Index");
+               // System.Console.WriteLine("Adding doc " + docID + "to Index");
                 myLuceneApp.IndexText(s);
                 docID++;
             }
