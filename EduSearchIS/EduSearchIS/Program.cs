@@ -16,9 +16,9 @@ namespace EduSearchIS
             // source collection
             string path =
                 //Stephen
-                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
             //Soam
-                   @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+//                   @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
@@ -28,9 +28,9 @@ namespace EduSearchIS
             // Index code
             string indexPath =
                 //Stephen
-                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
             //Soam
-                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
+//                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
 
@@ -56,8 +56,9 @@ namespace EduSearchIS
             // Searching Code
             DateTime startSearchTime = System.DateTime.Now;
             myLuceneApp.CreateSearcher();
-
-            myLuceneApp.SearchText("SIMILARITY LAWS");
+            var query =
+                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
+            myLuceneApp.SearchText(query);
             // Time for searching
             DateTime endSearchTime = System.DateTime.Now;
             Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);

@@ -92,7 +92,7 @@ namespace EduSearchIS
         /// <param name="querytext">The text to search the index</param>
         public void SearchText(string querytext)
         {
-            var userChoice = true;
+            var userChoice = false;
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
             if (userChoice)
@@ -169,7 +169,8 @@ namespace EduSearchIS
 
         public static string[] SeparateString(string text)
         {
-            string[] sections = text.Split(new string[] { ".I", ".T", ".A", ".B", ".W" }, StringSplitOptions.RemoveEmptyEntries);
+//            string[] sections = {" ", " ", " ", " ", " "};    
+            string[] sections = text.Split(new string[] { ".I", ".T", ".A", ".B", ".W" }, StringSplitOptions.None);
             //foreach (var word in words)
             //Console.WriteLine(word);
             return sections;
@@ -181,17 +182,17 @@ namespace EduSearchIS
             string[] sections = SeparateString(str);
 
             //remove the title from the chunk of text
-            sections[4] = sections[4].Replace(sections[1], "");
+            sections[5] = sections[5].Replace(sections[2], null);
 
             //obtain the first line of text as the abstract
-            var firstLine = sections[4].Split('.')[0];
+            var firstLine = sections[5].Split('.')[0];
 
             //outout the paper information with appropriate headings
-            Console.WriteLine("Document ID:" + sections[0]);
-            Console.WriteLine("Title: " + sections[1]);
-            Console.WriteLine("Author: " + sections[2]);
-            Console.WriteLine("Bibliographic Information: " + sections[3]);
-            Console.WriteLine("Abstract: " + firstLine);
+            Console.WriteLine("Document ID:" + sections[1]);
+            Console.WriteLine("Title: " + sections[2]);
+            Console.WriteLine("Author: " + sections[3]);
+            Console.WriteLine("Bibliographic Information: " + sections[4]);
+            Console.WriteLine("Abstract:" + firstLine);
             Console.WriteLine("\n");
             //foreach (string s in sections)
             //{
