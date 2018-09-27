@@ -191,5 +191,13 @@ namespace EduSearchIS
             //    System.Console.WriteLine(s);
             //}
         }
+        public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
+        {
+            var totalNumOfDocs = docList.Length;
+            for (int i = 0 + 10*pageIndex; i < 10 + 10*pageIndex; i++)
+            {
+                Console.WriteLine("Rank{0}: {1}", i+1, docList[i]);
+            }
+        }
     }
 }
