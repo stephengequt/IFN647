@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/EduSearchIS/.localhistory/D/Repos/IFN647/IFN647/EduSearchIS/EduSearchIS

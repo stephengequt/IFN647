@@ -34,6 +34,7 @@ namespace EduSearchIS
             //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
             //analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
 
+
             parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, TEXT_FN, analyzer);
             //newSimilarity = new NewSimilarity(); // Activity 9
 
@@ -95,8 +96,11 @@ namespace EduSearchIS
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
             Query query = parser.Parse(querytext);
+            
 
             TopDocs results = searcher.Search(query, 100);
+            
+            // Display the number of results
             System.Console.WriteLine("Number of results is " + results.TotalHits);
              int rank = 0;
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
@@ -113,6 +117,40 @@ namespace EduSearchIS
                 //System.Console.WriteLine(e.ToString());
 
             }
+
+//            Console.WriteLine(DisplayFinialQuery(query)); //Test display final query
+
+            var continueVal = false;
+            var pageIndex = 0;
+            do
+            {
+                var operation = Console.ReadLine();
+                if (operation != "end")
+                {
+                    switch (operation)
+                    {
+                        case "next":
+                            pageIndex++;
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            Console.WriteLine();
+                            break;
+                        case "previous":
+                            pageIndex--;
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            Console.WriteLine();
+                            break;
+                        default:
+                            ResultBrowser(results.ScoreDocs, pageIndex);
+                            break;
+                    }
+                }
+                else
+                {
+                    continueVal = true;
+                }
+                
+            } while (continueVal == false);
+
         }
 
         /// <summary>
