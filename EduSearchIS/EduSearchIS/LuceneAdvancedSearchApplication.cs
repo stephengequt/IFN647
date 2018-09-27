@@ -92,9 +92,14 @@ namespace EduSearchIS
         /// <param name="querytext">The text to search the index</param>
         public void SearchText(string querytext)
         {
-
+            var userChoice = true;
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
+            if (userChoice)
+            {
+                querytext = "\"" + querytext + "\"";
+            }
+            
             Query query = parser.Parse(querytext);
             
 

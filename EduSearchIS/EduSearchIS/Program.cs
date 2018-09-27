@@ -59,7 +59,7 @@ namespace EduSearchIS
             DateTime startSearchTime = System.DateTime.Now;
             myLuceneApp.CreateSearcher();
 
-            myLuceneApp.SearchText("similarity laws");
+            myLuceneApp.SearchText("SIMILARITY LAWS");
             // Time for searching
             DateTime endSearchTime = System.DateTime.Now;
             Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
