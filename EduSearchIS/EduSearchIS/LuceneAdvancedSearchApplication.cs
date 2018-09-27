@@ -114,8 +114,7 @@ namespace EduSearchIS
                 //System.Console.WriteLine(e.ToString());
 
             }
-
-
+//            Console.WriteLine(DisplayFinialQuery(query));
         }
 
         /// <summary>
@@ -124,6 +123,16 @@ namespace EduSearchIS
         public void CleanUpSearcher()
         {
             searcher.Dispose();
+        }
+
+        /// <summary>
+        /// Display the final query created programmatically
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns name="query.ToString()"></returns>
+        public string DisplayFinialQuery(Query query)
+        {
+            return query.ToString();
         }
     }
 }

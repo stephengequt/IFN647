@@ -49,6 +49,7 @@ namespace EduSearchIS
                 docID++;
             }
 
+            //Time for indexing
             DateTime endIndexTime = System.DateTime.Now;
             System.Console.WriteLine("All documents added, indexing time: {0}", endIndexTime - startIndexTime);
 
@@ -59,6 +60,7 @@ namespace EduSearchIS
             myLuceneApp.CreateSearcher();
 
             myLuceneApp.SearchText("similarity laws");
+            // Time for searching
             DateTime endSearchTime = System.DateTime.Now;
             Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
             myLuceneApp.CleanUpSearcher();
