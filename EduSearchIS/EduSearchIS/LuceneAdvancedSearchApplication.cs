@@ -106,7 +106,8 @@ namespace EduSearchIS
             TopDocs results = searcher.Search(query, 100);
             
             // Display the number of results
-            System.Console.WriteLine("Number of results is " + results.TotalHits);
+            Console.WriteLine("Number of results is " + results.TotalHits);
+            Console.WriteLine();
              int rank = 0;
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
             {
@@ -134,7 +135,7 @@ namespace EduSearchIS
                 {
                     switch (operation)
                     {
-                        case "next":
+                        case "next": 
                             pageIndex++;
                             ResultBrowser(results.ScoreDocs, pageIndex);
                             Console.WriteLine();
@@ -191,6 +192,7 @@ namespace EduSearchIS
             Console.WriteLine("Author: " + sections[2]);
             Console.WriteLine("Bibliographic Information: " + sections[3]);
             Console.WriteLine("Abstract: " + firstLine);
+            Console.WriteLine("\n");
             //foreach (string s in sections)
             //{
             //    System.Console.WriteLine(s);
