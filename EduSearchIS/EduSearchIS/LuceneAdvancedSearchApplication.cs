@@ -126,36 +126,36 @@ namespace EduSearchIS
 
 //            Console.WriteLine(DisplayFinialQuery(query)); //Test display final query
 
-            var continueVal = false;
-            var pageIndex = 0;
-            do
-            {
-                var operation = Console.ReadLine();
-                if (operation != "end")
-                {
-                    switch (operation)
-                    {
-                        case "next": 
-                            pageIndex++;
-                            ResultBrowser(results.ScoreDocs, pageIndex);
-                            Console.WriteLine();
-                            break;
-                        case "previous":
-                            pageIndex--;
-                            ResultBrowser(results.ScoreDocs, pageIndex);
-                            Console.WriteLine();
-                            break;
-                        default:
-                            ResultBrowser(results.ScoreDocs, pageIndex);
-                            break;
-                    }
-                }
-                else
-                {
-                    continueVal = true;
-                }
+            //var continueVal = false;
+            //var pageIndex = 0;
+            //do
+            //{
+            //    var operation = Console.ReadLine();
+            //    if (operation != "end")
+            //    {
+            //        switch (operation)
+            //        {
+            //            case "next": 
+            //                pageIndex++;
+            //                ResultBrowser(results.ScoreDocs, pageIndex);
+            //                Console.WriteLine();
+            //                break;
+            //            case "previous":
+            //                pageIndex--;
+            //                ResultBrowser(results.ScoreDocs, pageIndex);
+            //                Console.WriteLine();
+            //                break;
+            //            default:
+            //                ResultBrowser(results.ScoreDocs, pageIndex);
+            //                break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        continueVal = true;
+            //    }
                 
-            } while (continueVal == false);
+            //} while (continueVal == false);
 
         }
 

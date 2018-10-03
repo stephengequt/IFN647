@@ -4,11 +4,14 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EduSearchIS
 {
     class Program
-    {  
+    {
+
+        [STAThread]
         private static void Main(string[] args)
         {
             LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
@@ -16,9 +19,9 @@ namespace EduSearchIS
             // source collection
             string path =
                 //Stephen
-                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
-            //Soam
-//                   @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+           // Soam
+                  @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
@@ -28,9 +31,9 @@ namespace EduSearchIS
             // Index code
             string indexPath =
                 //Stephen
-                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+                //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
             //Soam
-//                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
+                @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
             //Aaron
             //@"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
 
@@ -63,6 +66,10 @@ namespace EduSearchIS
             DateTime endSearchTime = System.DateTime.Now;
             Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
             myLuceneApp.CleanUpSearcher();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI());
 
             Console.ReadLine();
         }
