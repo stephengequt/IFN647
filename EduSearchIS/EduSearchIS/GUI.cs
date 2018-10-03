@@ -22,8 +22,20 @@ namespace EduSearchIS
     {
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
-        private string documentPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
-        private string IndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment";
+        // source collection
+
+        static string stephenPath =
+            @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+
+        string soamPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+
+        string aaronPath =
+            @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
+
+        static string stephenIndexPath = @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+        private string documentPath = stephenPath;
+        private string IndexPath = stephenIndexPath;
+
         public GUI()
         {
             InitializeComponent();
@@ -38,7 +50,6 @@ namespace EduSearchIS
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void CollectionButton_Click(object sender, EventArgs e)
@@ -50,12 +61,30 @@ namespace EduSearchIS
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
-
         }
 
         private void CreateIndexButton_Click(object sender, EventArgs e)
         {
-           
+            List<string> fileList = Program.WalkDirectoryTree(this.documentPath);
+
+            DateTime startIndexTime = System.DateTime.Now;
+
+            this.myLuceneApp.CreateIndex(this.IndexPath);
+
+            System.Console.WriteLine("Adding Documents to Index");
+            int docID = 0;
+            foreach (string s in fileList)
+            {
+                // System.Console.WriteLine("Adding doc " + docID + "to Index");
+                this.myLuceneApp.IndexText(s);
+                docID++;
+            }
+
+            //Time for indexing
+            DateTime endIndexTime = System.DateTime.Now;
+            System.Console.WriteLine("All documents added, indexing time: {0}", endIndexTime - startIndexTime);
+
+            myLuceneApp.CleanUpIndexer();
         }
     }
 }
