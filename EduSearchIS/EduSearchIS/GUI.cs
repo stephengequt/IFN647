@@ -37,6 +37,8 @@ namespace EduSearchIS
         private string IndexPath = stephenIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
+        private int pageNum = 1;
+        int maxPageNum = 0;
 
         public GUI()
         {
@@ -139,6 +141,145 @@ namespace EduSearchIS
             this.IndexPath = IndexPathTextBox;
         }
 
-        
+        private void QueryBox_Enter(object sender, EventArgs e)
+        {
+            if (QueryBox.Text == "Enter Query")
+            {
+                QueryBox.Text = "";
+
+                QueryBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void QueryBox_Leave(object sender, EventArgs e)
+        {
+            if (QueryBox.Text == "")
+            {
+                QueryBox.Text = "Enter Query";
+
+                QueryBox.ForeColor = Color.Silver;
+            }
+        }
+
+        private void QueryBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TimeLabelToIndex_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+           if (QueryBox.Text == "Enter Query")
+            {
+                StatusLabel.ForeColor = Color.Red;
+                StatusLabel.Text = "Search box is empty";
+            }
+
+           // Populate here with the codes to display the top 10 result
+       
+        }
+
+        private void NextButton_Click(object sender, EventArgs e)
+        {
+     
+            if (pageNum < maxPageNum)
+            {
+                pageNum++;
+                PageNumLabel.Text = pageNum.ToString();
+
+                //loadDataViewGrid();
+            }
+     
+        }
+
+        private void PreviousButton_Click(object sender, EventArgs e)
+        {
+            if (pageNum > 1)
+            {
+                pageNum--;
+                PageNumLabel.Text = pageNum.ToString();
+
+                //loadDataViewGrid();
+            }
+        }
+
+        private void TopicIDBox_Enter(object sender, EventArgs e)
+        {
+            if (TopicIDBox.Text == "Enter Topic ID")
+            {
+                TopicIDBox.Text = "";
+
+                TopicIDBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void TopicIDBox_Leave(object sender, EventArgs e)
+        {
+            if (TopicIDBox.Text == "")
+            {
+                TopicIDBox.Text = "Enter Topic ID";
+
+                TopicIDBox.ForeColor = Color.Silver;
+            }
+        }
+
+        private void TopicIDBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResultDirectoryText_Enter(object sender, EventArgs e)
+        {
+            if (ResultDirectoryText.Text == "Insert Result Directory")
+            {
+                ResultDirectoryText.Text = "";
+
+                ResultDirectoryText.ForeColor = Color.Black;
+            }
+        }
+
+        private void ResultDirectoryText_Leave(object sender, EventArgs e)
+        {
+            if (ResultDirectoryText.Text == "")
+            {
+                ResultDirectoryText.Text = "Insert Result Directory";
+
+                ResultDirectoryText.ForeColor = Color.Silver;
+            }
+        }
+
+        private void BrowseResultButton_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
     }
 }
