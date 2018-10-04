@@ -45,6 +45,23 @@ namespace EduSearchIS
         public GUI()
         {
             InitializeComponent();
+            PreviousButton.Visible = false;
+            dataGridView1.Visible = false;
+            PageLabel.Visible = false;
+            PageNumLabel.Visible = false;
+            TotalPageLabel.Visible = false;
+            NextButton.Visible = false;
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            this.Size = new Size(1000, 500);
+            dt.Columns.Add(new DataColumn("ID", typeof(string)));
+            dt.Columns.Add(new DataColumn("Rank", typeof(string)));
+            dt.Columns.Add(new DataColumn("Text", typeof(string)));
+            dt.Columns.Add(new DataColumn("Score", typeof(string)));
+            dt.Columns.Add(new DataColumn("Path", typeof(string)));
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -337,6 +354,12 @@ namespace EduSearchIS
         private void BrowseResultButton_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
+        }
+
+        private void dataGridView1_CellDoubleClick(Object sender, DataGridViewCellEventArgs e)
+        {
+            var item = dataGridView1.Rows[e.RowIndex].Cells[4].Value;
+            System.Diagnostics.Process.Start("notepad.exe", item.ToString());
         }
     }
 }
