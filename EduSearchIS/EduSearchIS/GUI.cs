@@ -116,27 +116,27 @@ namespace EduSearchIS
 
         private void IndexDirectoryTextBox_Enter(object sender, EventArgs e)
         {
-            if (CollectionDirectoryTextBox.Text == "Insert Index Directory")
+            if (IndexDirectoryTextBox.Text == "Insert Index Directory")
             {
-                CollectionDirectoryTextBox.Text = "";
+                IndexDirectoryTextBox.Text = "";
 
-                CollectionDirectoryTextBox.ForeColor = Color.Black;
+                IndexDirectoryTextBox.ForeColor = Color.Black;
             }
         }
 
         private void IndexDirectoryTextBox_Leave(object sender, EventArgs e)
         {
-            if (CollectionDirectoryTextBox.Text == "")
+            if (IndexDirectoryTextBox.Text == "")
             {
-                CollectionDirectoryTextBox.Text = "Insert Index Directory";
+                IndexDirectoryTextBox.Text = "Insert Index Directory";
 
-                CollectionDirectoryTextBox.ForeColor = Color.Silver;
+                IndexDirectoryTextBox.ForeColor = Color.Silver;
             }
         }
         private void IndexDirectoryTextBox_TextChanged(object sender, EventArgs e)
         {
-            CollectionPathTextBox = IndexDirectoryTextBox.Text;
-            this.documentPath = CollectionPathTextBox;
+            IndexPathTextBox = IndexDirectoryTextBox.Text;
+            this.IndexPath = IndexPathTextBox;
         }
 
         
