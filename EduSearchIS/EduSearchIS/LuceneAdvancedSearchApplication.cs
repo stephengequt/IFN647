@@ -28,8 +28,8 @@ namespace EduSearchIS
         {
             luceneIndexDirectory = null;
             writer = null;
-            analyzer = new Lucene.Net.Analysis.WhitespaceAnalyzer();
-            //analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
+//            analyzer = new Lucene.Net.Analysis.WhitespaceAnalyzer();
+            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
             //analyzer = new Lucene.Net.Analysis.StopAnalyzer(); // Activity 5
             //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
             //analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
@@ -90,7 +90,7 @@ namespace EduSearchIS
         /// Searches the index for the querytext
         /// </summary>
         /// <param name="querytext">The text to search the index</param>
-        public void SearchText(string querytext)
+        public SearchResult SearchText(string querytext)
         {
             var userChoice = false;
             System.Console.WriteLine("Searching for " + querytext);
@@ -104,25 +104,35 @@ namespace EduSearchIS
             
 
             TopDocs results = searcher.Search(query, 100);
-            
+
             // Display the number of results
             Console.WriteLine("Number of results is " + results.TotalHits);
             Console.WriteLine();
-             int rank = 0;
+            int rank = 0;
+            List<Lucene.Net.Documents.Document> docList = new List<Document>(); 
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
             {
                 rank++;
                 Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
+                docList.Add(doc);
+//
                 string myFieldValue = doc.Get(TEXT_FN).ToString();
-                // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
-//                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
-                Console.WriteLine("Rank " + rank);
-                //Console.WriteLine("Content " + myFieldValue );
-                OutputSections(myFieldValue);
-                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
-                //System.Console.WriteLine(e.ToString());
+//                // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
+////                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
+//                Console.WriteLine("Rank " + rank);
+//                //Console.WriteLine("Content " + myFieldValue );
+//                OutputSections(myFieldValue);
+//                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
+//                //System.Console.WriteLine(e.ToString());
 
             }
+
+            SearchResult searchResult = new SearchResult();
+            searchResult.NumOfResult = results.TotalHits;
+            searchResult.DocList = docList;
+            searchResult.finalQuery = query.ToString();
+            return searchResult;
+            
 
 //            Console.WriteLine(DisplayFinialQuery(query)); //Test display final query
 
@@ -176,7 +186,7 @@ namespace EduSearchIS
             return sections;
         }
 
-        public static void OutputSections(string str)
+        public static DocInfo OutputSections(string str)
         {
             // Console.WriteLine("Tokens: ");
             string[] sections = SeparateString(str);
@@ -194,10 +204,18 @@ namespace EduSearchIS
             Console.WriteLine("Bibliographic Information: " + sections[4]);
             Console.WriteLine("Abstract:" + firstLine);
             Console.WriteLine("\n");
+
+            DocInfo docInfo = new DocInfo();
+            docInfo.Title = sections[2];
+            docInfo.Author = sections[3];
+            docInfo.Bibliography = sections[4];
+            docInfo.Sentence = firstLine;
+            docInfo.Abstract = sections[5];
             //foreach (string s in sections)
             //{
             //    System.Console.WriteLine(s);
             //}
+            return docInfo;
         }
         public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
         {

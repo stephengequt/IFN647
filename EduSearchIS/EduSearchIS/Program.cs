@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -10,7 +11,6 @@ namespace EduSearchIS
 {
     class Program
     {
-
         [STAThread]
         private static void Main(string[] args)
         {
@@ -136,6 +136,34 @@ namespace EduSearchIS
             }
 
             return fileList;
+        }
+
+        public static DataTable ViewCurrenPage(DataTable table, Lucene.Net.Documents.Document[] docList, int pageNum)
+        {
+            var pageIndex = pageNum - 1;
+            table.Columns.Add("Rank", typeof(int));
+            table.Columns.Add("Title", typeof(string));
+            table.Columns.Add("Author", typeof(string));
+            table.Columns.Add("Bibliography", typeof(string));
+            table.Columns.Add("1st sentence of the abstract", typeof(string));
+            for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
+            {
+                Lucene.Net.Documents.Document doc = docList[i];
+                var content = doc.Get("Text").ToString();
+                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(content);
+                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+            }
+
+            return table;
+        }
+
+        public static DocInfo ViewSelectedDocInfo(Lucene.Net.Documents.Document[] docList, int selectedDocIndex)
+        {
+            Lucene.Net.Documents.Document selectedDoc = docList[selectedDocIndex];
+            var docContent = selectedDoc.Get("Text").ToString();
+            DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(docContent);
+
+            return docInfo;
         }
     }
 }

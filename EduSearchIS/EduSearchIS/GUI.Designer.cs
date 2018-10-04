@@ -1,4 +1,6 @@
-﻿namespace EduSearchIS
+﻿using System.Data;
+
+namespace EduSearchIS
 {
     partial class GUI
     {
@@ -52,14 +54,19 @@
             this.ResultDirectoryText = new System.Windows.Forms.TextBox();
             this.BrowseResultButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.FinalQueryText = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NumOfResultText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // CollectionButton
             // 
-            this.CollectionButton.Location = new System.Drawing.Point(21, 25);
+            this.CollectionButton.Location = new System.Drawing.Point(501, 14);
+            this.CollectionButton.Margin = new System.Windows.Forms.Padding(5);
             this.CollectionButton.Name = "CollectionButton";
-            this.CollectionButton.Size = new System.Drawing.Size(111, 23);
+            this.CollectionButton.Size = new System.Drawing.Size(194, 42);
             this.CollectionButton.TabIndex = 0;
             this.CollectionButton.Text = "Browse";
             this.CollectionButton.UseVisualStyleBackColor = true;
@@ -67,9 +74,10 @@
             // 
             // IndexButton
             // 
-            this.IndexButton.Location = new System.Drawing.Point(21, 87);
+            this.IndexButton.Location = new System.Drawing.Point(501, 69);
+            this.IndexButton.Margin = new System.Windows.Forms.Padding(5);
             this.IndexButton.Name = "IndexButton";
-            this.IndexButton.Size = new System.Drawing.Size(111, 23);
+            this.IndexButton.Size = new System.Drawing.Size(194, 42);
             this.IndexButton.TabIndex = 1;
             this.IndexButton.Text = "Browse";
             this.IndexButton.UseVisualStyleBackColor = true;
@@ -77,9 +85,10 @@
             // 
             // CreateIndexButton
             // 
-            this.CreateIndexButton.Location = new System.Drawing.Point(364, 43);
+            this.CreateIndexButton.Location = new System.Drawing.Point(774, 37);
+            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(5);
             this.CreateIndexButton.Name = "CreateIndexButton";
-            this.CreateIndexButton.Size = new System.Drawing.Size(107, 23);
+            this.CreateIndexButton.Size = new System.Drawing.Size(187, 42);
             this.CreateIndexButton.TabIndex = 4;
             this.CreateIndexButton.Text = "Create Index";
             this.CreateIndexButton.UseVisualStyleBackColor = true;
@@ -92,9 +101,10 @@
             // CollectionDirectoryTextBox
             // 
             this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(152, 26);
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(157, 14);
+            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
-            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
             this.CollectionDirectoryTextBox.TabIndex = 5;
             this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
             this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
@@ -104,9 +114,10 @@
             // IndexDirectoryTextBox
             // 
             this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(152, 88);
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(157, 69);
+            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
-            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
             this.IndexDirectoryTextBox.TabIndex = 6;
             this.IndexDirectoryTextBox.Text = "Insert Index Directory";
             this.IndexDirectoryTextBox.TextChanged += new System.EventHandler(this.IndexDirectoryTextBox_TextChanged);
@@ -116,9 +127,10 @@
             // TimeLabelToIndex
             // 
             this.TimeLabelToIndex.AutoSize = true;
-            this.TimeLabelToIndex.Location = new System.Drawing.Point(515, 46);
+            this.TimeLabelToIndex.Location = new System.Drawing.Point(1039, 44);
+            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeLabelToIndex.Name = "TimeLabelToIndex";
-            this.TimeLabelToIndex.Size = new System.Drawing.Size(140, 17);
+            this.TimeLabelToIndex.Size = new System.Drawing.Size(239, 29);
             this.TimeLabelToIndex.TabIndex = 7;
             this.TimeLabelToIndex.Text = "Time Taken to Index:";
             this.TimeLabelToIndex.Click += new System.EventHandler(this.TimeLabelToIndex_Click);
@@ -126,9 +138,10 @@
             // QueryBox
             // 
             this.QueryBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.QueryBox.Location = new System.Drawing.Point(21, 198);
+            this.QueryBox.Location = new System.Drawing.Point(37, 177);
+            this.QueryBox.Margin = new System.Windows.Forms.Padding(5);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(325, 22);
+            this.QueryBox.Size = new System.Drawing.Size(566, 35);
             this.QueryBox.TabIndex = 8;
             this.QueryBox.Text = "Enter Query";
             this.QueryBox.TextChanged += new System.EventHandler(this.QueryBox_TextChanged);
@@ -137,9 +150,10 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(364, 198);
+            this.SearchButton.Location = new System.Drawing.Point(646, 177);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(5);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(101, 23);
+            this.SearchButton.Size = new System.Drawing.Size(177, 42);
             this.SearchButton.TabIndex = 9;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -148,9 +162,10 @@
             // PreprocessingCheckBox
             // 
             this.PreprocessingCheckBox.AutoSize = true;
-            this.PreprocessingCheckBox.Location = new System.Drawing.Point(21, 238);
+            this.PreprocessingCheckBox.Location = new System.Drawing.Point(852, 186);
+            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.PreprocessingCheckBox.Name = "PreprocessingCheckBox";
-            this.PreprocessingCheckBox.Size = new System.Drawing.Size(208, 21);
+            this.PreprocessingCheckBox.Size = new System.Drawing.Size(348, 33);
             this.PreprocessingCheckBox.TabIndex = 10;
             this.PreprocessingCheckBox.Text = "Pre-Processing not required";
             this.PreprocessingCheckBox.UseVisualStyleBackColor = true;
@@ -158,36 +173,48 @@
             // TimeTakenToSearch
             // 
             this.TimeTakenToSearch.AutoSize = true;
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(515, 201);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(1239, 184);
+            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
-            this.TimeTakenToSearch.Size = new System.Drawing.Size(152, 17);
+            this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
             this.TimeTakenToSearch.TabIndex = 11;
             this.TimeTakenToSearch.Text = "Time Taken to Search:";
+            this.TimeTakenToSearch.Click += new System.EventHandler(this.TimeTakenToSearch_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 275);
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 358);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(450, 249);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1459, 753);
             this.dataGridView1.TabIndex = 12;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(21, 160);
+            this.StatusLabel.Location = new System.Drawing.Point(32, 133);
+            this.StatusLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(48, 17);
+            this.StatusLabel.Size = new System.Drawing.Size(79, 29);
             this.StatusLabel.TabIndex = 13;
             this.StatusLabel.Text = "Status";
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(57, 530);
+            this.PreviousButton.Location = new System.Drawing.Point(441, 1130);
+            this.PreviousButton.Margin = new System.Windows.Forms.Padding(5);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(75, 23);
+            this.PreviousButton.Size = new System.Drawing.Size(131, 42);
             this.PreviousButton.TabIndex = 14;
             this.PreviousButton.Text = "Previous";
             this.PreviousButton.UseVisualStyleBackColor = true;
@@ -195,9 +222,10 @@
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(304, 533);
+            this.NextButton.Location = new System.Drawing.Point(957, 1130);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(5);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(75, 23);
+            this.NextButton.Size = new System.Drawing.Size(131, 42);
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
@@ -206,44 +234,51 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 533);
+            this.label1.Location = new System.Drawing.Point(656, 1137);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 17);
+            this.label1.Size = new System.Drawing.Size(70, 29);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
             // 
             // PageNumLabel
             // 
             this.PageNumLabel.AutoSize = true;
-            this.PageNumLabel.Location = new System.Drawing.Point(197, 533);
+            this.PageNumLabel.Location = new System.Drawing.Point(740, 1137);
+            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.PageNumLabel.Name = "PageNumLabel";
-            this.PageNumLabel.Size = new System.Drawing.Size(16, 17);
+            this.PageNumLabel.Size = new System.Drawing.Size(26, 29);
             this.PageNumLabel.TabIndex = 17;
             this.PageNumLabel.Text = "1";
             // 
             // TotalPageLabel
             // 
             this.TotalPageLabel.AutoSize = true;
-            this.TotalPageLabel.Location = new System.Drawing.Point(219, 533);
+            this.TotalPageLabel.Location = new System.Drawing.Point(778, 1137);
+            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TotalPageLabel.Name = "TotalPageLabel";
-            this.TotalPageLabel.Size = new System.Drawing.Size(56, 17);
+            this.TotalPageLabel.Size = new System.Drawing.Size(91, 29);
             this.TotalPageLabel.TabIndex = 18;
             this.TotalPageLabel.Text = "out of 1";
+            this.TotalPageLabel.Click += new System.EventHandler(this.TotalPageLabel_Click);
             // 
             // AbstractButton
             // 
-            this.AbstractButton.Location = new System.Drawing.Point(505, 275);
+            this.AbstractButton.Location = new System.Drawing.Point(1536, 409);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5);
             this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(114, 23);
+            this.AbstractButton.Size = new System.Drawing.Size(200, 42);
             this.AbstractButton.TabIndex = 19;
             this.AbstractButton.Text = "View Abstract";
             this.AbstractButton.UseVisualStyleBackColor = true;
+            this.AbstractButton.Click += new System.EventHandler(this.AbstractButton_Click);
             // 
             // ResultButton
             // 
-            this.ResultButton.Location = new System.Drawing.Point(700, 440);
+            this.ResultButton.Location = new System.Drawing.Point(1525, 680);
+            this.ResultButton.Margin = new System.Windows.Forms.Padding(5);
             this.ResultButton.Name = "ResultButton";
-            this.ResultButton.Size = new System.Drawing.Size(114, 23);
+            this.ResultButton.Size = new System.Drawing.Size(200, 42);
             this.ResultButton.TabIndex = 20;
             this.ResultButton.Text = "Save Result";
             this.ResultButton.UseVisualStyleBackColor = true;
@@ -251,9 +286,10 @@
             // TopicIDBox
             // 
             this.TopicIDBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.TopicIDBox.Location = new System.Drawing.Point(505, 441);
+            this.TopicIDBox.Location = new System.Drawing.Point(1525, 622);
+            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(5);
             this.TopicIDBox.Name = "TopicIDBox";
-            this.TopicIDBox.Size = new System.Drawing.Size(177, 22);
+            this.TopicIDBox.Size = new System.Drawing.Size(307, 35);
             this.TopicIDBox.TabIndex = 21;
             this.TopicIDBox.Text = "Enter Topic ID";
             this.TopicIDBox.TextChanged += new System.EventHandler(this.TopicIDBox_TextChanged);
@@ -263,9 +299,10 @@
             // ResultDirectoryText
             // 
             this.ResultDirectoryText.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ResultDirectoryText.Location = new System.Drawing.Point(505, 387);
+            this.ResultDirectoryText.Location = new System.Drawing.Point(1525, 497);
+            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(5);
             this.ResultDirectoryText.Name = "ResultDirectoryText";
-            this.ResultDirectoryText.Size = new System.Drawing.Size(177, 22);
+            this.ResultDirectoryText.Size = new System.Drawing.Size(307, 35);
             this.ResultDirectoryText.TabIndex = 22;
             this.ResultDirectoryText.Text = "Insert Result Directory";
             this.ResultDirectoryText.Enter += new System.EventHandler(this.ResultDirectoryText_Enter);
@@ -273,19 +310,59 @@
             // 
             // BrowseResultButton
             // 
-            this.BrowseResultButton.Location = new System.Drawing.Point(700, 386);
+            this.BrowseResultButton.Location = new System.Drawing.Point(1525, 557);
+            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(5);
             this.BrowseResultButton.Name = "BrowseResultButton";
-            this.BrowseResultButton.Size = new System.Drawing.Size(75, 23);
+            this.BrowseResultButton.Size = new System.Drawing.Size(131, 42);
             this.BrowseResultButton.TabIndex = 23;
             this.BrowseResultButton.Text = "Browse";
             this.BrowseResultButton.UseVisualStyleBackColor = true;
             this.BrowseResultButton.Click += new System.EventHandler(this.BrowseResultButton_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 241);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 29);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Final Query:";
+            // 
+            // FinalQueryText
+            // 
+            this.FinalQueryText.AutoSize = true;
+            this.FinalQueryText.Location = new System.Drawing.Point(192, 241);
+            this.FinalQueryText.Name = "FinalQueryText";
+            this.FinalQueryText.Size = new System.Drawing.Size(0, 29);
+            this.FinalQueryText.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 293);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(206, 29);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Number of Result:";
+            // 
+            // NumOfResultText
+            // 
+            this.NumOfResultText.AutoSize = true;
+            this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
+            this.NumOfResultText.Location = new System.Drawing.Point(278, 293);
+            this.NumOfResultText.Name = "NumOfResultText";
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
+            this.NumOfResultText.TabIndex = 27;
+            // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 581);
+            this.ClientSize = new System.Drawing.Size(1846, 1202);
+            this.Controls.Add(this.NumOfResultText);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.FinalQueryText);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.BrowseResultButton);
             this.Controls.Add(this.ResultDirectoryText);
             this.Controls.Add(this.TopicIDBox);
@@ -308,8 +385,10 @@
             this.Controls.Add(this.CreateIndexButton);
             this.Controls.Add(this.IndexButton);
             this.Controls.Add(this.CollectionButton);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "GUI";
             this.Text = "GUI";
+            this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -342,5 +421,9 @@
         private System.Windows.Forms.TextBox ResultDirectoryText;
         private System.Windows.Forms.Button BrowseResultButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label FinalQueryText;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label NumOfResultText;
     }
 }
