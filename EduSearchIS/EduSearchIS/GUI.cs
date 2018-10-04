@@ -21,6 +21,7 @@ namespace EduSearchIS
     public partial class GUI : Form
     {
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
+        DataTable dt = new DataTable();
 
         // source collection
 
@@ -38,6 +39,7 @@ namespace EduSearchIS
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
         private int pageNum = 1;
+        private int pageSize = 20;
         int maxPageNum = 0;
 
         public GUI()
@@ -96,7 +98,7 @@ namespace EduSearchIS
             {
                 CollectionDirectoryTextBox.Text = "";
 
-                CollectionDirectoryTextBox.ForeColor = Color.Black; 
+                CollectionDirectoryTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -111,7 +113,7 @@ namespace EduSearchIS
         }
 
         private void CollectionDirectoryTextBox_TextChanged(object sender, EventArgs e)
-        { 
+        {
             CollectionPathTextBox = CollectionDirectoryTextBox.Text;
             this.documentPath = CollectionPathTextBox;
         }
@@ -198,14 +200,89 @@ namespace EduSearchIS
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-           if (QueryBox.Text == "Enter Query")
+            if (QueryBox.Text == "Enter Query")
             {
                 StatusLabel.ForeColor = Color.Red;
                 StatusLabel.Text = "Search box is empty";
             }
 
-           // Populate here with the codes to display the top 10 result
-       
+            // Populate here with the codes to display the top 10 result
+            else
+            {
+                try
+                {
+                    myLuceneApp.CreateSearcher();
+                }
+                catch
+                {
+                    StatusLabel.ForeColor = Color.Green;
+                    StatusLabel.Text = "YE";
+                    return;
+                }
+
+                DataTable dtResult = myLuceneApp.DTResults(myLuceneApp.DTSearchText(QueryBox.Text, StatusLabel),this, this.dt);
+
+                if (dtResult.Rows != null)
+                {
+                    if (dtResult.Rows.Count > 0)
+                    {
+                        pageNum = 1;
+                        PageNumLabel.Text = pageNum.ToString();
+                        loadDataViewGrid();
+                        double temp = (double)dtResult.Rows.Count / (double)pageSize;
+                        maxPageNum = (int)Math.Ceiling(temp);
+                        TotalPageLabel.Text = "Out of  " + maxPageNum.ToString();
+                        resultVisibleToggle(true);
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = dtResult;
+                        StatusLabel.ForeColor = Color.Red;
+                        StatusLabel.Text = "No results";
+                        resultVisibleToggle(false);
+                    }
+                }
+                else
+                {
+                    dataGridView1.DataSource = dtResult;
+                    StatusLabel.ForeColor = Color.Red;
+                    StatusLabel.Text = "No results";
+                    resultVisibleToggle(false);
+                }
+
+                myLuceneApp.CleanUpSearcher();
+            }
+        }
+
+        private void loadDataViewGrid()
+        {
+            DataTable emptyDt = new DataTable();
+            dataGridView1.DataSource = emptyDt;
+            DataTable dtPage = dt.Rows.Cast<System.Data.DataRow>().Skip((pageNum - 1) * pageSize).Take(pageSize).CopyToDataTable();
+            dataGridView1.DataSource = dtPage;
+            this.dataGridView1.Columns["Path"].Visible = false;
+        }
+
+        private void resultVisibleToggle(bool toggle)
+        {
+            if (toggle == true)
+            {
+                PreviousButton.Visible = true;
+                dataGridView1.Visible = true;
+                PageLabel.Visible = true;
+                PageNumLabel.Visible = true;
+                TotalPageLabel.Visible = true;
+                NextButton.Visible = true;
+            }
+            else
+            {
+                PreviousButton.Visible = false;
+                dataGridView1.Visible = false;
+                PageLabel.Visible = false;
+                PageNumLabel.Visible = false;
+                TotalPageLabel.Visible = false;
+                NextButton.Visible = false;
+            }
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -255,26 +332,6 @@ namespace EduSearchIS
         private void TopicIDBox_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void ResultDirectoryText_Enter(object sender, EventArgs e)
-        {
-            if (ResultDirectoryText.Text == "Insert Result Directory")
-            {
-                ResultDirectoryText.Text = "";
-
-                ResultDirectoryText.ForeColor = Color.Black;
-            }
-        }
-
-        private void ResultDirectoryText_Leave(object sender, EventArgs e)
-        {
-            if (ResultDirectoryText.Text == "")
-            {
-                ResultDirectoryText.Text = "Insert Result Directory";
-
-                ResultDirectoryText.ForeColor = Color.Silver;
-            }
         }
 
         private void BrowseResultButton_Click(object sender, EventArgs e)

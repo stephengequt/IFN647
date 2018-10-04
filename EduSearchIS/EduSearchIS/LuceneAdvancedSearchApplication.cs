@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Drawing;
+using System.Data;
+using System.Windows.Forms;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
@@ -22,6 +25,8 @@ namespace EduSearchIS
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "Text";
+        const string ID_FN = "ID";
+        const string FILEPATH_FN = "Filepath";
 
 
         public LuceneAdvancedSearchApplication()
@@ -102,7 +107,6 @@ namespace EduSearchIS
             
             Query query = parser.Parse(querytext);
             
-
             TopDocs results = searcher.Search(query, 100);
             
             // Display the number of results
@@ -199,6 +203,49 @@ namespace EduSearchIS
             //    System.Console.WriteLine(s);
             //}
         }
+
+        public TopDocs DTSearchText(string querytext, Label message)
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            querytext = querytext.ToLower();
+            Query query = parser.Parse(querytext);
+            TopDocs results = searcher.Search(query, 6000);
+            watch.Stop();
+            var queryTime = watch.ElapsedMilliseconds;
+            int totalHits = results.TotalHits;
+            message.ForeColor = Color.Green;
+            message.Text = "Found " + totalHits + " documents (" + queryTime + "ms)";
+            return results;
+        }
+
+        public DataTable DTResults(TopDocs results, Form form, DataTable dt)
+        {
+            int rank = 1;
+            int totalHits = results.TotalHits;
+            dt.Clear();
+
+            foreach (ScoreDoc scoreDoc in results.ScoreDocs)
+            {
+                DataRow dr = dt.NewRow();
+
+                Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
+                string idValue = doc.Get(ID_FN).ToString();
+                string textValue = doc.Get(TEXT_FN).ToString();
+                string filepathValue = doc.Get(FILEPATH_FN).ToString();
+
+                int middleOftext = (int)(textValue.Length / 2);
+
+                dr[0] = idValue;
+                dr[1] = rank;
+                dr[2] = textValue.Trim().Substring(0, 10);
+                dr[3] = scoreDoc.Score;
+                dr[4] = filepathValue;
+                dt.Rows.Add(dr);
+                rank++;
+            }
+            return dt;
+        }
+
         public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
         {
             var totalNumOfDocs = docList.Length;
