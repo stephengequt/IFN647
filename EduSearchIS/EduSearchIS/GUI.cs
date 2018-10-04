@@ -35,6 +35,8 @@ namespace EduSearchIS
         static string stephenIndexPath = @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
         private string documentPath = stephenPath;
         private string IndexPath = stephenIndexPath;
+        private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
+        private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
 
         public GUI()
         {
@@ -44,7 +46,7 @@ namespace EduSearchIS
         private void button2_Click(object sender, EventArgs e)
         {
             folderToReadLocation.ShowDialog();
-            IndexLabel.Text = folderToReadLocation.SelectedPath;
+            IndexDirectoryTextBox.Text = folderToReadLocation.SelectedPath;
             this.documentPath = folderToReadLocation.SelectedPath;
         }
 
@@ -55,7 +57,7 @@ namespace EduSearchIS
         private void CollectionButton_Click(object sender, EventArgs e)
         {
             folderToReadLocation.ShowDialog();
-            CollectionLabel.Text = folderToReadLocation.SelectedPath;
+            CollectionDirectoryTextBox.Text = folderToReadLocation.SelectedPath;
             this.documentPath = folderToReadLocation.SelectedPath;
         }
 
@@ -86,5 +88,57 @@ namespace EduSearchIS
 
             myLuceneApp.CleanUpIndexer();
         }
+        private void CollectionDirectoryTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CollectionDirectoryTextBox.Text == "Insert Collection Directory")
+            {
+                CollectionDirectoryTextBox.Text = "";
+
+                CollectionDirectoryTextBox.ForeColor = Color.Black; 
+            }
+        }
+
+        private void CollectionDirectoryTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CollectionDirectoryTextBox.Text == "")
+            {
+                CollectionDirectoryTextBox.Text = "Insert Collection Directory";
+
+                CollectionDirectoryTextBox.ForeColor = Color.Silver;
+            }
+        }
+
+        private void CollectionDirectoryTextBox_TextChanged(object sender, EventArgs e)
+        { 
+            CollectionPathTextBox = CollectionDirectoryTextBox.Text;
+            this.documentPath = CollectionPathTextBox;
+        }
+
+        private void IndexDirectoryTextBox_Enter(object sender, EventArgs e)
+        {
+            if (CollectionDirectoryTextBox.Text == "Insert Index Directory")
+            {
+                CollectionDirectoryTextBox.Text = "";
+
+                CollectionDirectoryTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void IndexDirectoryTextBox_Leave(object sender, EventArgs e)
+        {
+            if (CollectionDirectoryTextBox.Text == "")
+            {
+                CollectionDirectoryTextBox.Text = "Insert Index Directory";
+
+                CollectionDirectoryTextBox.ForeColor = Color.Silver;
+            }
+        }
+        private void IndexDirectoryTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CollectionPathTextBox = IndexDirectoryTextBox.Text;
+            this.documentPath = CollectionPathTextBox;
+        }
+
+        
     }
 }

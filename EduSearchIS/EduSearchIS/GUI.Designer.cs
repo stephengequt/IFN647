@@ -30,10 +30,10 @@
         {
             this.CollectionButton = new System.Windows.Forms.Button();
             this.IndexButton = new System.Windows.Forms.Button();
-            this.CollectionLabel = new System.Windows.Forms.Label();
-            this.IndexLabel = new System.Windows.Forms.Label();
             this.CreateIndexButton = new System.Windows.Forms.Button();
             this.folderToReadLocation = new System.Windows.Forms.FolderBrowserDialog();
+            this.CollectionDirectoryTextBox = new System.Windows.Forms.TextBox();
+            this.IndexDirectoryTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CollectionButton
@@ -56,28 +56,9 @@
             this.IndexButton.UseVisualStyleBackColor = true;
             this.IndexButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // CollectionLabel
-            // 
-            this.CollectionLabel.AutoSize = true;
-            this.CollectionLabel.Location = new System.Drawing.Point(201, 28);
-            this.CollectionLabel.Name = "CollectionLabel";
-            this.CollectionLabel.Size = new System.Drawing.Size(130, 17);
-            this.CollectionLabel.TabIndex = 2;
-            this.CollectionLabel.Text = "Collection Directory";
-            this.CollectionLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // IndexLabel
-            // 
-            this.IndexLabel.AutoSize = true;
-            this.IndexLabel.Location = new System.Drawing.Point(201, 87);
-            this.IndexLabel.Name = "IndexLabel";
-            this.IndexLabel.Size = new System.Drawing.Size(102, 17);
-            this.IndexLabel.TabIndex = 3;
-            this.IndexLabel.Text = "Index Directory";
-            // 
             // CreateIndexButton
             // 
-            this.CreateIndexButton.Location = new System.Drawing.Point(319, 159);
+            this.CreateIndexButton.Location = new System.Drawing.Point(394, 58);
             this.CreateIndexButton.Name = "CreateIndexButton";
             this.CreateIndexButton.Size = new System.Drawing.Size(107, 23);
             this.CreateIndexButton.TabIndex = 4;
@@ -89,14 +70,38 @@
             // 
             this.folderToReadLocation.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
+            // CollectionDirectoryTextBox
+            // 
+            this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(152, 26);
+            this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
+            this.CollectionDirectoryTextBox.TabIndex = 5;
+            this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
+            this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
+            this.CollectionDirectoryTextBox.Enter += new System.EventHandler(this.CollectionDirectoryTextBox_Enter);
+            this.CollectionDirectoryTextBox.Leave += new System.EventHandler(this.CollectionDirectoryTextBox_Leave);
+            // 
+            // IndexDirectoryTextBox
+            // 
+            this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(152, 88);
+            this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
+            this.IndexDirectoryTextBox.TabIndex = 6;
+            this.IndexDirectoryTextBox.Text = "Insert Index Directory";
+            this.IndexDirectoryTextBox.TextChanged += new System.EventHandler(this.IndexDirectoryTextBox_TextChanged);
+            this.IndexDirectoryTextBox.Enter += new System.EventHandler(this.IndexDirectoryTextBox_Enter);
+            this.IndexDirectoryTextBox.Leave += new System.EventHandler(this.IndexDirectoryTextBox_Leave);
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.IndexDirectoryTextBox);
+            this.Controls.Add(this.CollectionDirectoryTextBox);
             this.Controls.Add(this.CreateIndexButton);
-            this.Controls.Add(this.IndexLabel);
-            this.Controls.Add(this.CollectionLabel);
             this.Controls.Add(this.IndexButton);
             this.Controls.Add(this.CollectionButton);
             this.Name = "GUI";
@@ -110,9 +115,9 @@
 
         private System.Windows.Forms.Button CollectionButton;
         private System.Windows.Forms.Button IndexButton;
-        private System.Windows.Forms.Label CollectionLabel;
-        private System.Windows.Forms.Label IndexLabel;
         private System.Windows.Forms.Button CreateIndexButton;
         private System.Windows.Forms.FolderBrowserDialog folderToReadLocation;
+        private System.Windows.Forms.TextBox CollectionDirectoryTextBox;
+        private System.Windows.Forms.TextBox IndexDirectoryTextBox;
     }
 }
