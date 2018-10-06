@@ -156,6 +156,24 @@ namespace EduSearchIS
             return table;
         }
 
+        public static DataTable ViewLastPage(DataTable table, DocInfo[] docList, int pageNum)
+        {
+            var pageIndex = pageNum - 1;
+            table.Columns.Add("Rank", typeof(int));
+            table.Columns.Add("Title", typeof(string));
+            table.Columns.Add("Author", typeof(string));
+            table.Columns.Add("Bibliography", typeof(string));
+            table.Columns.Add("1st sentence of the abstract", typeof(string));
+            for (int i = pageIndex * 10; i < docList.Length; i++)
+            {
+                DocInfo docInfo = docList[i];
+//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+            }
+
+            return table;
+        }
+
 //        public static DocInfo ViewSelectedDocInfo(Lucene.Net.Documents.Document[] docList, int selectedDocIndex)
 //        {
 //            Lucene.Net.Documents.Document selectedDoc = docList[selectedDocIndex];

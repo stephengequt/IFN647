@@ -23,6 +23,7 @@ namespace EduSearchIS
     public partial class GUI : Form
     {
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
+
         DataTable table = new DataTable();
         // source collection
 
@@ -36,6 +37,7 @@ namespace EduSearchIS
 
         static string stephenIndexPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+
         static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\GUI";
         private string documentPath = stephenPath;
         private string IndexPath = stephenIndexPath;
@@ -45,7 +47,7 @@ namespace EduSearchIS
         int maxPageNum = 0;
         private DocInfo[] docList;
         private int selectedDocIndex;
-            
+
 
         public GUI()
         {
@@ -204,6 +206,8 @@ namespace EduSearchIS
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string query = QueryBox.Text;
+            PreviousButton.Enabled = false;
+
             if (query == "Enter Query")
             {
                 StatusLabel.ForeColor = Color.Red;
@@ -228,7 +232,7 @@ namespace EduSearchIS
 
                 NumOfResultText.Text = searchResult.NumOfResult.ToString();
                 FinalQueryText.Text = searchResult.finalQuery;
-                this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10)+1;
+                this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10) + 1;
 
                 this.docList = searchResult.DocInfoList.ToArray();
 //                Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
@@ -237,7 +241,19 @@ namespace EduSearchIS
                 // Populate here with the codes to display the top 10 result
                 DataTable table = new DataTable();
 
-                table = Program.ViewCurrenPage(table, this.docList, pageNum);
+                if (this.docList.Length == 0)
+                {
+                    Console.WriteLine("No result.");
+                }
+                else if (this.pageNum == this.maxPageNum - 1)
+                {
+                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                }
+                else
+                {
+                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                }
+
                 dataGridView1.DataSource = table;
                 TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
             }
@@ -249,10 +265,25 @@ namespace EduSearchIS
             {
                 pageNum++;
                 PageNumLabel.Text = pageNum.ToString();
+                PreviousButton.Enabled = true;
 
                 //loadDataViewGrid();
                 DataTable table = new DataTable();
-                table = Program.ViewCurrenPage(table, this.docList, pageNum);
+
+                if (this.docList.Length == 0)
+                {
+                    Console.WriteLine("No result.");
+                }
+                else if (this.pageNum == this.maxPageNum)
+                {
+                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                    NextButton.Enabled = false;
+                }
+                else
+                {
+                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                }
+
                 dataGridView1.DataSource = table;
             }
         }
@@ -263,11 +294,16 @@ namespace EduSearchIS
             {
                 pageNum--;
                 PageNumLabel.Text = pageNum.ToString();
+                NextButton.Enabled = true;
 
                 //loadDataViewGrid();
                 DataTable table = new DataTable();
                 table = Program.ViewCurrenPage(table, this.docList, pageNum);
                 dataGridView1.DataSource = table;
+            }
+            else
+            {
+                PreviousButton.Enabled = false;
             }
         }
 
@@ -319,22 +355,18 @@ namespace EduSearchIS
         {
             saveFileDialog1.ShowDialog();
             ResultDirectoryText.Text = @"D:\result.text";
-
         }
 
         private void GUI_Load(object sender, EventArgs e)
         {
-
         }
 
         private void TimeTakenToSearch_Click(object sender, EventArgs e)
         {
-
         }
 
         private void TotalPageLabel_Click(object sender, EventArgs e)
         {
-
         }
 
         private void AbstractButton_Click(object sender, EventArgs e)
@@ -393,6 +425,7 @@ namespace EduSearchIS
                             sw.Write(" " + docInfo.DocScore);
                             sw.WriteLine(" BaselineSystem");
                         }
+
                         ResultMsg.ForeColor = Color.Green;
                         ResultMsg.Text = "File has been updated successfully";
                     }
@@ -402,12 +435,10 @@ namespace EduSearchIS
 
         private void ResultDirectoryText_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
         }
     }
 }
