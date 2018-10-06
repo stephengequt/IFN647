@@ -67,7 +67,7 @@ namespace EduSearchIS
         {
             folderToReadLocation.ShowDialog();
             CollectionDirectoryTextBox.Text = folderToReadLocation.SelectedPath;
-//            this.documentPath = folderToReadLocation.SelectedPath;
+            this.documentPath = folderToReadLocation.SelectedPath;
         }
 
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
@@ -318,6 +318,8 @@ namespace EduSearchIS
         private void BrowseResultButton_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
+            ResultDirectoryText.Text = @"D:\result.text";
+
         }
 
         private void GUI_Load(object sender, EventArgs e)
@@ -364,13 +366,13 @@ namespace EduSearchIS
                     // Create a file to write to.
                     using (StreamWriter sw = File.CreateText(saveFileDialog1.FileName))
                     {
-                        foreach (DataRow row in table.Rows)
+                        foreach (DocInfo docInfo in this.docList)
                         {
-                            sw.Write(TopicIDBox.Text.Trim());
+                            sw.Write(TopicIDBox.Text);
                             sw.Write(" Q0 ");
-                            sw.Write(row[0].ToString());
-                            sw.Write(" " + row[1].ToString());
-                            sw.Write(" " + row[3].ToString());
+                            sw.Write(docInfo.DocID);
+                            sw.Write(" " + docInfo.Rank);
+                            sw.Write(" " + docInfo.DocScore);
                             sw.WriteLine(" BaselineSystem");
                         }
 
@@ -382,13 +384,13 @@ namespace EduSearchIS
                 {
                     using (StreamWriter sw = File.AppendText(saveFileDialog1.FileName))
                     {
-                        foreach (DataRow row in table.Rows)
+                        foreach (DocInfo docInfo in this.docList)
                         {
-                            sw.Write(TopicIDBox.Text.Trim());
+                            sw.Write(TopicIDBox.Text);
                             sw.Write(" Q0 ");
-                            sw.Write(row[0].ToString());
-                            sw.Write(" " + row[1].ToString());
-                            sw.Write(" " + row[3].ToString());
+                            sw.Write(docInfo.DocID);
+                            sw.Write(" " + docInfo.Rank);
+                            sw.Write(" " + docInfo.DocScore);
                             sw.WriteLine(" BaselineSystem");
                         }
                         ResultMsg.ForeColor = Color.Green;

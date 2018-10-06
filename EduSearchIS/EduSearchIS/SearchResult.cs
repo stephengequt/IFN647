@@ -17,6 +17,8 @@ namespace EduSearchIS
     class DocInfo
     {
 //        private string Rank { get; set; }
+        public string DocID { get; set; }
+        public int Rank { get; set; } 
         public Lucene.Net.Documents.Document LuceneDocument { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }

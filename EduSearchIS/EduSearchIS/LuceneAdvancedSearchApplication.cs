@@ -128,6 +128,8 @@ namespace EduSearchIS
                 //obtain the first line of text as the abstract
                 var firstLine = sections[5].Split('.')[0];
 
+                docInfo.DocID = sections[1];
+                docInfo.Rank = rank;
                 docInfo.Title = sections[2];
                 docInfo.Author = sections[3];
                 docInfo.Bibliography = sections[4];
