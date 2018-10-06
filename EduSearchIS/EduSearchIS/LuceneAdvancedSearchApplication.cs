@@ -121,13 +121,13 @@ namespace EduSearchIS
                 docList.Add(doc);
 //
                 string myFieldValue = doc.Get(TEXT_FN).ToString();
-//                // Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
-////                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
-//                Console.WriteLine("Rank " + rank);
-//                //Console.WriteLine("Content " + myFieldValue );
-//                OutputSections(myFieldValue);
-//                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
-//                //System.Console.WriteLine(e.ToString());
+                //Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
+                ////                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
+                //                Console.WriteLine("Rank " + rank);
+                //                //Console.WriteLine("Content " + myFieldValue );
+                //                OutputSections(myFieldValue);
+                //                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
+                //                //System.Console.WriteLine(e.ToString());
 
             }
 
@@ -190,8 +190,10 @@ namespace EduSearchIS
             return sections;
         }
 
-        public static DocInfo OutputSections(string str)
+        public static DocInfo OutputSections(Document doc)
         {
+            var str = doc.Get("Text").ToString();
+
             // Console.WriteLine("Tokens: ");
             string[] sections = SeparateString(str);
 
@@ -215,6 +217,7 @@ namespace EduSearchIS
             docInfo.Bibliography = sections[4];
             docInfo.Sentence = firstLine;
             docInfo.Abstract = sections[5];
+            //docInfo.DocScore = doc.Score
             //foreach (string s in sections)
             //{
             //    System.Console.WriteLine(s);
@@ -236,33 +239,33 @@ namespace EduSearchIS
             return results;
         }
 
-        public DataTable DTResults(TopDocs results, Form form, DataTable dt)
-        {
-            int rank = 1;
-            int totalHits = results.TotalHits;
-            dt.Clear();
+        //public DataTable DTResults(TopDocs results, Form form, DataTable dt)
+        //{
+        //    int rank = 1;
+        //    int totalHits = results.TotalHits;
+        //    dt.Clear();
 
-            foreach (ScoreDoc scoreDoc in results.ScoreDocs)
-            {
-                DataRow dr = dt.NewRow();
+        //    foreach (ScoreDoc scoreDoc in results.ScoreDocs)
+        //    {
+        //        DataRow dr = dt.NewRow();
 
-                Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
-                string idValue = doc.Get(ID_FN).ToString();
-                string textValue = doc.Get(TEXT_FN).ToString();
-                string filepathValue = doc.Get(FILEPATH_FN).ToString();
+        //        Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
+        //        string idValue = doc.Get(ID_FN).ToString();
+        //        string textValue = doc.Get(TEXT_FN).ToString();
+        //        string filepathValue = doc.Get(FILEPATH_FN).ToString();
 
-                int middleOftext = (int)(textValue.Length / 2);
+        //        int middleOftext = (int)(textValue.Length / 2);
 
-                dr[0] = idValue;
-                dr[1] = rank;
-                dr[2] = textValue.Trim().Substring(0, 10);
-                dr[3] = scoreDoc.Score;
-                dr[4] = filepathValue;
-                dt.Rows.Add(dr);
-                rank++;
-            }
-            return dt;
-        }
+        //        dr[0] = idValue;
+        //        dr[1] = rank;
+        //        dr[2] = textValue.Trim().Substring(0, 10);
+        //        dr[3] = scoreDoc.Score;
+        //        dr[4] = filepathValue;
+        //        dt.Rows.Add(dr);
+        //        rank++;
+        //    }
+        //    return dt;
+        //}
 
         public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
         {

@@ -149,8 +149,7 @@ namespace EduSearchIS
             for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
             {
                 Lucene.Net.Documents.Document doc = docList[i];
-                var content = doc.Get("Text").ToString();
-                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(content);
+                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
                 table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
             }
 

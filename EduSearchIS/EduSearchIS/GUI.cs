@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.Serialization;
 using Lucene.Net.Documents;
+using System.IO;
 
 namespace EduSearchIS
 
@@ -22,22 +23,22 @@ namespace EduSearchIS
     public partial class GUI : Form
     {
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
-
+        DataTable table = new DataTable();
         // source collection
 
         static string stephenPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
-        string soamPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
+        static string soamPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
 
         string aaronPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
         static string stephenIndexPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
-
-        private string documentPath = stephenPath;
-        private string IndexPath = stephenIndexPath;
+        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\GUI";
+        private string documentPath = soamPath;
+        private string IndexPath = soamIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
         private int pageNum = 1;
@@ -235,18 +236,6 @@ namespace EduSearchIS
                 // Populate here with the codes to display the top 10 result
                 DataTable table = new DataTable();
 
-//                table.Columns.Add("Rank", typeof(int));
-//                table.Columns.Add("Title", typeof(string));
-//                table.Columns.Add("Author", typeof(string));
-//                table.Columns.Add("Bibliography", typeof(string));
-//                table.Columns.Add("1st sentence of the abstract", typeof(string));
-//                for (int i = 0; i < 10; i++)
-//                {
-//                    Lucene.Net.Documents.Document doc = docList[i];
-//                    var content = doc.Get("Text").ToString();
-//                    DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(content);
-//                    table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
-//                }
                 table = Program.ViewCurrenPage(table, this.docList, pageNum);
                 dataGridView1.DataSource = table;
                 TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
@@ -349,6 +338,68 @@ namespace EduSearchIS
         {
             var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
             MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
+        }
+
+        private void ResultButton_Click(object sender, EventArgs e)
+        {
+            if (TopicIDBox.Text == "Enter Topic ID")
+            {
+                ResultMsg.ForeColor = Color.Red;
+                ResultMsg.Text = "Topic ID is empty";
+                //return;
+            }
+
+            else if (ResultDirectoryText.Text == "Insert Result Directory")
+            {
+                ResultMsg.ForeColor = Color.Red;
+                ResultMsg.Text = "No file has been selected";
+                //return;
+            }
+
+            else
+            {
+                if (!File.Exists(saveFileDialog1.FileName))
+                {
+                    // Create a file to write to.
+                    using (StreamWriter sw = File.CreateText(saveFileDialog1.FileName))
+                    {
+                        foreach (DataRow row in table.Rows)
+                        {
+                            sw.Write(TopicIDBox.Text.Trim());
+                            sw.Write(" Q0 ");
+                            sw.Write(row[0].ToString());
+                            sw.Write(" " + row[1].ToString());
+                            sw.Write(" " + row[3].ToString());
+                            sw.WriteLine(" BaselineSystem");
+                        }
+
+                        ResultMsg.ForeColor = Color.Green;
+                        ResultMsg.Text = "File has been created successfully";
+                    }
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(saveFileDialog1.FileName))
+                    {
+                        foreach (DataRow row in table.Rows)
+                        {
+                            sw.Write(TopicIDBox.Text.Trim());
+                            sw.Write(" Q0 ");
+                            sw.Write(row[0].ToString());
+                            sw.Write(" " + row[1].ToString());
+                            sw.Write(" " + row[3].ToString());
+                            sw.WriteLine(" BaselineSystem");
+                        }
+                        ResultMsg.ForeColor = Color.Green;
+                        ResultMsg.Text = "File has been updated successfully";
+                    }
+                }
+            }
+        }
+
+        private void ResultDirectoryText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

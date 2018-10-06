@@ -22,5 +22,6 @@ namespace EduSearchIS
         public string Bibliography { get; set; }
         public string Sentence { get; set; }
         public string Abstract { get; set; }
+        public float DocScore { get; set; }
     }
 }
