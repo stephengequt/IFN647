@@ -109,32 +109,46 @@ namespace EduSearchIS
             
             TopDocs results = searcher.Search(query, 100);
 
-            // Display the number of results
-            Console.WriteLine("Number of results is " + results.TotalHits);
-            Console.WriteLine();
             int rank = 0;
-            List<Lucene.Net.Documents.Document> docList = new List<Document>(); 
+            List<DocInfo> scoreDocList = new List<DocInfo>(); 
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
             {
                 rank++;
-                Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
-                docList.Add(doc);
+                DocInfo docInfo = new DocInfo();
+                var docContent = searcher.Doc(scoreDoc.Doc);
+
+                var field_value = docContent.Get(TEXT_FN).ToString();
+
+                // Console.WriteLine("Tokens: ");
+                string[] sections = SeparateString(field_value);
+
+                //remove the title from the chunk of text
+                sections[5] = sections[5].Replace(sections[2], null);
+
+                //obtain the first line of text as the abstract
+                var firstLine = sections[5].Split('.')[0];
+
+                docInfo.Title = sections[2];
+                docInfo.Author = sections[3];
+                docInfo.Bibliography = sections[4];
+                docInfo.Sentence = firstLine;
+                docInfo.Abstract = sections[5];
+
+//                docinfo.Title = docContent
+                docInfo.DocScore = scoreDoc.Score;
+                scoreDocList.Add(docInfo);
 //
-                string myFieldValue = doc.Get(TEXT_FN).ToString();
-                //Console.WriteLine("Rank " + rank + " score " + scoreDoc.Score + " text " + myFieldValue); // Activity 8
-                ////                Console.WriteLine("Rank " + rank + " text " + myFieldValue);
-                //                Console.WriteLine("Rank " + rank);
-                //                //Console.WriteLine("Content " + myFieldValue );
-                //                OutputSections(myFieldValue);
                 //                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //                //System.Console.WriteLine(e.ToString());
 
             }
 
-            SearchResult searchResult = new SearchResult();
-            searchResult.NumOfResult = results.TotalHits;
-            searchResult.DocList = docList;
-            searchResult.finalQuery = query.ToString();
+            SearchResult searchResult = new SearchResult
+            {
+                NumOfResult = results.TotalHits,
+                DocInfoList = scoreDocList,
+                finalQuery = query.ToString()
+            };
             return searchResult;
             
 
@@ -190,40 +204,40 @@ namespace EduSearchIS
             return sections;
         }
 
-        public static DocInfo OutputSections(Document doc)
-        {
-            var str = doc.Get("Text").ToString();
-
-            // Console.WriteLine("Tokens: ");
-            string[] sections = SeparateString(str);
-
-            //remove the title from the chunk of text
-            sections[5] = sections[5].Replace(sections[2], null);
-
-            //obtain the first line of text as the abstract
-            var firstLine = sections[5].Split('.')[0];
-
-            //outout the paper information with appropriate headings
-            Console.WriteLine("Document ID:" + sections[1]);
-            Console.WriteLine("Title: " + sections[2]);
-            Console.WriteLine("Author: " + sections[3]);
-            Console.WriteLine("Bibliographic Information: " + sections[4]);
-            Console.WriteLine("Abstract:" + firstLine);
-            Console.WriteLine("\n");
-
-            DocInfo docInfo = new DocInfo();
-            docInfo.Title = sections[2];
-            docInfo.Author = sections[3];
-            docInfo.Bibliography = sections[4];
-            docInfo.Sentence = firstLine;
-            docInfo.Abstract = sections[5];
-            //docInfo.DocScore = doc.Score
-            //foreach (string s in sections)
-            //{
-            //    System.Console.WriteLine(s);
-            //}
-            return docInfo;
-        }
+//        public static DocInfo OutputSections(DocInfo doc)
+//        {
+//            var str = doc.Get("Text").ToString();
+//
+//            // Console.WriteLine("Tokens: ");
+//            string[] sections = SeparateString(str);
+//
+//            //remove the title from the chunk of text
+//            sections[5] = sections[5].Replace(sections[2], null);
+//
+//            //obtain the first line of text as the abstract
+//            var firstLine = sections[5].Split('.')[0];
+//
+//            //outout the paper information with appropriate headings
+//            Console.WriteLine("Document ID:" + sections[1]);
+//            Console.WriteLine("Title: " + sections[2]);
+//            Console.WriteLine("Author: " + sections[3]);
+//            Console.WriteLine("Bibliographic Information: " + sections[4]);
+//            Console.WriteLine("Abstract:" + firstLine);
+//            Console.WriteLine("\n");
+//
+//            DocInfo docInfo = new DocInfo();
+//            docInfo.Title = sections[2];
+//            docInfo.Author = sections[3];
+//            docInfo.Bibliography = sections[4];
+//            docInfo.Sentence = firstLine;
+//            docInfo.Abstract = sections[5];
+//            //docInfo.DocScore = doc.Score
+//            //foreach (string s in sections)
+//            //{
+//            //    System.Console.WriteLine(s);
+//            //}
+//            return docInfo;
+//        }
 
         public TopDocs DTSearchText(string querytext, Label message)
         {

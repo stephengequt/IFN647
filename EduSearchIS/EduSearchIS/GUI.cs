@@ -37,13 +37,13 @@ namespace EduSearchIS
         static string stephenIndexPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
         static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\GUI";
-        private string documentPath = soamPath;
-        private string IndexPath = soamIndexPath;
+        private string documentPath = stephenPath;
+        private string IndexPath = stephenIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
         private int pageNum = 1;
         int maxPageNum = 0;
-        private Lucene.Net.Documents.Document[] docList;
+        private DocInfo[] docList;
         private int selectedDocIndex;
             
 
@@ -82,7 +82,7 @@ namespace EduSearchIS
 
             this.myLuceneApp.CreateIndex(this.IndexPath);
 
-            System.Console.WriteLine("Adding Documents to Index");
+            System.Console.WriteLine("Adding Documents to Index" + fileList.Count);
             int docID = 0;
             foreach (string s in fileList)
             {
@@ -218,6 +218,7 @@ namespace EduSearchIS
 //            var query =
 //                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
 
+                //SearchResult searchResult = myLuceneApp.SearchText(query);
                 SearchResult searchResult = myLuceneApp.SearchText(query);
 
                 // Time for searching
@@ -229,7 +230,7 @@ namespace EduSearchIS
                 FinalQueryText.Text = searchResult.finalQuery;
                 this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10)+1;
 
-                this.docList = searchResult.DocList.ToArray();
+                this.docList = searchResult.DocInfoList.ToArray();
 //                Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
                 myLuceneApp.CleanUpSearcher();
 
@@ -336,8 +337,8 @@ namespace EduSearchIS
 
         private void AbstractButton_Click(object sender, EventArgs e)
         {
-            var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
-            MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
+//            var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
+//            MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
         }
 
         private void ResultButton_Click(object sender, EventArgs e)
@@ -398,6 +399,11 @@ namespace EduSearchIS
         }
 
         private void ResultDirectoryText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }

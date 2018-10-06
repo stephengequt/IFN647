@@ -9,7 +9,7 @@ namespace EduSearchIS
 {
     class SearchResult
     {
-        public List<Lucene.Net.Documents.Document> DocList { get; set; }
+        public List<DocInfo> DocInfoList { get; set; }
         public int NumOfResult { get; set; }
         public string finalQuery { get; set; }
     }
@@ -17,6 +17,7 @@ namespace EduSearchIS
     class DocInfo
     {
 //        private string Rank { get; set; }
+        public Lucene.Net.Documents.Document LuceneDocument { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Bibliography { get; set; }

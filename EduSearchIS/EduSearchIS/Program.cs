@@ -138,7 +138,7 @@ namespace EduSearchIS
             return fileList;
         }
 
-        public static DataTable ViewCurrenPage(DataTable table, Lucene.Net.Documents.Document[] docList, int pageNum)
+        public static DataTable ViewCurrenPage(DataTable table, DocInfo[] docList, int pageNum)
         {
             var pageIndex = pageNum - 1;
             table.Columns.Add("Rank", typeof(int));
@@ -148,21 +148,21 @@ namespace EduSearchIS
             table.Columns.Add("1st sentence of the abstract", typeof(string));
             for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
             {
-                Lucene.Net.Documents.Document doc = docList[i];
-                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+                DocInfo docInfo = docList[i];
+//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
                 table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
             }
 
             return table;
         }
 
-        public static DocInfo ViewSelectedDocInfo(Lucene.Net.Documents.Document[] docList, int selectedDocIndex)
-        {
-            Lucene.Net.Documents.Document selectedDoc = docList[selectedDocIndex];
-            var docContent = selectedDoc.Get("Text").ToString();
-            DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(docContent);
-
-            return docInfo;
-        }
+//        public static DocInfo ViewSelectedDocInfo(Lucene.Net.Documents.Document[] docList, int selectedDocIndex)
+//        {
+//            Lucene.Net.Documents.Document selectedDoc = docList[selectedDocIndex];
+//            var docContent = selectedDoc.Get("Text").ToString();
+//            DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(docContent);
+//
+//            return docInfo;
+//        }
     }
 }
