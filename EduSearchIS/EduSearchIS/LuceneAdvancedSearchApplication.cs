@@ -27,7 +27,7 @@ namespace EduSearchIS
         const string TEXT_FN = "Text";
         const string ID_FN = "ID";
         const string FILEPATH_FN = "Filepath";
-
+        public bool PreProcessOpt { get; set; }
 
         public LuceneAdvancedSearchApplication()
         {
@@ -97,10 +97,9 @@ namespace EduSearchIS
         /// <param name="querytext">The text to search the index</param>
         public SearchResult SearchText(string querytext)
         {
-            var userChoice = false;
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
-            if (userChoice)
+            if (!PreProcessOpt)
             {
                 querytext = "\"" + querytext + "\"";
             }

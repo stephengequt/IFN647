@@ -359,6 +359,7 @@ namespace EduSearchIS
 
         private void GUI_Load(object sender, EventArgs e)
         {
+            this.myLuceneApp.PreProcessOpt = !PreprocessingCheckBox.Checked;
         }
 
         private void TimeTakenToSearch_Click(object sender, EventArgs e)
@@ -439,6 +440,11 @@ namespace EduSearchIS
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
+        }
+
+        private void PreprocessingCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            this.myLuceneApp.PreProcessOpt = !PreprocessingCheckBox.Checked;
         }
     }
 }
