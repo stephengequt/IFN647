@@ -27,4 +27,10 @@ namespace EduSearchIS
         public string Abstract { get; set; }
         public float DocScore { get; set; }
     }
+
+    class QueryInfo
+    {
+        public string QueryID { get; set; }
+        public string QueryContent { get; set; }
+    }
 }

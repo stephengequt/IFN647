@@ -446,5 +446,68 @@ namespace EduSearchIS
         {
             this.myLuceneApp.PreProcessOpt = !PreprocessingCheckBox.Checked;
         }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SettingWindow settingWindow = new SettingWindow();
+            settingWindow.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Are you sure you want to exit this program?", "Exit", MessageBoxButtons.YesNo))
+            {
+                this.Close();
+            }
+            
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveResultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveResultWindow saveResultWindow = new SaveResultWindow();
+            saveResultWindow.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QueryFileDirectory.Text =
+                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\cran_information_needs.txt";
+            string content = Program.OutputFileContent(QueryFileDirectory.Text);
+            string[] sections = LuceneAdvancedSearchApplication.SeparateQueryString(content);
+            QueryInfo[] queryInfos = LuceneAdvancedSearchApplication.GetQueryInfo(sections);
+            foreach (var queryInfo in queryInfos)
+            {
+                var row = new string[] {queryInfo.QueryID, queryInfo.QueryContent};
+                var listViewItem = new ListViewItem(row);
+                listViewItem.Tag = queryInfo;
+                QueryListView.Items.Add(listViewItem);
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedQueryID = QueryListView.SelectedItems[0].SubItems[0].Text;
+                var selectedQueryContent = QueryListView.SelectedItems[0].SubItems[1].Text;
+                QueryBox.Text = selectedQueryContent;
+                TopicIDBox.Text = selectedQueryID;
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
     }
 }

@@ -92,6 +92,8 @@ namespace EduSearchIS
             return text;
         }
 
+        
+
         public static List<string> WalkDirectoryTree(String path)
         {
             System.IO.DirectoryInfo root = new System.IO.DirectoryInfo(path);

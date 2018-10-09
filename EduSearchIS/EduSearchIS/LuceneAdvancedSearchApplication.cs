@@ -119,7 +119,7 @@ namespace EduSearchIS
                 var field_value = docContent.Get(TEXT_FN).ToString();
 
                 // Console.WriteLine("Tokens: ");
-                string[] sections = SeparateString(field_value);
+                string[] sections = SeparateDocString(field_value);
 
                 //remove the title from the chunk of text
                 sections[5] = sections[5].Replace(sections[2], null);
@@ -196,7 +196,7 @@ namespace EduSearchIS
             searcher.Dispose();
         }
 
-        public static string[] SeparateString(string text)
+        public static string[] SeparateDocString(string text)
         {
 //            string[] sections = {" ", " ", " ", " ", " "};    
             string[] sections = text.Split(new string[] { ".I", ".T", ".A", ".B", ".W" }, StringSplitOptions.None);
@@ -205,12 +205,36 @@ namespace EduSearchIS
             return sections;
         }
 
+        public static string[] SeparateQueryString(string text)
+        {
+            string[] sections = text.Split(new string[] { ".I ", ".D" }, StringSplitOptions.RemoveEmptyEntries);
+            //foreach (var word in words)
+            //Console.WriteLine(word);
+            return sections;
+        }
+
+        public static QueryInfo[] GetQueryInfo(string[] sections)
+        {
+            List<QueryInfo> queryInfos = new List<QueryInfo>();
+            for (int i = 0; i < sections.Length/2 -1; i++)
+            {
+                QueryInfo queryInfo = new QueryInfo()
+                {
+                    QueryID = sections[2*i],
+                    QueryContent = sections[2*i + 1]
+                };
+                queryInfos.Add(queryInfo);
+            }
+
+            return queryInfos.ToArray();
+        }
+
 //        public static DocInfo OutputSections(DocInfo doc)
 //        {
 //            var str = doc.Get("Text").ToString();
 //
 //            // Console.WriteLine("Tokens: ");
-//            string[] sections = SeparateString(str);
+//            string[] sections = SeparateDocString(str);
 //
 //            //remove the title from the chunk of text
 //            sections[5] = sections[5].Replace(sections[2], null);
