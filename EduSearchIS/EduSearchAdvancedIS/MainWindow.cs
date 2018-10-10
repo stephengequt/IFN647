@@ -3,26 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Lucene.Net.Index;
-using Lucene.Net.QueryParsers;
-using Lucene.Net.Search;
-using System.Collections;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.Serialization;
-using Lucene.Net.Documents;
 using System.IO;
+using System.Windows.Forms;
+using EduSearchIS;
 
-namespace EduSearchIS
+namespace EduSearchAdvancedIS
 
 {
-    public partial class GUI : Form
+    public partial class MainWindow : Form
     {
-        LuceneBaseSearchApplication myLuceneApp = new LuceneBaseSearchApplication();
+        LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
         DataTable table = new DataTable();
         // source collection
@@ -38,7 +28,7 @@ namespace EduSearchIS
         static string stephenIndexPath =
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
 
-        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\GUI";
+        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\MainWindow";
         private string documentPath = stephenPath;
         private string IndexPath = stephenIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
@@ -49,7 +39,7 @@ namespace EduSearchIS
         private int selectedDocIndex;
 
 
-        public GUI()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -78,7 +68,7 @@ namespace EduSearchIS
 
         private void CreateIndexButton_Click(object sender, EventArgs e)
         {
-            List<string> fileList = Program.WalkDirectoryTree(this.documentPath);
+            List<string> fileList = LuceneAdvancedSearchApplication.WalkDirectoryTree(this.documentPath);
             
             // Check if there is any file for indexing
             if (fileList.Count == 0)
@@ -258,11 +248,11 @@ namespace EduSearchIS
                 }
                 else if (this.pageNum == this.maxPageNum - 1)
                 {
-                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                 }
                 else
                 {
-                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
                 }
                 dataGridView1.DataSource = table;
                 TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
@@ -286,12 +276,12 @@ namespace EduSearchIS
                 }
                 else if (this.pageNum == this.maxPageNum)
                 {
-                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                     NextButton.Enabled = false;
                 }
                 else
                 {
-                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
                 }
 
                 dataGridView1.DataSource = table;
@@ -308,7 +298,7 @@ namespace EduSearchIS
 
                 //loadDataViewGrid();
                 DataTable table = new DataTable();
-                table = Program.ViewCurrenPage(table, this.docList, pageNum);
+                table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, pageNum);
                 dataGridView1.DataSource = table;
             }
             else
@@ -385,8 +375,8 @@ namespace EduSearchIS
 
         private void AbstractButton_Click(object sender, EventArgs e)
         {
-            var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
-            MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
+            var selectedDocInfo = LuceneAdvancedSearchApplication.ViewSelectedDocInfo(this.docList, selectedDocIndex);
+            MessageBox.Show((string) selectedDocInfo.Abstract, selectedDocInfo.Title);
         }
 
         private void ResultButton_Click(object sender, EventArgs e)
@@ -495,9 +485,9 @@ namespace EduSearchIS
         {
             QueryFileDirectory.Text =
                 @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\cran_information_needs.txt";
-            string content = Program.OutputFileContent(QueryFileDirectory.Text);
-            string[] sections = LuceneBaseSearchApplication.SeparateQueryString(content);
-            QueryInfo[] queryInfos = LuceneBaseSearchApplication.GetQueryInfo(sections);
+            string content = LuceneAdvancedSearchApplication.OutputFileContent(QueryFileDirectory.Text);
+            string[] sections = LuceneAdvancedSearchApplication.SeparateQueryString(content);
+            QueryInfo[] queryInfos = LuceneAdvancedSearchApplication.GetQueryInfo(sections);
             foreach (var queryInfo in queryInfos)
             {
                 var row = new string[] {queryInfo.QueryID, queryInfo.QueryContent};

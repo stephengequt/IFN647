@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace EduSearchIS
+﻿namespace EduSearchAdvancedIS
 {
     partial class GUI
     {

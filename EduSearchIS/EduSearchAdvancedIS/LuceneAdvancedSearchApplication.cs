@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using EduSearchIS;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
 
-namespace EduSearchIS
+namespace EduSearchAdvancedIS
 {
     class LuceneAdvancedSearchApplication
     {
@@ -64,9 +61,12 @@ namespace EduSearchIS
         /// <param name="text">The text to index</param>
         public void IndexText(string text)
         {
+//            DocInfo docInfo = OutputSections(text);
             Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+//            Lucene.Net.Documents.Field docIdfield = new Field("DocID", text, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             Lucene.Net.Documents.Document doc = new Document();
             doc.Add(field);
+//            doc.Add(docIdfield);
             writer.AddDocument(doc);
         }
 
@@ -113,27 +113,14 @@ namespace EduSearchIS
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
             {
                 rank++;
-                DocInfo docInfo = new DocInfo();
                 var docContent = searcher.Doc(scoreDoc.Doc);
 
                 var field_value = docContent.Get(TEXT_FN).ToString();
+                DocInfo docInfo = new DocInfo();
 
-                // Console.WriteLine("Tokens: ");
-                string[] sections = SeparateDocString(field_value);
+                docInfo = OutputSections(field_value);
 
-                //remove the title from the chunk of text
-                sections[5] = sections[5].Replace(sections[2], null);
-
-                //obtain the first line of text as the abstract
-                var firstLine = sections[5].Split('.')[0];
-
-                docInfo.DocID = sections[1];
                 docInfo.Rank = rank;
-                docInfo.Title = sections[2];
-                docInfo.Author = sections[3];
-                docInfo.Bibliography = sections[4];
-                docInfo.Sentence = firstLine;
-                docInfo.Abstract = sections[5];
 
 //                docinfo.Title = docContent
                 docInfo.DocScore = scoreDoc.Score;
@@ -229,40 +216,28 @@ namespace EduSearchIS
             return queryInfos.ToArray();
         }
 
-//        public static DocInfo OutputSections(DocInfo doc)
-//        {
-//            var str = doc.Get("Text").ToString();
-//
-//            // Console.WriteLine("Tokens: ");
-//            string[] sections = SeparateDocString(str);
-//
-//            //remove the title from the chunk of text
-//            sections[5] = sections[5].Replace(sections[2], null);
-//
-//            //obtain the first line of text as the abstract
-//            var firstLine = sections[5].Split('.')[0];
-//
-//            //outout the paper information with appropriate headings
-//            Console.WriteLine("Document ID:" + sections[1]);
-//            Console.WriteLine("Title: " + sections[2]);
-//            Console.WriteLine("Author: " + sections[3]);
-//            Console.WriteLine("Bibliographic Information: " + sections[4]);
-//            Console.WriteLine("Abstract:" + firstLine);
-//            Console.WriteLine("\n");
-//
-//            DocInfo docInfo = new DocInfo();
-//            docInfo.Title = sections[2];
-//            docInfo.Author = sections[3];
-//            docInfo.Bibliography = sections[4];
-//            docInfo.Sentence = firstLine;
-//            docInfo.Abstract = sections[5];
-//            //docInfo.DocScore = doc.Score
-//            //foreach (string s in sections)
-//            //{
-//            //    System.Console.WriteLine(s);
-//            //}
-//            return docInfo;
-//        }
+        public static DocInfo OutputSections(string docContent)
+        {
+            string[] sections = SeparateDocString(docContent);
+
+            //remove the title from the chunk of text
+            sections[5] = sections[5].Replace(sections[2], null);
+
+            //obtain the first line of text as the abstract
+            var firstLine = sections[5].Split('.')[0];
+
+            DocInfo docInfo = new DocInfo
+            {
+                DocID = sections[1],
+                Title = sections[2],
+                Author = sections[3],
+                Bibliography = sections[4],
+                Sentence = firstLine,
+                Abstract = sections[5]
+            };
+
+            return docInfo;
+        }
 
         public TopDocs DTSearchText(string querytext, Label message)
         {
@@ -313,6 +288,115 @@ namespace EduSearchIS
             {
                 Console.WriteLine("Rank{0}: {1}", i+1, docList[i]);
             }
+        }
+
+         public static string OutputFileContent(string name)
+        {
+            char[] delims = {' ', '\n'};
+            System.IO.StreamReader reader = new System.IO.StreamReader(name);
+            string text = "";
+            string line = "";
+//            int numWords = 0;
+            while ((line = reader.ReadLine()) != null)
+            {
+                text += line;
+            }
+
+            reader.Close();
+
+//            Console.WriteLine("Fileame " + name + " Word Count " + numWords);
+            return text;
+        }
+
+        
+
+        public static List<string> WalkDirectoryTree(String path)
+        {
+            System.IO.DirectoryInfo root = new System.IO.DirectoryInfo(path);
+            System.IO.FileInfo[] files = null;
+            System.IO.DirectoryInfo[] subDirs = null;
+
+            // First, process all the files directly under this folder 
+            try
+            {
+                files = root.GetFiles("*.*");
+            }
+
+            catch (UnauthorizedAccessException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
+
+            catch (System.IO.DirectoryNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            List<string> fileList = new List<string>();
+
+            if (files != null)
+            {
+                foreach (System.IO.FileInfo fi in files)
+                {
+                    string name = fi.FullName;
+                    fileList.Add(OutputFileContent(name));
+                }
+
+//                // Now find all the subdirectories under this directory.
+//                subDirs = root.GetDirectories();
+//
+//                foreach (System.IO.DirectoryInfo dirInfo in subDirs)
+//                {
+//                    // Resursive call for each subdirectory.
+//                    string name = dirInfo.FullName;
+//                    WalkDirectoryTree(name);
+//                }
+            }
+
+            return fileList;
+        }
+
+        public static DataTable ViewCurrenPage(DataTable table, DocInfo[] docList, int pageNum)
+        {
+            var pageIndex = pageNum - 1;
+            table.Columns.Add("Rank", typeof(int));
+            table.Columns.Add("Title", typeof(string));
+            table.Columns.Add("Author", typeof(string));
+            table.Columns.Add("Bibliography", typeof(string));
+            table.Columns.Add("1st sentence of the abstract", typeof(string));
+            for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
+            {
+                DocInfo docInfo = docList[i];
+//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+            }
+
+            return table;
+        }
+
+        public static DataTable ViewLastPage(DataTable table, DocInfo[] docList, int pageNum)
+        {
+            var pageIndex = pageNum - 1;
+            table.Columns.Add("Rank", typeof(int));
+            table.Columns.Add("Title", typeof(string));
+            table.Columns.Add("Author", typeof(string));
+            table.Columns.Add("Bibliography", typeof(string));
+            table.Columns.Add("1st sentence of the abstract", typeof(string));
+            for (int i = pageIndex * 10; i < docList.Length; i++)
+            {
+                DocInfo docInfo = docList[i];
+//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+            }
+
+            return table;
+        }
+
+        public static DocInfo ViewSelectedDocInfo(DocInfo[] docList, int selectedDocIndex)
+        {
+            DocInfo selectedDoc = docList[selectedDocIndex];
+
+            return selectedDoc;
         }
     }
 }

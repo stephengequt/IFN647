@@ -3,26 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Lucene.Net.Index;
-using Lucene.Net.QueryParsers;
-using Lucene.Net.Search;
-using System.Collections;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Runtime.Serialization;
-using Lucene.Net.Documents;
 using System.IO;
+using System.Windows.Forms;
+using EduSearchIS;
 
-namespace EduSearchIS
+namespace EduSearchAdvancedIS
 
 {
     public partial class GUI : Form
     {
-        LuceneBaseSearchApplication myLuceneApp = new LuceneBaseSearchApplication();
+        LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
         DataTable table = new DataTable();
         // source collection
@@ -78,7 +68,7 @@ namespace EduSearchIS
 
         private void CreateIndexButton_Click(object sender, EventArgs e)
         {
-            List<string> fileList = Program.WalkDirectoryTree(this.documentPath);
+            List<string> fileList = EduSearchIS.Program.WalkDirectoryTree(this.documentPath);
             
             // Check if there is any file for indexing
             if (fileList.Count == 0)
@@ -386,7 +376,7 @@ namespace EduSearchIS
         private void AbstractButton_Click(object sender, EventArgs e)
         {
             var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
-            MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
+            MessageBox.Show((string) selectedDocInfo.Abstract, selectedDocInfo.Title);
         }
 
         private void ResultButton_Click(object sender, EventArgs e)
@@ -495,9 +485,9 @@ namespace EduSearchIS
         {
             QueryFileDirectory.Text =
                 @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\cran_information_needs.txt";
-            string content = Program.OutputFileContent(QueryFileDirectory.Text);
-            string[] sections = LuceneBaseSearchApplication.SeparateQueryString(content);
-            QueryInfo[] queryInfos = LuceneBaseSearchApplication.GetQueryInfo(sections);
+            string content = EduSearchIS.Program.OutputFileContent(QueryFileDirectory.Text);
+            string[] sections = LuceneAdvancedSearchApplication.SeparateQueryString(content);
+            QueryInfo[] queryInfos = LuceneAdvancedSearchApplication.GetQueryInfo(sections);
             foreach (var queryInfo in queryInfos)
             {
                 var row = new string[] {queryInfo.QueryID, queryInfo.QueryContent};

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -176,13 +177,11 @@ namespace EduSearchIS
             return table;
         }
 
-//        public static DocInfo ViewSelectedDocInfo(Lucene.Net.Documents.Document[] docList, int selectedDocIndex)
-//        {
-//            Lucene.Net.Documents.Document selectedDoc = docList[selectedDocIndex];
-//            var docContent = selectedDoc.Get("Text").ToString();
-//            DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(docContent);
-//
-//            return docInfo;
-//        }
+        public static DocInfo ViewSelectedDocInfo(DocInfo[] docList, int selectedDocIndex)
+        {
+            DocInfo selectedDoc = docList[selectedDocIndex];
+
+            return selectedDoc;
+        }
     }
 }

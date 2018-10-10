@@ -1,8 +1,6 @@
-﻿using System.Data;
-
-namespace EduSearchIS
+﻿namespace EduSearchAdvancedIS
 {
-    partial class GUI
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -487,7 +485,7 @@ namespace EduSearchIS
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             // 
-            // GUI
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -525,8 +523,8 @@ namespace EduSearchIS
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "GUI";
-            this.Text = "GUI";
+            this.Name = "MainWindow";
+            this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
