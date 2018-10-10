@@ -68,7 +68,6 @@
             this.QueryContent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.QueryFileDirectory = new System.Windows.Forms.TextBox();
             this.StatusLabel = new System.Windows.Forms.Label();
-            this.SelectField = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -433,7 +432,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1554, 54);
-            this.button1.Margin = new System.Windows.Forms.Padding(7);
+            this.button1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(317, 51);
             this.button1.TabIndex = 30;
@@ -449,7 +448,7 @@
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
             this.QueryListView.Location = new System.Drawing.Point(1141, 219);
-            this.QueryListView.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryListView.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.QueryListView.Name = "QueryListView";
             this.QueryListView.Size = new System.Drawing.Size(996, 249);
             this.QueryListView.TabIndex = 32;
@@ -470,7 +469,7 @@
             // QueryFileDirectory
             // 
             this.QueryFileDirectory.Location = new System.Drawing.Point(1554, 114);
-            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
             this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
@@ -486,26 +485,11 @@
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             // 
-            // SelectField
-            // 
-            this.SelectField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectField.FormattingEnabled = true;
-            this.SelectField.Items.AddRange(new object[] {
-            "Full text",
-            "Author",
-            "Title"});
-            this.SelectField.Location = new System.Drawing.Point(637, 201);
-            this.SelectField.Name = "SelectField";
-            this.SelectField.Size = new System.Drawing.Size(196, 37);
-            this.SelectField.TabIndex = 35;
-            this.SelectField.SelectedIndexChanged += new System.EventHandler(this.SelectField_SelectedIndexChanged);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2305, 1354);
-            this.Controls.Add(this.SelectField);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.QueryFileDirectory);
             this.Controls.Add(this.QueryListView);
@@ -592,6 +576,5 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.ColumnHeader QueryID;
         private System.Windows.Forms.ColumnHeader QueryContent;
-        private System.Windows.Forms.ComboBox SelectField;
     }
 }

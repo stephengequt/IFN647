@@ -68,7 +68,7 @@
             this.QueryContent = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.QueryFileDirectory = new System.Windows.Forms.TextBox();
             this.StatusLabel = new System.Windows.Forms.Label();
-            this.SelectField = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -486,26 +486,24 @@
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             // 
-            // SelectField
+            // comboBox1
             // 
-            this.SelectField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectField.FormattingEnabled = true;
-            this.SelectField.Items.AddRange(new object[] {
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
             "Full text",
             "Author",
             "Title"});
-            this.SelectField.Location = new System.Drawing.Point(637, 201);
-            this.SelectField.Name = "SelectField";
-            this.SelectField.Size = new System.Drawing.Size(196, 37);
-            this.SelectField.TabIndex = 35;
-            this.SelectField.SelectedIndexChanged += new System.EventHandler(this.SelectField_SelectedIndexChanged);
+            this.comboBox1.Location = new System.Drawing.Point(637, 201);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 37);
+            this.comboBox1.TabIndex = 35;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2305, 1354);
-            this.Controls.Add(this.SelectField);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.QueryFileDirectory);
             this.Controls.Add(this.QueryListView);
@@ -592,6 +590,6 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.ColumnHeader QueryID;
         private System.Windows.Forms.ColumnHeader QueryContent;
-        private System.Windows.Forms.ComboBox SelectField;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

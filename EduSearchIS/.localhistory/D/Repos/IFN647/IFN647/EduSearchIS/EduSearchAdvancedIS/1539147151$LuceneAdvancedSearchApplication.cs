@@ -21,11 +21,10 @@ namespace EduSearchAdvancedIS
         Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
-        const string TEXT_FN = "Full text";
+        const string TEXT_FN = "Text";
         const string ID_FN = "ID";
         const string FILEPATH_FN = "Filepath";
         const string TITLE_FN = "Title";
-        const string AUTHOR_FN = "Author";
         public bool PreProcessOpt { get; set; }
 
         public LuceneAdvancedSearchApplication()
@@ -65,11 +64,11 @@ namespace EduSearchAdvancedIS
             DocInfo docInfo = OutputSections(text);
             Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED,
                 Field.TermVector.YES);
-            Lucene.Net.Documents.Field docAuthorfield = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
-            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.Title, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            Lucene.Net.Documents.Field docIdfield = new Field(ID_FN, docInfo.DocID, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.DocID, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             Lucene.Net.Documents.Document doc = new Document();
             doc.Add(field);
-            doc.Add(docAuthorfield);
+            doc.Add(docIdfield);
             doc.Add(docTitlefield);
             writer.AddDocument(doc);
         }
@@ -99,7 +98,7 @@ namespace EduSearchAdvancedIS
         /// Searches the index for the querytext
         /// </summary>
         /// <param name="querytext">The text to search the index</param>
-        public SearchResult SearchText(string querytext, string searchField)
+        public SearchResult SearchText(string querytext)
         {
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
@@ -108,11 +107,7 @@ namespace EduSearchAdvancedIS
                 querytext = "\"" + querytext + "\"";
             }
 
-            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
-//            Query query = parser.Parse(querytext);
-            Query query = queryParser.Parse(querytext);
-
-//            Query query = MultiFieldQueryParser.Parse(VERSION, "development", new String[]{"title", "subject"}, analyzer);
+            Query query = parser.Parse(querytext);
 
             TopDocs results = searcher.Search(query, 100);
 
@@ -327,8 +322,7 @@ namespace EduSearchAdvancedIS
             // First, process all the files directly under this folder 
             try
             {
-                // filter the file
-                files = root.GetFiles("*.txt");
+                files = root.GetFiles("*.*");
             }
 
             catch (UnauthorizedAccessException e)

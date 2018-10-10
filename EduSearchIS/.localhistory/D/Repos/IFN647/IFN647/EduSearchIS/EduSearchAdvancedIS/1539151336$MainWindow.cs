@@ -37,7 +37,6 @@ namespace EduSearchAdvancedIS
         int maxPageNum = 0;
         private DocInfo[] docList;
         private int selectedDocIndex;
-        private string SelectedSearchField;
 
 
         public MainWindow()
@@ -222,7 +221,7 @@ namespace EduSearchAdvancedIS
 //                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
 
                 //SearchResult searchResult = myLuceneApp.SearchText(query);
-                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
+                SearchResult searchResult = myLuceneApp.SearchText(query);
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
@@ -247,7 +246,7 @@ namespace EduSearchAdvancedIS
                 {
                     Console.WriteLine("No result.");
                 }
-                else if (this.pageNum == this.maxPageNum)
+                else if (this.pageNum == this.maxPageNum - 1)
                 {
                     table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                 }
@@ -533,7 +532,7 @@ namespace EduSearchAdvancedIS
 
         private void SelectField_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.SelectedSearchField = SelectField.SelectedItem.ToString();
+            var selectedField = SelectField.SelectedItem;
         }
     }
 }

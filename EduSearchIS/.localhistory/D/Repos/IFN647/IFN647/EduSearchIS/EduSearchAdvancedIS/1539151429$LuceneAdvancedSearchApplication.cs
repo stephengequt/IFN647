@@ -21,7 +21,7 @@ namespace EduSearchAdvancedIS
         Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
-        const string TEXT_FN = "Full text";
+        const string TEXT_FN = "Text";
         const string ID_FN = "ID";
         const string FILEPATH_FN = "Filepath";
         const string TITLE_FN = "Title";
@@ -99,7 +99,7 @@ namespace EduSearchAdvancedIS
         /// Searches the index for the querytext
         /// </summary>
         /// <param name="querytext">The text to search the index</param>
-        public SearchResult SearchText(string querytext, string searchField)
+        public SearchResult SearchText(string querytext)
         {
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
@@ -108,7 +108,7 @@ namespace EduSearchAdvancedIS
                 querytext = "\"" + querytext + "\"";
             }
 
-            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
+            QueryParser queryParser = new QueryParser(VERSION, TITLE_FN, this.analyzer);
 //            Query query = parser.Parse(querytext);
             Query query = queryParser.Parse(querytext);
 

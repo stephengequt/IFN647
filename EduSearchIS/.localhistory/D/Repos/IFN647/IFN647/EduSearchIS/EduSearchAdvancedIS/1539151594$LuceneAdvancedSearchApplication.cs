@@ -21,7 +21,7 @@ namespace EduSearchAdvancedIS
         Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
-        const string TEXT_FN = "Full text";
+        const string TEXT_FN = "Text";
         const string ID_FN = "ID";
         const string FILEPATH_FN = "Filepath";
         const string TITLE_FN = "Title";

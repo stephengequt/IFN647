@@ -496,7 +496,7 @@
             "Title"});
             this.SelectField.Location = new System.Drawing.Point(637, 201);
             this.SelectField.Name = "SelectField";
-            this.SelectField.Size = new System.Drawing.Size(196, 37);
+            this.SelectField.Size = new System.Drawing.Size(121, 37);
             this.SelectField.TabIndex = 35;
             this.SelectField.SelectedIndexChanged += new System.EventHandler(this.SelectField_SelectedIndexChanged);
             // 

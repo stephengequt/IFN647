@@ -414,12 +414,12 @@ namespace EduSearchIS
                     {
                         foreach (DocInfo docInfo in this.docList)
                         {
-                            sw.Write(TopicIDBox.Text);
-                            sw.Write(" Q0 ");
-                            sw.Write(docInfo.DocID);
-                            sw.Write(" " + docInfo.Rank);
-                            sw.Write(" " + docInfo.DocScore);
-                            sw.WriteLine(" BaselineSystem");
+                            sw.Write(TopicIDBox.Text + "\t");
+                            sw.Write("Q0" + "\t");
+                            sw.Write(docInfo.DocID+ "\t");
+                            sw.Write(docInfo.Rank+ "\t");
+                            sw.Write(docInfo.DocScore+ "\t");
+                            sw.WriteLine("BaselineSystem");
                         }
 
                         ResultMsg.ForeColor = Color.Green;

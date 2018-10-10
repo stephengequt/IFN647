@@ -247,7 +247,7 @@ namespace EduSearchAdvancedIS
                 {
                     Console.WriteLine("No result.");
                 }
-                else if (this.pageNum == this.maxPageNum)
+                else if (this.pageNum == this.maxPageNum - 1)
                 {
                     table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                 }

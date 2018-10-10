@@ -21,11 +21,9 @@ namespace EduSearchAdvancedIS
         Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
-        const string TEXT_FN = "Full text";
+        const string TEXT_FN = "Text";
         const string ID_FN = "ID";
         const string FILEPATH_FN = "Filepath";
-        const string TITLE_FN = "Title";
-        const string AUTHOR_FN = "Author";
         public bool PreProcessOpt { get; set; }
 
         public LuceneAdvancedSearchApplication()
@@ -41,6 +39,7 @@ namespace EduSearchAdvancedIS
 
             parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, TEXT_FN, analyzer);
             //newSimilarity = new NewSimilarity(); // Activity 9
+
         }
 
         /// <summary>
@@ -62,15 +61,12 @@ namespace EduSearchAdvancedIS
         /// <param name="text">The text to index</param>
         public void IndexText(string text)
         {
-            DocInfo docInfo = OutputSections(text);
-            Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED,
-                Field.TermVector.YES);
-            Lucene.Net.Documents.Field docAuthorfield = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
-            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.Title, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+//            DocInfo docInfo = OutputSections(text);
+            Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+//            Lucene.Net.Documents.Field docIdfield = new Field("DocID", text, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             Lucene.Net.Documents.Document doc = new Document();
             doc.Add(field);
-            doc.Add(docAuthorfield);
-            doc.Add(docTitlefield);
+//            doc.Add(docIdfield);
             writer.AddDocument(doc);
         }
 
@@ -99,7 +95,7 @@ namespace EduSearchAdvancedIS
         /// Searches the index for the querytext
         /// </summary>
         /// <param name="querytext">The text to search the index</param>
-        public SearchResult SearchText(string querytext, string searchField)
+        public SearchResult SearchText(string querytext)
         {
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
@@ -107,17 +103,13 @@ namespace EduSearchAdvancedIS
             {
                 querytext = "\"" + querytext + "\"";
             }
-
-            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
-//            Query query = parser.Parse(querytext);
-            Query query = queryParser.Parse(querytext);
-
-//            Query query = MultiFieldQueryParser.Parse(VERSION, "development", new String[]{"title", "subject"}, analyzer);
-
+            
+            Query query = parser.Parse(querytext);
+            
             TopDocs results = searcher.Search(query, 100);
 
             int rank = 0;
-            List<DocInfo> scoreDocList = new List<DocInfo>();
+            List<DocInfo> scoreDocList = new List<DocInfo>(); 
             foreach (ScoreDoc scoreDoc in results.ScoreDocs)
             {
                 rank++;
@@ -136,6 +128,7 @@ namespace EduSearchAdvancedIS
 //
                 //                //Explanation e = searcher.Explain(query, scoreDoc.Doc); // Activity 8
                 //                //System.Console.WriteLine(e.ToString());
+
             }
 
             SearchResult searchResult = new SearchResult
@@ -145,7 +138,7 @@ namespace EduSearchAdvancedIS
                 finalQuery = query.ToString()
             };
             return searchResult;
-
+            
 
 //            Console.WriteLine(DisplayFinialQuery(query)); //Test display final query
 
@@ -177,8 +170,9 @@ namespace EduSearchAdvancedIS
             //    {
             //        continueVal = true;
             //    }
-
+                
             //} while (continueVal == false);
+
         }
 
         /// <summary>
@@ -192,7 +186,7 @@ namespace EduSearchAdvancedIS
         public static string[] SeparateDocString(string text)
         {
 //            string[] sections = {" ", " ", " ", " ", " "};    
-            string[] sections = text.Split(new string[] {".I", ".T", ".A", ".B", ".W"}, StringSplitOptions.None);
+            string[] sections = text.Split(new string[] { ".I", ".T", ".A", ".B", ".W" }, StringSplitOptions.None);
             //foreach (var word in words)
             //Console.WriteLine(word);
             return sections;
@@ -200,7 +194,7 @@ namespace EduSearchAdvancedIS
 
         public static string[] SeparateQueryString(string text)
         {
-            string[] sections = text.Split(new string[] {".I ", ".D"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] sections = text.Split(new string[] { ".I ", ".D" }, StringSplitOptions.RemoveEmptyEntries);
             //foreach (var word in words)
             //Console.WriteLine(word);
             return sections;
@@ -209,12 +203,12 @@ namespace EduSearchAdvancedIS
         public static QueryInfo[] GetQueryInfo(string[] sections)
         {
             List<QueryInfo> queryInfos = new List<QueryInfo>();
-            for (int i = 0; i < sections.Length / 2 - 1; i++)
+            for (int i = 0; i < sections.Length/2 -1; i++)
             {
                 QueryInfo queryInfo = new QueryInfo()
                 {
-                    QueryID = sections[2 * i],
-                    QueryContent = sections[2 * i + 1]
+                    QueryID = sections[2*i],
+                    QueryContent = sections[2*i + 1]
                 };
                 queryInfos.Add(queryInfo);
             }
@@ -227,10 +221,7 @@ namespace EduSearchAdvancedIS
             string[] sections = SeparateDocString(docContent);
 
             //remove the title from the chunk of text
-            if (!string.IsNullOrEmpty(sections[2]))
-            {
-                sections[5] = sections[5].Replace(sections[2], null);
-            }
+            sections[5] = sections[5].Replace(sections[2], null);
 
             //obtain the first line of text as the abstract
             var firstLine = sections[5].Split('.')[0];
@@ -293,13 +284,13 @@ namespace EduSearchAdvancedIS
         public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
         {
             var totalNumOfDocs = docList.Length;
-            for (int i = 0 + 10 * pageIndex; i < 10 + 10 * pageIndex; i++)
+            for (int i = 0 + 10*pageIndex; i < 10 + 10*pageIndex; i++)
             {
-                Console.WriteLine("Rank{0}: {1}", i + 1, docList[i]);
+                Console.WriteLine("Rank{0}: {1}", i+1, docList[i]);
             }
         }
 
-        public static string OutputFileContent(string name)
+         public static string OutputFileContent(string name)
         {
             char[] delims = {' ', '\n'};
             System.IO.StreamReader reader = new System.IO.StreamReader(name);
@@ -317,6 +308,7 @@ namespace EduSearchAdvancedIS
             return text;
         }
 
+        
 
         public static List<string> WalkDirectoryTree(String path)
         {
@@ -327,8 +319,7 @@ namespace EduSearchAdvancedIS
             // First, process all the files directly under this folder 
             try
             {
-                // filter the file
-                files = root.GetFiles("*.txt");
+                files = root.GetFiles("*.*");
             }
 
             catch (UnauthorizedAccessException e)

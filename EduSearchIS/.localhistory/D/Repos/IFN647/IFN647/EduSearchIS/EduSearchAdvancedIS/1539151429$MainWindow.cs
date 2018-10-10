@@ -222,7 +222,7 @@ namespace EduSearchAdvancedIS
 //                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
 
                 //SearchResult searchResult = myLuceneApp.SearchText(query);
-                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
+                SearchResult searchResult = myLuceneApp.SearchText(query);
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
@@ -247,7 +247,7 @@ namespace EduSearchAdvancedIS
                 {
                     Console.WriteLine("No result.");
                 }
-                else if (this.pageNum == this.maxPageNum)
+                else if (this.pageNum == this.maxPageNum - 1)
                 {
                     table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                 }
