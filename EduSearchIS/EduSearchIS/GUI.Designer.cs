@@ -76,10 +76,10 @@ namespace EduSearchIS
             // 
             // CollectionButton
             // 
-            this.CollectionButton.Location = new System.Drawing.Point(527, 58);
-            this.CollectionButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionButton.Location = new System.Drawing.Point(572, 46);
+            this.CollectionButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CollectionButton.Name = "CollectionButton";
-            this.CollectionButton.Size = new System.Drawing.Size(194, 42);
+            this.CollectionButton.Size = new System.Drawing.Size(111, 23);
             this.CollectionButton.TabIndex = 0;
             this.CollectionButton.Text = "Browse";
             this.CollectionButton.UseVisualStyleBackColor = true;
@@ -87,10 +87,10 @@ namespace EduSearchIS
             // 
             // IndexButton
             // 
-            this.IndexButton.Location = new System.Drawing.Point(527, 114);
-            this.IndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexButton.Location = new System.Drawing.Point(572, 88);
+            this.IndexButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IndexButton.Name = "IndexButton";
-            this.IndexButton.Size = new System.Drawing.Size(194, 42);
+            this.IndexButton.Size = new System.Drawing.Size(111, 23);
             this.IndexButton.TabIndex = 1;
             this.IndexButton.Text = "Browse";
             this.IndexButton.UseVisualStyleBackColor = true;
@@ -98,10 +98,10 @@ namespace EduSearchIS
             // 
             // CreateIndexButton
             // 
-            this.CreateIndexButton.Location = new System.Drawing.Point(805, 83);
-            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CreateIndexButton.Location = new System.Drawing.Point(726, 88);
+            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateIndexButton.Name = "CreateIndexButton";
-            this.CreateIndexButton.Size = new System.Drawing.Size(187, 42);
+            this.CreateIndexButton.Size = new System.Drawing.Size(107, 23);
             this.CreateIndexButton.TabIndex = 4;
             this.CreateIndexButton.Text = "Create Index";
             this.CreateIndexButton.UseVisualStyleBackColor = true;
@@ -113,11 +113,11 @@ namespace EduSearchIS
             // 
             // CollectionDirectoryTextBox
             // 
-            this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(189, 58);
-            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(364, 47);
+            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
-            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
             this.CollectionDirectoryTextBox.TabIndex = 5;
             this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
             this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
@@ -126,11 +126,11 @@ namespace EduSearchIS
             // 
             // IndexDirectoryTextBox
             // 
-            this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(189, 114);
-            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(364, 89);
+            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
-            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(183, 22);
             this.IndexDirectoryTextBox.TabIndex = 6;
             this.IndexDirectoryTextBox.Text = "Insert Index Directory";
             this.IndexDirectoryTextBox.TextChanged += new System.EventHandler(this.IndexDirectoryTextBox_TextChanged);
@@ -140,21 +140,21 @@ namespace EduSearchIS
             // TimeLabelToIndex
             // 
             this.TimeLabelToIndex.AutoSize = true;
-            this.TimeLabelToIndex.Location = new System.Drawing.Point(1071, 91);
-            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeLabelToIndex.Location = new System.Drawing.Point(858, 91);
             this.TimeLabelToIndex.Name = "TimeLabelToIndex";
-            this.TimeLabelToIndex.Size = new System.Drawing.Size(239, 29);
+            this.TimeLabelToIndex.Size = new System.Drawing.Size(140, 17);
             this.TimeLabelToIndex.TabIndex = 7;
             this.TimeLabelToIndex.Text = "Time Taken to Index:";
             this.TimeLabelToIndex.Click += new System.EventHandler(this.TimeLabelToIndex_Click);
             // 
             // QueryBox
             // 
-            this.QueryBox.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.QueryBox.Location = new System.Drawing.Point(147, 265);
-            this.QueryBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QueryBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.QueryBox.Location = new System.Drawing.Point(12, 234);
+            this.QueryBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(566, 35);
+            this.QueryBox.Size = new System.Drawing.Size(859, 34);
             this.QueryBox.TabIndex = 8;
             this.QueryBox.Text = "Enter Query";
             this.QueryBox.TextChanged += new System.EventHandler(this.QueryBox_TextChanged);
@@ -163,10 +163,10 @@ namespace EduSearchIS
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(768, 268);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.SearchButton.Location = new System.Drawing.Point(877, 234);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(177, 42);
+            this.SearchButton.Size = new System.Drawing.Size(121, 34);
             this.SearchButton.TabIndex = 9;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -175,10 +175,10 @@ namespace EduSearchIS
             // PreprocessingCheckBox
             // 
             this.PreprocessingCheckBox.AutoSize = true;
-            this.PreprocessingCheckBox.Location = new System.Drawing.Point(147, 219);
-            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreprocessingCheckBox.Location = new System.Drawing.Point(15, 192);
+            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PreprocessingCheckBox.Name = "PreprocessingCheckBox";
-            this.PreprocessingCheckBox.Size = new System.Drawing.Size(348, 33);
+            this.PreprocessingCheckBox.Size = new System.Drawing.Size(208, 21);
             this.PreprocessingCheckBox.TabIndex = 10;
             this.PreprocessingCheckBox.Text = "Pre-Processing not required";
             this.PreprocessingCheckBox.UseVisualStyleBackColor = true;
@@ -187,10 +187,9 @@ namespace EduSearchIS
             // TimeTakenToSearch
             // 
             this.TimeTakenToSearch.AutoSize = true;
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(33, 339);
-            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(663, 287);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
-            this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
+            this.TimeTakenToSearch.Size = new System.Drawing.Size(152, 17);
             this.TimeTakenToSearch.TabIndex = 11;
             this.TimeTakenToSearch.Text = "Time Taken to Search:";
             this.TimeTakenToSearch.Click += new System.EventHandler(this.TimeTakenToSearch_Click);
@@ -202,24 +201,24 @@ namespace EduSearchIS
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 495);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 419);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1892, 752);
+            this.dataGridView1.Size = new System.Drawing.Size(1081, 415);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(397, 1278);
-            this.PreviousButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreviousButton.Location = new System.Drawing.Point(266, 847);
+            this.PreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(131, 42);
+            this.PreviousButton.Size = new System.Drawing.Size(75, 23);
             this.PreviousButton.TabIndex = 14;
             this.PreviousButton.Text = "<";
             this.PreviousButton.UseVisualStyleBackColor = true;
@@ -227,10 +226,10 @@ namespace EduSearchIS
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(912, 1278);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.NextButton.Location = new System.Drawing.Point(519, 847);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(131, 42);
+            this.NextButton.Size = new System.Drawing.Size(75, 23);
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = ">";
             this.NextButton.UseVisualStyleBackColor = true;
@@ -239,40 +238,37 @@ namespace EduSearchIS
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(611, 1285);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(371, 850);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 29);
+            this.label1.Size = new System.Drawing.Size(41, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
             // 
             // PageNumLabel
             // 
             this.PageNumLabel.AutoSize = true;
-            this.PageNumLabel.Location = new System.Drawing.Point(695, 1285);
-            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.PageNumLabel.Location = new System.Drawing.Point(418, 850);
             this.PageNumLabel.Name = "PageNumLabel";
-            this.PageNumLabel.Size = new System.Drawing.Size(26, 29);
+            this.PageNumLabel.Size = new System.Drawing.Size(16, 17);
             this.PageNumLabel.TabIndex = 17;
             this.PageNumLabel.Text = "1";
             // 
             // TotalPageLabel
             // 
             this.TotalPageLabel.AutoSize = true;
-            this.TotalPageLabel.Location = new System.Drawing.Point(735, 1285);
-            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TotalPageLabel.Location = new System.Drawing.Point(440, 850);
             this.TotalPageLabel.Name = "TotalPageLabel";
-            this.TotalPageLabel.Size = new System.Drawing.Size(91, 29);
+            this.TotalPageLabel.Size = new System.Drawing.Size(56, 17);
             this.TotalPageLabel.TabIndex = 18;
             this.TotalPageLabel.Text = "out of 1";
             this.TotalPageLabel.Click += new System.EventHandler(this.TotalPageLabel_Click);
             // 
             // AbstractButton
             // 
-            this.AbstractButton.Location = new System.Drawing.Point(1967, 805);
-            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.AbstractButton.Location = new System.Drawing.Point(951, 843);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(201, 42);
+            this.AbstractButton.Size = new System.Drawing.Size(142, 31);
             this.AbstractButton.TabIndex = 19;
             this.AbstractButton.Text = "View Abstract";
             this.AbstractButton.UseVisualStyleBackColor = true;
@@ -280,10 +276,10 @@ namespace EduSearchIS
             // 
             // ResultButton
             // 
-            this.ResultButton.Location = new System.Drawing.Point(1967, 1106);
-            this.ResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.ResultButton.Location = new System.Drawing.Point(1298, 731);
+            this.ResultButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ResultButton.Name = "ResultButton";
-            this.ResultButton.Size = new System.Drawing.Size(201, 42);
+            this.ResultButton.Size = new System.Drawing.Size(115, 23);
             this.ResultButton.TabIndex = 20;
             this.ResultButton.Text = "Save Result";
             this.ResultButton.UseVisualStyleBackColor = true;
@@ -291,11 +287,11 @@ namespace EduSearchIS
             // 
             // TopicIDBox
             // 
-            this.TopicIDBox.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.TopicIDBox.Location = new System.Drawing.Point(1967, 1055);
-            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.TopicIDBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.TopicIDBox.Location = new System.Drawing.Point(1124, 732);
+            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TopicIDBox.Name = "TopicIDBox";
-            this.TopicIDBox.Size = new System.Drawing.Size(307, 35);
+            this.TopicIDBox.Size = new System.Drawing.Size(148, 22);
             this.TopicIDBox.TabIndex = 21;
             this.TopicIDBox.Text = "Enter Topic ID";
             this.TopicIDBox.TextChanged += new System.EventHandler(this.TopicIDBox_TextChanged);
@@ -304,11 +300,11 @@ namespace EduSearchIS
             // 
             // ResultDirectoryText
             // 
-            this.ResultDirectoryText.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ResultDirectoryText.Location = new System.Drawing.Point(1967, 883);
-            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.ResultDirectoryText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ResultDirectoryText.Location = new System.Drawing.Point(1124, 680);
+            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ResultDirectoryText.Name = "ResultDirectoryText";
-            this.ResultDirectoryText.Size = new System.Drawing.Size(307, 35);
+            this.ResultDirectoryText.Size = new System.Drawing.Size(148, 22);
             this.ResultDirectoryText.TabIndex = 22;
             this.ResultDirectoryText.Text = "Insert Result Directory";
             this.ResultDirectoryText.TextChanged += new System.EventHandler(this.ResultDirectoryText_TextChanged);
@@ -317,10 +313,10 @@ namespace EduSearchIS
             // 
             // BrowseResultButton
             // 
-            this.BrowseResultButton.Location = new System.Drawing.Point(1967, 935);
-            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BrowseResultButton.Location = new System.Drawing.Point(1298, 679);
+            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BrowseResultButton.Name = "BrowseResultButton";
-            this.BrowseResultButton.Size = new System.Drawing.Size(131, 42);
+            this.BrowseResultButton.Size = new System.Drawing.Size(115, 23);
             this.BrowseResultButton.TabIndex = 23;
             this.BrowseResultButton.Text = "Browse";
             this.BrowseResultButton.UseVisualStyleBackColor = true;
@@ -333,29 +329,26 @@ namespace EduSearchIS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 390);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(12, 328);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 29);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 24;
             this.label2.Text = "Final Query:";
             // 
             // FinalQueryText
             // 
             this.FinalQueryText.AutoSize = true;
-            this.FinalQueryText.Location = new System.Drawing.Point(191, 390);
-            this.FinalQueryText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FinalQueryText.Location = new System.Drawing.Point(109, 215);
             this.FinalQueryText.Name = "FinalQueryText";
-            this.FinalQueryText.Size = new System.Drawing.Size(0, 29);
+            this.FinalQueryText.Size = new System.Drawing.Size(0, 17);
             this.FinalQueryText.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 444);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Location = new System.Drawing.Point(12, 364);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 29);
+            this.label3.Size = new System.Drawing.Size(122, 17);
             this.label3.TabIndex = 26;
             this.label3.Text = "Number of Result:";
             // 
@@ -363,19 +356,17 @@ namespace EduSearchIS
             // 
             this.NumOfResultText.AutoSize = true;
             this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
-            this.NumOfResultText.Location = new System.Drawing.Point(278, 444);
-            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NumOfResultText.Location = new System.Drawing.Point(159, 245);
             this.NumOfResultText.Name = "NumOfResultText";
-            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 17);
             this.NumOfResultText.TabIndex = 27;
             // 
             // ResultMsg
             // 
             this.ResultMsg.AutoSize = true;
-            this.ResultMsg.Location = new System.Drawing.Point(1967, 1207);
-            this.ResultMsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ResultMsg.Location = new System.Drawing.Point(1121, 807);
             this.ResultMsg.Name = "ResultMsg";
-            this.ResultMsg.Size = new System.Drawing.Size(149, 29);
+            this.ResultMsg.Size = new System.Drawing.Size(90, 17);
             this.ResultMsg.TabIndex = 28;
             this.ResultMsg.Text = "Result status";
             // 
@@ -388,8 +379,8 @@ namespace EduSearchIS
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(2305, 45);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1698, 26);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -398,13 +389,13 @@ namespace EduSearchIS
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newWindowToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(70, 41);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(274, 42);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.newWindowToolStripMenuItem.Text = "new window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
@@ -413,30 +404,30 @@ namespace EduSearchIS
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveResultToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(112, 41);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.menuToolStripMenuItem.Text = "Option";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // saveResultToolStripMenuItem
             // 
             this.saveResultToolStripMenuItem.Name = "saveResultToolStripMenuItem";
-            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(257, 42);
+            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.saveResultToolStripMenuItem.Text = "Save Result";
             this.saveResultToolStripMenuItem.Click += new System.EventHandler(this.saveResultToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(71, 41);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(45, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1554, 54);
-            this.button1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.button1.Location = new System.Drawing.Point(1114, 276);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(317, 51);
+            this.button1.Size = new System.Drawing.Size(181, 28);
             this.button1.TabIndex = 30;
             this.button1.Text = "Insert Query File";
             this.button1.UseVisualStyleBackColor = true;
@@ -449,10 +440,10 @@ namespace EduSearchIS
             this.QueryContent});
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
-            this.QueryListView.Location = new System.Drawing.Point(1141, 219);
-            this.QueryListView.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.QueryListView.Location = new System.Drawing.Point(1114, 364);
+            this.QueryListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.QueryListView.Name = "QueryListView";
-            this.QueryListView.Size = new System.Drawing.Size(996, 249);
+            this.QueryListView.Size = new System.Drawing.Size(571, 139);
             this.QueryListView.TabIndex = 32;
             this.QueryListView.UseCompatibleStateImageBehavior = false;
             this.QueryListView.View = System.Windows.Forms.View.Details;
@@ -470,28 +461,28 @@ namespace EduSearchIS
             // 
             // QueryFileDirectory
             // 
-            this.QueryFileDirectory.Location = new System.Drawing.Point(1554, 114);
-            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.QueryFileDirectory.Location = new System.Drawing.Point(1114, 321);
+            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
-            this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
+            this.QueryFileDirectory.Size = new System.Drawing.Size(335, 24);
             this.QueryFileDirectory.TabIndex = 33;
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(75, 185);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(9, 287);
+            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(161, 29);
+            this.StatusLabel.Size = new System.Drawing.Size(97, 17);
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             // 
             // GUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2305, 1354);
+            this.ClientSize = new System.Drawing.Size(1698, 881);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.QueryFileDirectory);
             this.Controls.Add(this.QueryListView);
@@ -524,7 +515,7 @@ namespace EduSearchIS
             this.Controls.Add(this.CollectionButton);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI";
             this.Text = "GUI";
             this.Load += new System.EventHandler(this.GUI_Load);
