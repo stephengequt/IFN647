@@ -254,7 +254,8 @@ namespace EduSearchIS
 
                 if (this.docList.Length == 0)
                 {
-                    Console.WriteLine("No result.");
+                    StatusLabel.ForeColor = Color.Red;
+                    StatusLabel.Text = "No result";
                 }
                 else if (this.pageNum == this.maxPageNum - 1)
                 {
@@ -534,6 +535,31 @@ namespace EduSearchIS
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatusLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
