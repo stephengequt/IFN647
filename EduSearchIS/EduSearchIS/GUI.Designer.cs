@@ -528,7 +528,7 @@ namespace EduSearchIS
             this.groupBox1.Controls.Add(this.CreateIndexButton);
             this.groupBox1.Controls.Add(this.TimeLabelToIndex);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(536, 96);
+            this.groupBox1.Location = new System.Drawing.Point(536, 75);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1009, 166);
             this.groupBox1.TabIndex = 35;
@@ -578,7 +578,7 @@ namespace EduSearchIS
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(155, 382);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1119, 656);
+            this.groupBox3.Size = new System.Drawing.Size(1106, 656);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
@@ -617,6 +617,7 @@ namespace EduSearchIS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.NumOfResultText);
