@@ -424,7 +424,7 @@ namespace EduSearchAdvancedIS
 
             if (synSetList.Count == 0)
             {
-                return " ";
+                return null;
             }
 
             foreach (var synSet in synSetList)

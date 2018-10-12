@@ -418,18 +418,22 @@ namespace EduSearchAdvancedIS
             return selectedDoc;
         }
 
-        public string QueryExpansionByNetWord(string word, WordNetEngine wordNet)
+        public string QueryExpansionByNetWord(string query, WordNetEngine wordNet)
         {
-            var synSetList = wordNet.GetSynSets(word);
+            var synSetList = wordNet.GetSynSets(query);
 
             if (synSetList.Count == 0)
             {
-                return " ";
+                return query;
             }
 
             foreach (var synSet in synSetList)
             {
-                word = string.Join(" ", synSet.Words);
+                var words = string.Join(", ", synSet.Words);
+
+                Console.WriteLine($"\nWords: {words}");
+                Console.WriteLine($"POS: {synSet.PartOfSpeech}");
+                Console.WriteLine($"Gloss: {synSet.Gloss}");
             }
 //
 //            string[] array = thesaurus[queryTerm];
@@ -438,7 +442,7 @@ namespace EduSearchAdvancedIS
 //                expandedQuery += " " + a;
 //            }
 
-            return word;
+            return null;
         }
     }
 }

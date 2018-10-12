@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CollectionButton = new System.Windows.Forms.Button();
             this.IndexButton = new System.Windows.Forms.Button();
             this.CreateIndexButton = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.BrowseResultButton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label2 = new System.Windows.Forms.Label();
-            this.FinalQueryText = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.NumOfResultText = new System.Windows.Forms.Label();
             this.ResultMsg = new System.Windows.Forms.Label();
@@ -74,8 +74,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.QueryFileBrowseButton = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.QueryExpansionCheckBox = new System.Windows.Forms.CheckBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.FinalQueryTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,10 +91,10 @@
             // CollectionButton
             // 
             this.CollectionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CollectionButton.Location = new System.Drawing.Point(370, 32);
-            this.CollectionButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CollectionButton.Location = new System.Drawing.Point(863, 71);
+            this.CollectionButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.CollectionButton.Name = "CollectionButton";
-            this.CollectionButton.Size = new System.Drawing.Size(103, 19);
+            this.CollectionButton.Size = new System.Drawing.Size(240, 42);
             this.CollectionButton.TabIndex = 0;
             this.CollectionButton.Text = "Browse";
             this.CollectionButton.UseVisualStyleBackColor = true;
@@ -100,10 +103,10 @@
             // IndexButton
             // 
             this.IndexButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IndexButton.Location = new System.Drawing.Point(370, 70);
-            this.IndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IndexButton.Location = new System.Drawing.Point(863, 156);
+            this.IndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.IndexButton.Name = "IndexButton";
-            this.IndexButton.Size = new System.Drawing.Size(103, 19);
+            this.IndexButton.Size = new System.Drawing.Size(240, 42);
             this.IndexButton.TabIndex = 1;
             this.IndexButton.Text = "Browse";
             this.IndexButton.UseVisualStyleBackColor = true;
@@ -112,10 +115,10 @@
             // CreateIndexButton
             // 
             this.CreateIndexButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateIndexButton.Location = new System.Drawing.Point(529, 32);
-            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreateIndexButton.Location = new System.Drawing.Point(1234, 71);
+            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.CreateIndexButton.Name = "CreateIndexButton";
-            this.CreateIndexButton.Size = new System.Drawing.Size(163, 38);
+            this.CreateIndexButton.Size = new System.Drawing.Size(380, 85);
             this.CreateIndexButton.TabIndex = 4;
             this.CreateIndexButton.Text = "Create Index";
             this.CreateIndexButton.UseVisualStyleBackColor = true;
@@ -129,10 +132,10 @@
             // 
             this.CollectionDirectoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(12, 32);
-            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(28, 71);
+            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
-            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(345, 19);
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(800, 34);
             this.CollectionDirectoryTextBox.TabIndex = 5;
             this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
             this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
@@ -143,10 +146,10 @@
             // 
             this.IndexDirectoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(12, 70);
-            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(28, 156);
+            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
-            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(345, 19);
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(800, 34);
             this.IndexDirectoryTextBox.TabIndex = 6;
             this.IndexDirectoryTextBox.Text = "Insert Index Directory";
             this.IndexDirectoryTextBox.TextChanged += new System.EventHandler(this.IndexDirectoryTextBox_TextChanged);
@@ -157,10 +160,10 @@
             // 
             this.TimeLabelToIndex.AutoSize = true;
             this.TimeLabelToIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeLabelToIndex.Location = new System.Drawing.Point(584, 85);
-            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TimeLabelToIndex.Location = new System.Drawing.Point(1363, 190);
+            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeLabelToIndex.Name = "TimeLabelToIndex";
-            this.TimeLabelToIndex.Size = new System.Drawing.Size(108, 13);
+            this.TimeLabelToIndex.Size = new System.Drawing.Size(239, 29);
             this.TimeLabelToIndex.TabIndex = 7;
             this.TimeLabelToIndex.Text = "Time Taken to Index:";
             this.TimeLabelToIndex.Click += new System.EventHandler(this.TimeLabelToIndex_Click);
@@ -169,10 +172,10 @@
             // 
             this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.QueryBox.Location = new System.Drawing.Point(12, 23);
-            this.QueryBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.QueryBox.Location = new System.Drawing.Point(28, 51);
+            this.QueryBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(494, 23);
+            this.QueryBox.Size = new System.Drawing.Size(1147, 41);
             this.QueryBox.TabIndex = 8;
             this.QueryBox.Text = "Enter Query";
             this.QueryBox.TextChanged += new System.EventHandler(this.QueryBox_TextChanged);
@@ -182,10 +185,10 @@
             // SearchButton
             // 
             this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchButton.Location = new System.Drawing.Point(529, 23);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchButton.Location = new System.Drawing.Point(1234, 51);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(163, 24);
+            this.SearchButton.Size = new System.Drawing.Size(380, 54);
             this.SearchButton.TabIndex = 9;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -194,11 +197,11 @@
             // PreprocessingCheckBox
             // 
             this.PreprocessingCheckBox.AutoSize = true;
-            this.PreprocessingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreprocessingCheckBox.Location = new System.Drawing.Point(12, 63);
-            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PreprocessingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreprocessingCheckBox.Location = new System.Drawing.Point(28, 141);
+            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.PreprocessingCheckBox.Name = "PreprocessingCheckBox";
-            this.PreprocessingCheckBox.Size = new System.Drawing.Size(156, 17);
+            this.PreprocessingCheckBox.Size = new System.Drawing.Size(348, 33);
             this.PreprocessingCheckBox.TabIndex = 10;
             this.PreprocessingCheckBox.Text = "Pre-Processing not required";
             this.PreprocessingCheckBox.UseVisualStyleBackColor = true;
@@ -208,10 +211,10 @@
             // 
             this.TimeTakenToSearch.AutoSize = true;
             this.TimeTakenToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(260, 35);
-            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(607, 78);
+            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
-            this.TimeTakenToSearch.Size = new System.Drawing.Size(116, 13);
+            this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
             this.TimeTakenToSearch.TabIndex = 11;
             this.TimeTakenToSearch.Text = "Time Taken to Search:";
             this.TimeTakenToSearch.Click += new System.EventHandler(this.TimeTakenToSearch_Click);
@@ -223,14 +226,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 98);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(19, 219);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(798, 337);
+            this.dataGridView1.Size = new System.Drawing.Size(1862, 752);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
@@ -238,10 +241,10 @@
             // PreviousButton
             // 
             this.PreviousButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviousButton.Location = new System.Drawing.Point(293, 457);
-            this.PreviousButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PreviousButton.Location = new System.Drawing.Point(684, 1019);
+            this.PreviousButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(56, 19);
+            this.PreviousButton.Size = new System.Drawing.Size(131, 42);
             this.PreviousButton.TabIndex = 14;
             this.PreviousButton.Text = "<";
             this.PreviousButton.UseVisualStyleBackColor = true;
@@ -250,10 +253,10 @@
             // NextButton
             // 
             this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextButton.Location = new System.Drawing.Point(491, 456);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NextButton.Location = new System.Drawing.Point(1146, 1017);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(56, 19);
+            this.NextButton.Size = new System.Drawing.Size(131, 42);
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = ">";
             this.NextButton.UseVisualStyleBackColor = true;
@@ -263,10 +266,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(371, 458);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(866, 1022);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(70, 29);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
@@ -275,10 +278,10 @@
             // 
             this.PageNumLabel.AutoSize = true;
             this.PageNumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PageNumLabel.Location = new System.Drawing.Point(406, 458);
-            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PageNumLabel.Location = new System.Drawing.Point(947, 1022);
+            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.PageNumLabel.Name = "PageNumLabel";
-            this.PageNumLabel.Size = new System.Drawing.Size(13, 13);
+            this.PageNumLabel.Size = new System.Drawing.Size(26, 29);
             this.PageNumLabel.TabIndex = 17;
             this.PageNumLabel.Text = "1";
             this.PageNumLabel.Click += new System.EventHandler(this.PageNumLabel_Click);
@@ -287,10 +290,10 @@
             // 
             this.TotalPageLabel.AutoSize = true;
             this.TotalPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalPageLabel.Location = new System.Drawing.Point(423, 458);
-            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TotalPageLabel.Location = new System.Drawing.Point(987, 1022);
+            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TotalPageLabel.Name = "TotalPageLabel";
-            this.TotalPageLabel.Size = new System.Drawing.Size(43, 13);
+            this.TotalPageLabel.Size = new System.Drawing.Size(91, 29);
             this.TotalPageLabel.TabIndex = 18;
             this.TotalPageLabel.Text = "out of 1";
             this.TotalPageLabel.Click += new System.EventHandler(this.TotalPageLabel_Click);
@@ -298,10 +301,10 @@
             // AbstractButton
             // 
             this.AbstractButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AbstractButton.Location = new System.Drawing.Point(720, 453);
-            this.AbstractButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AbstractButton.Location = new System.Drawing.Point(1680, 1011);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(86, 19);
+            this.AbstractButton.Size = new System.Drawing.Size(201, 42);
             this.AbstractButton.TabIndex = 19;
             this.AbstractButton.Text = "View Abstract";
             this.AbstractButton.UseVisualStyleBackColor = true;
@@ -310,10 +313,10 @@
             // ResultButton
             // 
             this.ResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResultButton.Location = new System.Drawing.Point(316, 91);
-            this.ResultButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ResultButton.Location = new System.Drawing.Point(737, 203);
+            this.ResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ResultButton.Name = "ResultButton";
-            this.ResultButton.Size = new System.Drawing.Size(86, 19);
+            this.ResultButton.Size = new System.Drawing.Size(201, 42);
             this.ResultButton.TabIndex = 20;
             this.ResultButton.Text = "Save Result";
             this.ResultButton.UseVisualStyleBackColor = true;
@@ -323,10 +326,10 @@
             // 
             this.TopicIDBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TopicIDBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TopicIDBox.Location = new System.Drawing.Point(8, 91);
-            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TopicIDBox.Location = new System.Drawing.Point(19, 203);
+            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TopicIDBox.Name = "TopicIDBox";
-            this.TopicIDBox.Size = new System.Drawing.Size(296, 19);
+            this.TopicIDBox.Size = new System.Drawing.Size(685, 34);
             this.TopicIDBox.TabIndex = 21;
             this.TopicIDBox.Text = "Enter Topic ID";
             this.TopicIDBox.TextChanged += new System.EventHandler(this.TopicIDBox_TextChanged);
@@ -337,10 +340,10 @@
             // 
             this.ResultDirectoryText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResultDirectoryText.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ResultDirectoryText.Location = new System.Drawing.Point(8, 58);
-            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ResultDirectoryText.Location = new System.Drawing.Point(19, 129);
+            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ResultDirectoryText.Name = "ResultDirectoryText";
-            this.ResultDirectoryText.Size = new System.Drawing.Size(296, 19);
+            this.ResultDirectoryText.Size = new System.Drawing.Size(685, 34);
             this.ResultDirectoryText.TabIndex = 22;
             this.ResultDirectoryText.Text = "Insert Result Directory";
             this.ResultDirectoryText.TextChanged += new System.EventHandler(this.ResultDirectoryText_TextChanged);
@@ -350,10 +353,10 @@
             // BrowseResultButton
             // 
             this.BrowseResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BrowseResultButton.Location = new System.Drawing.Point(316, 57);
-            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BrowseResultButton.Location = new System.Drawing.Point(737, 127);
+            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.BrowseResultButton.Name = "BrowseResultButton";
-            this.BrowseResultButton.Size = new System.Drawing.Size(86, 19);
+            this.BrowseResultButton.Size = new System.Drawing.Size(201, 42);
             this.BrowseResultButton.TabIndex = 23;
             this.BrowseResultButton.Text = "Browse";
             this.BrowseResultButton.UseVisualStyleBackColor = true;
@@ -367,32 +370,22 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 57);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(68, 220);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(143, 29);
             this.label2.TabIndex = 24;
             this.label2.Text = "Final Query:";
             this.label2.Click += new System.EventHandler(this.label2_Click_2);
-            // 
-            // FinalQueryText
-            // 
-            this.FinalQueryText.AutoSize = true;
-            this.FinalQueryText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalQueryText.Location = new System.Drawing.Point(74, 57);
-            this.FinalQueryText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.FinalQueryText.Name = "FinalQueryText";
-            this.FinalQueryText.Size = new System.Drawing.Size(0, 13);
-            this.FinalQueryText.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 78);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(14, 174);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(206, 29);
             this.label3.TabIndex = 26;
             this.label3.Text = "Number of Result:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -402,20 +395,20 @@
             this.NumOfResultText.AutoSize = true;
             this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
             this.NumOfResultText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumOfResultText.Location = new System.Drawing.Point(104, 74);
-            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NumOfResultText.Location = new System.Drawing.Point(243, 165);
+            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.NumOfResultText.Name = "NumOfResultText";
-            this.NumOfResultText.Size = new System.Drawing.Size(0, 13);
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
             this.NumOfResultText.TabIndex = 27;
             // 
             // ResultMsg
             // 
             this.ResultMsg.AutoSize = true;
             this.ResultMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResultMsg.Location = new System.Drawing.Point(314, 153);
-            this.ResultMsg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ResultMsg.Location = new System.Drawing.Point(733, 341);
+            this.ResultMsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.ResultMsg.Name = "ResultMsg";
-            this.ResultMsg.Size = new System.Drawing.Size(68, 13);
+            this.ResultMsg.Size = new System.Drawing.Size(149, 29);
             this.ResultMsg.TabIndex = 28;
             this.ResultMsg.Text = "Result status";
             this.ResultMsg.Click += new System.EventHandler(this.ResultMsg_Click);
@@ -429,8 +422,8 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1465, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(3004, 45);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -439,13 +432,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newWindowToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(70, 41);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(274, 42);
             this.newWindowToolStripMenuItem.Text = "new window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
@@ -454,30 +447,31 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveResultToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(112, 41);
             this.menuToolStripMenuItem.Text = "Option";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // saveResultToolStripMenuItem
             // 
             this.saveResultToolStripMenuItem.Name = "saveResultToolStripMenuItem";
-            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(257, 42);
             this.saveResultToolStripMenuItem.Text = "Save Result";
             this.saveResultToolStripMenuItem.Click += new System.EventHandler(this.saveResultToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(71, 41);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(20, 62);
+            this.button1.Location = new System.Drawing.Point(47, 138);
+            this.button1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 23);
+            this.button1.Size = new System.Drawing.Size(317, 51);
             this.button1.TabIndex = 30;
             this.button1.Text = "Insert Query File";
             this.button1.UseVisualStyleBackColor = true;
@@ -491,9 +485,10 @@
             this.QueryListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
-            this.QueryListView.Location = new System.Drawing.Point(20, 102);
+            this.QueryListView.Location = new System.Drawing.Point(47, 228);
+            this.QueryListView.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.QueryListView.Name = "QueryListView";
-            this.QueryListView.Size = new System.Drawing.Size(390, 179);
+            this.QueryListView.Size = new System.Drawing.Size(905, 394);
             this.QueryListView.TabIndex = 32;
             this.QueryListView.UseCompatibleStateImageBehavior = false;
             this.QueryListView.UseWaitCursor = true;
@@ -513,10 +508,11 @@
             // QueryFileDirectory
             // 
             this.QueryFileDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QueryFileDirectory.Location = new System.Drawing.Point(20, 36);
+            this.QueryFileDirectory.Location = new System.Drawing.Point(47, 80);
+            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
-            this.QueryFileDirectory.Size = new System.Drawing.Size(252, 20);
+            this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
             this.QueryFileDirectory.TabIndex = 33;
             this.QueryFileDirectory.Text = "Insert Query File Location";
             this.QueryFileDirectory.TextChanged += new System.EventHandler(this.QueryFileDirectory_TextChanged);
@@ -525,9 +521,10 @@
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(5, 35);
+            this.StatusLabel.Location = new System.Drawing.Point(12, 78);
+            this.StatusLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(74, 13);
+            this.StatusLabel.Size = new System.Drawing.Size(161, 29);
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             this.StatusLabel.Click += new System.EventHandler(this.StatusLabel_Click);
@@ -541,10 +538,10 @@
             "Full text",
             "Author",
             "Title"});
-            this.SelectField.Location = new System.Drawing.Point(606, 61);
-            this.SelectField.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SelectField.Location = new System.Drawing.Point(1414, 136);
+            this.SelectField.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.SelectField.Name = "SelectField";
-            this.SelectField.Size = new System.Drawing.Size(86, 21);
+            this.SelectField.Size = new System.Drawing.Size(195, 37);
             this.SelectField.TabIndex = 35;
             this.SelectField.SelectedIndexChanged += new System.EventHandler(this.SelectField_SelectedIndexChanged);
             // 
@@ -552,10 +549,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(518, 29);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(1209, 65);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(549, 37);
+            this.label4.Size = new System.Drawing.Size(1195, 82);
             this.label4.TabIndex = 36;
             this.label4.Text = "Kingsland University of Technology";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -570,27 +567,28 @@
             this.groupBox1.Controls.Add(this.CreateIndexButton);
             this.groupBox1.Controls.Add(this.TimeLabelToIndex);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(408, 86);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(952, 192);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(717, 119);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1673, 265);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Index";
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.QueryExpansionCheckBox);
             this.groupBox2.Controls.Add(this.PreprocessingCheckBox);
             this.groupBox2.Controls.Add(this.QueryBox);
             this.groupBox2.Controls.Add(this.SelectField);
             this.groupBox2.Controls.Add(this.SearchButton);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(408, 211);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(952, 471);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(717, 103);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1673, 230);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -598,10 +596,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.StatusLabel);
-            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.NumOfResultText);
             this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Controls.Add(this.FinalQueryText);
             this.groupBox3.Controls.Add(this.TimeTakenToSearch);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.PreviousButton);
@@ -611,11 +607,11 @@
             this.groupBox3.Controls.Add(this.PageNumLabel);
             this.groupBox3.Controls.Add(this.TotalPageLabel);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(108, 318);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Location = new System.Drawing.Point(38, 709);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(824, 485);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox3.Size = new System.Drawing.Size(1923, 1082);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
@@ -627,14 +623,26 @@
             this.groupBox4.Controls.Add(this.QueryFileDirectory);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(937, 318);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Location = new System.Drawing.Point(1992, 709);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(422, 300);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox4.Size = new System.Drawing.Size(985, 669);
             this.groupBox4.TabIndex = 40;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Query File";
+            // 
+            // QueryFileBrowseButton
+            // 
+            this.QueryFileBrowseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QueryFileBrowseButton.Location = new System.Drawing.Point(672, 78);
+            this.QueryFileBrowseButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.QueryFileBrowseButton.Name = "QueryFileBrowseButton";
+            this.QueryFileBrowseButton.Size = new System.Drawing.Size(175, 51);
+            this.QueryFileBrowseButton.TabIndex = 34;
+            this.QueryFileBrowseButton.Text = "Browse";
+            this.QueryFileBrowseButton.UseVisualStyleBackColor = true;
+            this.QueryFileBrowseButton.Click += new System.EventHandler(this.QueryFileBrowseButton_Click);
             // 
             // groupBox5
             // 
@@ -644,32 +652,48 @@
             this.groupBox5.Controls.Add(this.ResultButton);
             this.groupBox5.Controls.Add(this.BrowseResultButton);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(937, 622);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Location = new System.Drawing.Point(1992, 1389);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(422, 180);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox5.Size = new System.Drawing.Size(985, 402);
             this.groupBox5.TabIndex = 41;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Save Result";
             // 
-            // QueryFileBrowseButton
+            // QueryExpansionCheckBox
             // 
-            this.QueryFileBrowseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QueryFileBrowseButton.Location = new System.Drawing.Point(288, 35);
-            this.QueryFileBrowseButton.Name = "QueryFileBrowseButton";
-            this.QueryFileBrowseButton.Size = new System.Drawing.Size(75, 23);
-            this.QueryFileBrowseButton.TabIndex = 34;
-            this.QueryFileBrowseButton.Text = "Browse";
-            this.QueryFileBrowseButton.UseVisualStyleBackColor = true;
-            this.QueryFileBrowseButton.Click += new System.EventHandler(this.QueryFileBrowseButton_Click);
+            this.QueryExpansionCheckBox.AutoSize = true;
+            this.QueryExpansionCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QueryExpansionCheckBox.Location = new System.Drawing.Point(473, 141);
+            this.QueryExpansionCheckBox.Name = "QueryExpansionCheckBox";
+            this.QueryExpansionCheckBox.Size = new System.Drawing.Size(361, 33);
+            this.QueryExpansionCheckBox.TabIndex = 36;
+            this.QueryExpansionCheckBox.Text = "Query Expansion by NetWord";
+            this.QueryExpansionCheckBox.UseVisualStyleBackColor = true;
+            this.QueryExpansionCheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // FinalQueryTextBox
+            // 
+            this.FinalQueryTextBox.Location = new System.Drawing.Point(73, 267);
+            this.FinalQueryTextBox.Multiline = true;
+            this.FinalQueryTextBox.Name = "FinalQueryTextBox";
+            this.FinalQueryTextBox.Size = new System.Drawing.Size(803, 390);
+            this.FinalQueryTextBox.TabIndex = 42;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1465, 805);
+            this.ClientSize = new System.Drawing.Size(3004, 1796);
+            this.Controls.Add(this.FinalQueryTextBox);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
@@ -677,7 +701,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.GUI_Load);
@@ -725,7 +749,6 @@
         private System.Windows.Forms.Button BrowseResultButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label FinalQueryText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label NumOfResultText;
         private System.Windows.Forms.Label ResultMsg;
@@ -749,5 +772,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button QueryFileBrowseButton;
+        private System.Windows.Forms.CheckBox QueryExpansionCheckBox;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.TextBox FinalQueryTextBox;
     }
 }

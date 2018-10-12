@@ -2,15 +2,16 @@
 using System.IO;
 using Syn.WordNet;
 
-namespace EduSearchBaselineIS
+namespace EduSearchAdvancedIS
 {
     class WordNet
     {
-        protected const string WordNet_Dir = @"..\..\..\WordNetDatabase";
+        protected const string WordNet_Dir = @"D:\Repos\IFN647\IFN647\EduSearchIS\WordNetDatabase";
 
         public static WordNetEngine GetWordNetEngineInstance()
         {
             WordNetEngine wordNet = new WordNetEngine();
+
             wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.adj")), PartOfSpeech.Adjective);
             wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.adv")), PartOfSpeech.Adverb);
             wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.noun")), PartOfSpeech.Noun);

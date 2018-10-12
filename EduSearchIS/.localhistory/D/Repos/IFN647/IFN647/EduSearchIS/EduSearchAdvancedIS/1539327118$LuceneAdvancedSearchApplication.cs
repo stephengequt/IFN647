@@ -29,8 +29,6 @@ namespace EduSearchAdvancedIS
         const string AUTHOR_FN = "Author";
         public bool PreProcessOpt { get; set; }
         public bool QueryExpansionOpt { get; set; }
-        public WordNetEngine wordNet { get; set; }
-
 
         public LuceneAdvancedSearchApplication()
         {
@@ -121,9 +119,9 @@ namespace EduSearchAdvancedIS
 //            string[] fields = new String[] {"title", "subject"};
 
 //            QueryParser queryParser =  new MultiFieldQueryParser(VERSION,fields , analyzer);
-            Query query = queryParser.Parse(querytext);
-            
-            
+
+            Query query = queryParser.Query(querytext);
+
             TopDocs results = searcher.Search(query, 100);
 
             int rank = 0;
@@ -418,28 +416,42 @@ namespace EduSearchAdvancedIS
             return selectedDoc;
         }
 
-        public string QueryExpansionByNetWord(string word, WordNetEngine wordNet)
+        public static string QueryExpansionByNetWord(string query)
         {
-            var synSetList = wordNet.GetSynSets(word);
+            string WordNet_Dir = @"..\..\..\WordNetDatabase";
 
-            if (synSetList.Count == 0)
+            WordNetEngine wordNet = new WordNetEngine();
+            wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.adj")), PartOfSpeech.Adjective);
+            wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.adv")), PartOfSpeech.Adverb);
+            wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.noun")), PartOfSpeech.Noun);
+            wordNet.AddDataSource(new StreamReader(Path.Combine(WordNet_Dir, "data.verb")), PartOfSpeech.Verb);
+
+            wordNet.AddIndexSource(new StreamReader(Path.Combine(WordNet_Dir, "index.adj")), PartOfSpeech.Adjective);
+            wordNet.AddIndexSource(new StreamReader(Path.Combine(WordNet_Dir, "index.adv")), PartOfSpeech.Adverb);
+            wordNet.AddIndexSource(new StreamReader(Path.Combine(WordNet_Dir, "index.noun")), PartOfSpeech.Noun);
+            wordNet.AddIndexSource(new StreamReader(Path.Combine(WordNet_Dir, "index.verb")), PartOfSpeech.Verb);
+
+            Console.WriteLine("Loading WordNet database....");
+            wordNet.Load();
+            Console.WriteLine("WordNet Loaded.");
+
+            while (true)
             {
-                return " ";
-            }
+                Console.WriteLine("\nType first word");
+                var word = Console.ReadLine();
+                var synSetList = wordNet.GetSynSets(word);
 
-            foreach (var synSet in synSetList)
-            {
-                word = string.Join(" ", synSet.Words);
-            }
-//
-//            string[] array = thesaurus[queryTerm];
-//            foreach (string a in array)
-//            {
-//                expandedQuery += " " + a;
-//            }
+                if (synSetList.Count == 0) Console.WriteLine($"No SynSet found for '{word}'");
 
-            return word;
+                foreach (var synSet in synSetList)
+                {
+                    var words = string.Join(", ", synSet.Words);
+
+                    Console.WriteLine($"\nWords: {words}");
+                    Console.WriteLine($"POS: {synSet.PartOfSpeech}");
+                    Console.WriteLine($"Gloss: {synSet.Gloss}");
+                }
+            }
         }
     }
 }
-

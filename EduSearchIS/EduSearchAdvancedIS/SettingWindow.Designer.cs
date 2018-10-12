@@ -1,4 +1,4 @@
-﻿namespace EduSearchIS
+﻿namespace EduSearchAdvancedIS
 {
     partial class SettingWindow
     {

@@ -6,12 +6,12 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace EduSearchBaselineIS
+namespace EduSearchAdvancedIS
 
 {
-    public partial class GUI : Form
+    public partial class MainWindow : Form
     {
-        LuceneBaseSearchApplication myLuceneApp = new LuceneBaseSearchApplication();
+        LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
         DataTable table = new DataTable();
         // source collection
@@ -25,9 +25,9 @@ namespace EduSearchBaselineIS
             @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
 
         static string stephenIndexPath =
-            @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\assessment2Index";
+            @"D:\assessment2Index";
 
-        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\GUI";
+        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\MainWindow";
         private string documentPath = stephenPath;
         private string IndexPath = stephenIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
@@ -36,9 +36,10 @@ namespace EduSearchBaselineIS
         int maxPageNum = 0;
         private DocInfo[] docList;
         private int selectedDocIndex;
+        private string SelectedSearchField;
 
 
-        public GUI()
+        public MainWindow()
         {
             InitializeComponent();
         }
@@ -67,7 +68,7 @@ namespace EduSearchBaselineIS
 
         private void CreateIndexButton_Click(object sender, EventArgs e)
         {
-            List<string> fileList = Program.WalkDirectoryTree(this.documentPath);
+            List<string> fileList = LuceneAdvancedSearchApplication.WalkDirectoryTree(this.documentPath);
             
             // Check if there is any file for indexing
             if (fileList.Count == 0)
@@ -216,11 +217,10 @@ namespace EduSearchBaselineIS
                 DateTime startSearchTime = System.DateTime.Now;
                 myLuceneApp.CreateSearcher();
 
-//            var query =
-//                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
+                //Perform query expansion by connecting to NetWord
 
-                //SearchResult searchResult = myLuceneApp.SearchText(query);
-                SearchResult searchResult = myLuceneApp.SearchText(query);
+
+                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
@@ -243,16 +243,15 @@ namespace EduSearchBaselineIS
 
                 if (this.docList.Length == 0)
                 {
-                    StatusLabel.ForeColor = Color.Red;
-                    StatusLabel.Text = "No result";
+                    Console.WriteLine("No result.");
                 }
-                else if (this.pageNum == this.maxPageNum - 1)
+                else if (this.pageNum == this.maxPageNum)
                 {
-                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                 }
                 else
                 {
-                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
                 }
                 dataGridView1.DataSource = table;
                 TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
@@ -276,12 +275,12 @@ namespace EduSearchBaselineIS
                 }
                 else if (this.pageNum == this.maxPageNum)
                 {
-                    table = Program.ViewLastPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
                     NextButton.Enabled = false;
                 }
                 else
                 {
-                    table = Program.ViewCurrenPage(table, this.docList, this.pageNum);
+                    table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
                 }
 
                 dataGridView1.DataSource = table;
@@ -298,7 +297,7 @@ namespace EduSearchBaselineIS
 
                 //loadDataViewGrid();
                 DataTable table = new DataTable();
-                table = Program.ViewCurrenPage(table, this.docList, pageNum);
+                table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, pageNum);
                 dataGridView1.DataSource = table;
             }
             else
@@ -360,6 +359,8 @@ namespace EduSearchBaselineIS
         private void GUI_Load(object sender, EventArgs e)
         {
             this.myLuceneApp.PreProcessOpt = !PreprocessingCheckBox.Checked;
+            SelectField.SelectedItem = "Full text";
+
 //            DataTable table = new DataTable();
 //            table = Program.ViewCurrenPage(table, this.docList, pageNum);
 //            dataGridView1.DataSource = table;
@@ -375,8 +376,8 @@ namespace EduSearchBaselineIS
 
         private void AbstractButton_Click(object sender, EventArgs e)
         {
-            var selectedDocInfo = Program.ViewSelectedDocInfo(this.docList, selectedDocIndex);
-            MessageBox.Show(selectedDocInfo.Abstract, selectedDocInfo.Title);
+            var selectedDocInfo = LuceneAdvancedSearchApplication.ViewSelectedDocInfo(this.docList, selectedDocIndex);
+            MessageBox.Show((string) selectedDocInfo.Abstract, selectedDocInfo.Title);
         }
 
         private void ResultButton_Click(object sender, EventArgs e)
@@ -404,12 +405,12 @@ namespace EduSearchBaselineIS
                     {
                         foreach (DocInfo docInfo in this.docList)
                         {
-                            sw.Write(TopicIDBox.Text + "\t");
-                            sw.Write("Q0" + "\t");
-                            sw.Write(docInfo.DocID+ "\t");
-                            sw.Write(docInfo.Rank+ "\t");
-                            sw.Write(docInfo.DocScore+ "\t");
-                            sw.WriteLine("BaselineSystem");
+                            sw.Write(TopicIDBox.Text);
+                            sw.Write(" Q0 ");
+                            sw.Write(docInfo.DocID);
+                            sw.Write(" " + docInfo.Rank);
+                            sw.Write(" " + docInfo.DocScore);
+                            sw.WriteLine(" BaselineSystem");
                         }
 
                         ResultMsg.ForeColor = Color.Green;
@@ -485,9 +486,9 @@ namespace EduSearchBaselineIS
         {
             QueryFileDirectory.Text =
                 @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\cran_information_needs.txt";
-            string content = Program.OutputFileContent(QueryFileDirectory.Text);
-            string[] sections = LuceneBaseSearchApplication.SeparateQueryString(content);
-            QueryInfo[] queryInfos = LuceneBaseSearchApplication.GetQueryInfo(sections);
+            string content = LuceneAdvancedSearchApplication.OutputFileContent(QueryFileDirectory.Text);
+            string[] sections = LuceneAdvancedSearchApplication.SeparateQueryString(content);
+            QueryInfo[] queryInfos = LuceneAdvancedSearchApplication.GetQueryInfo(sections);
             foreach (var queryInfo in queryInfos)
             {
                 var row = new string[] {queryInfo.QueryID, queryInfo.QueryContent};
@@ -528,7 +529,12 @@ namespace EduSearchBaselineIS
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void SelectField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.SelectedSearchField = SelectField.SelectedItem.ToString();
+        }
+
+        private void StatusLabel_Click(object sender, EventArgs e)
         {
 
         }
@@ -538,12 +544,27 @@ namespace EduSearchBaselineIS
 
         }
 
-        private void StatusLabel_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void QueryFileDirectory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResultMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PageNumLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
         {
 
         }
@@ -551,6 +572,13 @@ namespace EduSearchBaselineIS
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void QueryFileBrowseButton_Click(object sender, EventArgs e)
+        {
+            folderToReadLocation.ShowDialog();
+            QueryFileDirectory.Text = folderToReadLocation.SelectedPath;
+            this.documentPath = folderToReadLocation.SelectedPath;
         }
     }
 }

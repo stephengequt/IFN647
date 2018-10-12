@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
+using EduSearchIS;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
-using Syn.WordNet;
 
 namespace EduSearchAdvancedIS
 {
@@ -28,19 +27,16 @@ namespace EduSearchAdvancedIS
         const string TITLE_FN = "Title";
         const string AUTHOR_FN = "Author";
         public bool PreProcessOpt { get; set; }
-        public bool QueryExpansionOpt { get; set; }
-        public WordNetEngine wordNet { get; set; }
-
 
         public LuceneAdvancedSearchApplication()
         {
             luceneIndexDirectory = null;
             writer = null;
 //            analyzer = new Lucene.Net.Analysis.WhitespaceAnalyzer();
-//            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
-            analyzer = new Lucene.Net.Analysis.StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
+            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
+            //analyzer = new Lucene.Net.Analysis.StopAnalyzer(); // Activity 5
             //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
-//            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
+            //analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
 
 
             parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, TEXT_FN, analyzer);
@@ -69,10 +65,8 @@ namespace EduSearchAdvancedIS
             DocInfo docInfo = OutputSections(text);
             Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED,
                 Field.TermVector.YES);
-            Lucene.Net.Documents.Field docAuthorfield = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES,
-                Field.Index.ANALYZED, Field.TermVector.YES);
-            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.Title, Field.Store.YES,
-                Field.Index.ANALYZED, Field.TermVector.YES);
+            Lucene.Net.Documents.Field docAuthorfield = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.Title, Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             Lucene.Net.Documents.Document doc = new Document();
             doc.Add(field);
             doc.Add(docAuthorfield);
@@ -116,14 +110,10 @@ namespace EduSearchAdvancedIS
 
             QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
 //            Query query = parser.Parse(querytext);
-//            Query query = queryParser.Parse(querytext);
-            // TODO: multified needs to be fixed
-//            string[] fields = new String[] {"title", "subject"};
-
-//            QueryParser queryParser =  new MultiFieldQueryParser(VERSION,fields , analyzer);
             Query query = queryParser.Parse(querytext);
-            
-            
+
+//            Query query = MultiFieldQueryParser.Parse(VERSION, "development", new String[]{"title", "subject"}, analyzer);
+
             TopDocs results = searcher.Search(query, 100);
 
             int rank = 0;
@@ -417,29 +407,5 @@ namespace EduSearchAdvancedIS
 
             return selectedDoc;
         }
-
-        public string QueryExpansionByNetWord(string word, WordNetEngine wordNet)
-        {
-            var synSetList = wordNet.GetSynSets(word);
-
-            if (synSetList.Count == 0)
-            {
-                return " ";
-            }
-
-            foreach (var synSet in synSetList)
-            {
-                word = string.Join(" ", synSet.Words);
-            }
-//
-//            string[] array = thesaurus[queryTerm];
-//            foreach (string a in array)
-//            {
-//                expandedQuery += " " + a;
-//            }
-
-            return word;
-        }
     }
 }
-

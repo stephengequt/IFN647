@@ -1,4 +1,4 @@
-﻿namespace EduSearchIS
+﻿namespace EduSearchBaselineIS
 {
     partial class SaveResultWindow
     {

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Syn.WordNet;
 
-namespace EduSearchIS
+namespace EduSearchBaselineIS
 {
     class Program
     {
@@ -69,9 +65,10 @@ namespace EduSearchIS
 //            Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
 //            myLuceneApp.CleanUpSearcher();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI());
+//            Application.EnableVisualStyles();
+//            Application.SetCompatibleTextRenderingDefault(false);
+//            Application.Run(new GUI());
+
 
             WordNetEngine wordNet = WordNet.GetWordNetEngineInstance();
 
@@ -115,7 +112,6 @@ namespace EduSearchIS
             return text;
         }
 
-        
 
         public static List<string> WalkDirectoryTree(String path)
         {

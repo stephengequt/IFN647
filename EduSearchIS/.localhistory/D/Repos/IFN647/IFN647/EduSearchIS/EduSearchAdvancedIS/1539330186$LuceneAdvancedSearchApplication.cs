@@ -424,12 +424,14 @@ namespace EduSearchAdvancedIS
 
             if (synSetList.Count == 0)
             {
-                return " ";
+                return word;
             }
 
             foreach (var synSet in synSetList)
             {
-                word = string.Join(" ", synSet.Words);
+                var words = string.Join(", ", synSet.Words);
+
+                Console.WriteLine($"\nWords: {words}");
             }
 //
 //            string[] array = thesaurus[queryTerm];
@@ -438,7 +440,7 @@ namespace EduSearchAdvancedIS
 //                expandedQuery += " " + a;
 //            }
 
-            return word;
+            return null;
         }
     }
 }

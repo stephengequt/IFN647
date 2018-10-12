@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EB4DA1AE-6ED2-4CE7-851B-C53E9569298B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EduSearchIS</RootNamespace>
-    <AssemblyName>EduSearchIS</AssemblyName>
+    <RootNamespace>EduSearchBaselineIS</RootNamespace>
+    <AssemblyName>EduSearchBaselineIS</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

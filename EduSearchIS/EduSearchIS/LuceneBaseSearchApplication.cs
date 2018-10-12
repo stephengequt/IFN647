@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Drawing;
-using System.Data;
 using System.Windows.Forms;
 using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
 
-namespace EduSearchIS
+namespace EduSearchBaselineIS
 {
     class LuceneBaseSearchApplication
     {
