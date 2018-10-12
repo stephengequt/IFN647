@@ -75,10 +75,10 @@
             // 
             // CollectionButton
             // 
-            this.CollectionButton.Location = new System.Drawing.Point(527, 58);
-            this.CollectionButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionButton.Location = new System.Drawing.Point(226, 26);
+            this.CollectionButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CollectionButton.Name = "CollectionButton";
-            this.CollectionButton.Size = new System.Drawing.Size(194, 42);
+            this.CollectionButton.Size = new System.Drawing.Size(83, 19);
             this.CollectionButton.TabIndex = 0;
             this.CollectionButton.Text = "Browse";
             this.CollectionButton.UseVisualStyleBackColor = true;
@@ -86,10 +86,10 @@
             // 
             // IndexButton
             // 
-            this.IndexButton.Location = new System.Drawing.Point(527, 114);
-            this.IndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexButton.Location = new System.Drawing.Point(226, 51);
+            this.IndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IndexButton.Name = "IndexButton";
-            this.IndexButton.Size = new System.Drawing.Size(194, 42);
+            this.IndexButton.Size = new System.Drawing.Size(83, 19);
             this.IndexButton.TabIndex = 1;
             this.IndexButton.Text = "Browse";
             this.IndexButton.UseVisualStyleBackColor = true;
@@ -97,10 +97,10 @@
             // 
             // CreateIndexButton
             // 
-            this.CreateIndexButton.Location = new System.Drawing.Point(805, 83);
-            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CreateIndexButton.Location = new System.Drawing.Point(345, 37);
+            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CreateIndexButton.Name = "CreateIndexButton";
-            this.CreateIndexButton.Size = new System.Drawing.Size(187, 42);
+            this.CreateIndexButton.Size = new System.Drawing.Size(80, 19);
             this.CreateIndexButton.TabIndex = 4;
             this.CreateIndexButton.Text = "Create Index";
             this.CreateIndexButton.UseVisualStyleBackColor = true;
@@ -113,10 +113,10 @@
             // CollectionDirectoryTextBox
             // 
             this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(189, 58);
-            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(81, 26);
+            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
-            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(138, 20);
             this.CollectionDirectoryTextBox.TabIndex = 5;
             this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
             this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
@@ -126,10 +126,10 @@
             // IndexDirectoryTextBox
             // 
             this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(189, 114);
-            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(81, 51);
+            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
-            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(317, 35);
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(138, 20);
             this.IndexDirectoryTextBox.TabIndex = 6;
             this.IndexDirectoryTextBox.Text = "Insert Index Directory";
             this.IndexDirectoryTextBox.TextChanged += new System.EventHandler(this.IndexDirectoryTextBox_TextChanged);
@@ -139,10 +139,10 @@
             // TimeLabelToIndex
             // 
             this.TimeLabelToIndex.AutoSize = true;
-            this.TimeLabelToIndex.Location = new System.Drawing.Point(1071, 91);
-            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeLabelToIndex.Location = new System.Drawing.Point(459, 41);
+            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TimeLabelToIndex.Name = "TimeLabelToIndex";
-            this.TimeLabelToIndex.Size = new System.Drawing.Size(239, 29);
+            this.TimeLabelToIndex.Size = new System.Drawing.Size(108, 13);
             this.TimeLabelToIndex.TabIndex = 7;
             this.TimeLabelToIndex.Text = "Time Taken to Index:";
             this.TimeLabelToIndex.Click += new System.EventHandler(this.TimeLabelToIndex_Click);
@@ -150,10 +150,10 @@
             // QueryBox
             // 
             this.QueryBox.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.QueryBox.Location = new System.Drawing.Point(147, 265);
-            this.QueryBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.QueryBox.Location = new System.Drawing.Point(63, 119);
+            this.QueryBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(566, 35);
+            this.QueryBox.Size = new System.Drawing.Size(245, 20);
             this.QueryBox.TabIndex = 8;
             this.QueryBox.Text = "Enter Query";
             this.QueryBox.TextChanged += new System.EventHandler(this.QueryBox_TextChanged);
@@ -162,10 +162,10 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(768, 268);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.SearchButton.Location = new System.Drawing.Point(329, 120);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(177, 42);
+            this.SearchButton.Size = new System.Drawing.Size(76, 19);
             this.SearchButton.TabIndex = 9;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -174,10 +174,10 @@
             // PreprocessingCheckBox
             // 
             this.PreprocessingCheckBox.AutoSize = true;
-            this.PreprocessingCheckBox.Location = new System.Drawing.Point(147, 219);
-            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreprocessingCheckBox.Location = new System.Drawing.Point(63, 98);
+            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreprocessingCheckBox.Name = "PreprocessingCheckBox";
-            this.PreprocessingCheckBox.Size = new System.Drawing.Size(348, 33);
+            this.PreprocessingCheckBox.Size = new System.Drawing.Size(156, 17);
             this.PreprocessingCheckBox.TabIndex = 10;
             this.PreprocessingCheckBox.Text = "Pre-Processing not required";
             this.PreprocessingCheckBox.UseVisualStyleBackColor = true;
@@ -186,10 +186,10 @@
             // TimeTakenToSearch
             // 
             this.TimeTakenToSearch.AutoSize = true;
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(33, 339);
-            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(14, 152);
+            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
-            this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
+            this.TimeTakenToSearch.Size = new System.Drawing.Size(116, 13);
             this.TimeTakenToSearch.TabIndex = 11;
             this.TimeTakenToSearch.Text = "Time Taken to Search:";
             this.TimeTakenToSearch.Click += new System.EventHandler(this.TimeTakenToSearch_Click);
@@ -201,24 +201,24 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 495);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 222);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1892, 752);
+            this.dataGridView1.Size = new System.Drawing.Size(811, 337);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(397, 1278);
-            this.PreviousButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreviousButton.Location = new System.Drawing.Point(170, 573);
+            this.PreviousButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(131, 42);
+            this.PreviousButton.Size = new System.Drawing.Size(56, 19);
             this.PreviousButton.TabIndex = 14;
             this.PreviousButton.Text = "<";
             this.PreviousButton.UseVisualStyleBackColor = true;
@@ -226,10 +226,10 @@
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(912, 1278);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.NextButton.Location = new System.Drawing.Point(391, 573);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(131, 42);
+            this.NextButton.Size = new System.Drawing.Size(56, 19);
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = ">";
             this.NextButton.UseVisualStyleBackColor = true;
@@ -238,40 +238,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(611, 1285);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(262, 576);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 29);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
             // 
             // PageNumLabel
             // 
             this.PageNumLabel.AutoSize = true;
-            this.PageNumLabel.Location = new System.Drawing.Point(695, 1285);
-            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.PageNumLabel.Location = new System.Drawing.Point(298, 576);
+            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PageNumLabel.Name = "PageNumLabel";
-            this.PageNumLabel.Size = new System.Drawing.Size(26, 29);
+            this.PageNumLabel.Size = new System.Drawing.Size(13, 13);
             this.PageNumLabel.TabIndex = 17;
             this.PageNumLabel.Text = "1";
             // 
             // TotalPageLabel
             // 
             this.TotalPageLabel.AutoSize = true;
-            this.TotalPageLabel.Location = new System.Drawing.Point(735, 1285);
-            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TotalPageLabel.Location = new System.Drawing.Point(315, 576);
+            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TotalPageLabel.Name = "TotalPageLabel";
-            this.TotalPageLabel.Size = new System.Drawing.Size(91, 29);
+            this.TotalPageLabel.Size = new System.Drawing.Size(43, 13);
             this.TotalPageLabel.TabIndex = 18;
             this.TotalPageLabel.Text = "out of 1";
             this.TotalPageLabel.Click += new System.EventHandler(this.TotalPageLabel_Click);
             // 
             // AbstractButton
             // 
-            this.AbstractButton.Location = new System.Drawing.Point(1967, 805);
-            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.AbstractButton.Location = new System.Drawing.Point(843, 361);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(201, 42);
+            this.AbstractButton.Size = new System.Drawing.Size(86, 19);
             this.AbstractButton.TabIndex = 19;
             this.AbstractButton.Text = "View Abstract";
             this.AbstractButton.UseVisualStyleBackColor = true;
@@ -279,10 +279,10 @@
             // 
             // ResultButton
             // 
-            this.ResultButton.Location = new System.Drawing.Point(1967, 1106);
-            this.ResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.ResultButton.Location = new System.Drawing.Point(843, 496);
+            this.ResultButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ResultButton.Name = "ResultButton";
-            this.ResultButton.Size = new System.Drawing.Size(201, 42);
+            this.ResultButton.Size = new System.Drawing.Size(86, 19);
             this.ResultButton.TabIndex = 20;
             this.ResultButton.Text = "Save Result";
             this.ResultButton.UseVisualStyleBackColor = true;
@@ -291,10 +291,10 @@
             // TopicIDBox
             // 
             this.TopicIDBox.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.TopicIDBox.Location = new System.Drawing.Point(1967, 1055);
-            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.TopicIDBox.Location = new System.Drawing.Point(843, 473);
+            this.TopicIDBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TopicIDBox.Name = "TopicIDBox";
-            this.TopicIDBox.Size = new System.Drawing.Size(307, 35);
+            this.TopicIDBox.Size = new System.Drawing.Size(134, 20);
             this.TopicIDBox.TabIndex = 21;
             this.TopicIDBox.Text = "Enter Topic ID";
             this.TopicIDBox.TextChanged += new System.EventHandler(this.TopicIDBox_TextChanged);
@@ -304,10 +304,10 @@
             // ResultDirectoryText
             // 
             this.ResultDirectoryText.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ResultDirectoryText.Location = new System.Drawing.Point(1967, 883);
-            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.ResultDirectoryText.Location = new System.Drawing.Point(843, 396);
+            this.ResultDirectoryText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ResultDirectoryText.Name = "ResultDirectoryText";
-            this.ResultDirectoryText.Size = new System.Drawing.Size(307, 35);
+            this.ResultDirectoryText.Size = new System.Drawing.Size(134, 20);
             this.ResultDirectoryText.TabIndex = 22;
             this.ResultDirectoryText.Text = "Insert Result Directory";
             this.ResultDirectoryText.TextChanged += new System.EventHandler(this.ResultDirectoryText_TextChanged);
@@ -316,10 +316,10 @@
             // 
             // BrowseResultButton
             // 
-            this.BrowseResultButton.Location = new System.Drawing.Point(1967, 935);
-            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.BrowseResultButton.Location = new System.Drawing.Point(843, 419);
+            this.BrowseResultButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BrowseResultButton.Name = "BrowseResultButton";
-            this.BrowseResultButton.Size = new System.Drawing.Size(131, 42);
+            this.BrowseResultButton.Size = new System.Drawing.Size(56, 19);
             this.BrowseResultButton.TabIndex = 23;
             this.BrowseResultButton.Text = "Browse";
             this.BrowseResultButton.UseVisualStyleBackColor = true;
@@ -332,29 +332,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 390);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Location = new System.Drawing.Point(14, 175);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 29);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 24;
             this.label2.Text = "Final Query:";
             // 
             // FinalQueryText
             // 
             this.FinalQueryText.AutoSize = true;
-            this.FinalQueryText.Location = new System.Drawing.Point(191, 390);
-            this.FinalQueryText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FinalQueryText.Location = new System.Drawing.Point(82, 175);
+            this.FinalQueryText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FinalQueryText.Name = "FinalQueryText";
-            this.FinalQueryText.Size = new System.Drawing.Size(0, 29);
+            this.FinalQueryText.Size = new System.Drawing.Size(0, 13);
             this.FinalQueryText.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 444);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Location = new System.Drawing.Point(14, 199);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 29);
+            this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 26;
             this.label3.Text = "Number of Result:";
             // 
@@ -362,19 +362,19 @@
             // 
             this.NumOfResultText.AutoSize = true;
             this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
-            this.NumOfResultText.Location = new System.Drawing.Point(278, 444);
-            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NumOfResultText.Location = new System.Drawing.Point(119, 199);
+            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.NumOfResultText.Name = "NumOfResultText";
-            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 13);
             this.NumOfResultText.TabIndex = 27;
             // 
             // ResultMsg
             // 
             this.ResultMsg.AutoSize = true;
-            this.ResultMsg.Location = new System.Drawing.Point(1967, 1207);
-            this.ResultMsg.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.ResultMsg.Location = new System.Drawing.Point(843, 541);
+            this.ResultMsg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ResultMsg.Name = "ResultMsg";
-            this.ResultMsg.Size = new System.Drawing.Size(149, 29);
+            this.ResultMsg.Size = new System.Drawing.Size(68, 13);
             this.ResultMsg.TabIndex = 28;
             this.ResultMsg.Text = "Result status";
             // 
@@ -387,8 +387,8 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(2305, 45);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1035, 24);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -397,13 +397,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newWindowToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(70, 41);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(274, 42);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.newWindowToolStripMenuItem.Text = "new window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
@@ -412,30 +412,29 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveResultToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(112, 41);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(56, 22);
             this.menuToolStripMenuItem.Text = "Option";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // saveResultToolStripMenuItem
             // 
             this.saveResultToolStripMenuItem.Name = "saveResultToolStripMenuItem";
-            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(257, 42);
+            this.saveResultToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveResultToolStripMenuItem.Text = "Save Result";
             this.saveResultToolStripMenuItem.Click += new System.EventHandler(this.saveResultToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(71, 41);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1554, 54);
-            this.button1.Margin = new System.Windows.Forms.Padding(7);
+            this.button1.Location = new System.Drawing.Point(666, 24);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(317, 51);
+            this.button1.Size = new System.Drawing.Size(136, 23);
             this.button1.TabIndex = 30;
             this.button1.Text = "Insert Query File";
             this.button1.UseVisualStyleBackColor = true;
@@ -448,10 +447,9 @@
             this.QueryContent});
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
-            this.QueryListView.Location = new System.Drawing.Point(1141, 219);
-            this.QueryListView.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryListView.Location = new System.Drawing.Point(489, 98);
             this.QueryListView.Name = "QueryListView";
-            this.QueryListView.Size = new System.Drawing.Size(996, 249);
+            this.QueryListView.Size = new System.Drawing.Size(429, 114);
             this.QueryListView.TabIndex = 32;
             this.QueryListView.UseCompatibleStateImageBehavior = false;
             this.QueryListView.View = System.Windows.Forms.View.Details;
@@ -469,20 +467,18 @@
             // 
             // QueryFileDirectory
             // 
-            this.QueryFileDirectory.Location = new System.Drawing.Point(1554, 114);
-            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryFileDirectory.Location = new System.Drawing.Point(666, 51);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
-            this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
+            this.QueryFileDirectory.Size = new System.Drawing.Size(252, 20);
             this.QueryFileDirectory.TabIndex = 33;
             // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Location = new System.Drawing.Point(75, 185);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(32, 83);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(161, 29);
+            this.StatusLabel.Size = new System.Drawing.Size(74, 13);
             this.StatusLabel.TabIndex = 34;
             this.StatusLabel.Text = "Search Status";
             // 
@@ -494,17 +490,18 @@
             "Full text",
             "Author",
             "Title"});
-            this.SelectField.Location = new System.Drawing.Point(637, 201);
+            this.SelectField.Location = new System.Drawing.Point(273, 90);
+            this.SelectField.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.SelectField.Name = "SelectField";
-            this.SelectField.Size = new System.Drawing.Size(196, 37);
+            this.SelectField.Size = new System.Drawing.Size(86, 21);
             this.SelectField.TabIndex = 35;
             this.SelectField.SelectedIndexChanged += new System.EventHandler(this.SelectField_SelectedIndexChanged);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2305, 1354);
+            this.ClientSize = new System.Drawing.Size(1035, 557);
             this.Controls.Add(this.SelectField);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.QueryFileDirectory);
@@ -538,7 +535,7 @@
             this.Controls.Add(this.CollectionButton);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.GUI_Load);

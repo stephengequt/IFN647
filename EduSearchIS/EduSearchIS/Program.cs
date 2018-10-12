@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Syn.WordNet;
 
 namespace EduSearchIS
 {
@@ -71,6 +72,27 @@ namespace EduSearchIS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI());
+
+            WordNetEngine wordNet = WordNet.GetWordNetEngineInstance();
+
+            while (true)
+            {
+                Console.WriteLine("\nType first word");
+                var word = Console.ReadLine();
+                var synSetList = wordNet.GetSynSets(word);
+
+                if (synSetList.Count == 0) Console.WriteLine($"No SynSet found for '{word}'");
+
+                foreach (var synSet in synSetList)
+                {
+                    var words = string.Join(", ", synSet.Words);
+
+                    Console.WriteLine($"\nWords: {words}");
+                    Console.WriteLine($"POS: {synSet.PartOfSpeech}");
+                    Console.WriteLine($"Gloss: {synSet.Gloss}");
+                }
+            }
+
 
             Console.ReadLine();
         }
