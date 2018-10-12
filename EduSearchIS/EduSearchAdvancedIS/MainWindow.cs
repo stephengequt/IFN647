@@ -575,5 +575,12 @@ namespace EduSearchAdvancedIS
         {
 
         }
+
+        private void QueryFileBrowseButton_Click(object sender, EventArgs e)
+        {
+            folderToReadLocation.ShowDialog();
+            QueryFileDirectory.Text = folderToReadLocation.SelectedPath;
+            this.documentPath = folderToReadLocation.SelectedPath;
+        }
     }
 }
