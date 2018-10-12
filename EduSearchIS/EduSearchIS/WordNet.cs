@@ -10,7 +10,7 @@ namespace EduSearchIS
 {
     class WordNet
     {
-        protected const string WordNet_Dir = @"D:\Repos\IFN647\IFN647\EduSearchIS\WordNetDatabase";
+        protected const string WordNet_Dir = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\dict";
 
         public static WordNetEngine GetWordNetEngineInstance()
         {

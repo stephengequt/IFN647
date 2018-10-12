@@ -218,10 +218,15 @@ namespace EduSearchAdvancedIS
                 DateTime startSearchTime = System.DateTime.Now;
                 myLuceneApp.CreateSearcher();
 
-//            var query =
-//                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
+                //            var query =
+                //                "what \"similarity laws\" must be obeyed when constructing aeroelastic models of heated high speed aircraft";
 
                 //SearchResult searchResult = myLuceneApp.SearchText(query);
+
+                //TODO: method to expand the query
+                //Within the query method, use Wordnet class according to program class main method in baseline sstem
+
+
                 SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
 
                 // Time for searching
