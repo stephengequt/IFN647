@@ -520,6 +520,7 @@ namespace EduSearchIS
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.IndexDirectoryTextBox);
             this.groupBox1.Controls.Add(this.CollectionDirectoryTextBox);
             this.groupBox1.Controls.Add(this.IndexButton);
@@ -527,9 +528,9 @@ namespace EduSearchIS
             this.groupBox1.Controls.Add(this.CreateIndexButton);
             this.groupBox1.Controls.Add(this.TimeLabelToIndex);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(536, 96);
+            this.groupBox1.Location = new System.Drawing.Point(536, 75);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1009, 145);
+            this.groupBox1.Size = new System.Drawing.Size(1009, 166);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Index";
@@ -548,6 +549,7 @@ namespace EduSearchIS
             // 
             // groupBox2
             // 
+            this.groupBox2.AutoSize = true;
             this.groupBox2.Controls.Add(this.QueryListView);
             this.groupBox2.Controls.Add(this.QueryFileDirectory);
             this.groupBox2.Controls.Add(this.button1);
@@ -561,6 +563,7 @@ namespace EduSearchIS
             // 
             // groupBox3
             // 
+            this.groupBox3.AutoSize = true;
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.StatusLabel);
             this.groupBox3.Controls.Add(this.label2);
@@ -575,26 +578,28 @@ namespace EduSearchIS
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(155, 382);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1119, 631);
+            this.groupBox3.Size = new System.Drawing.Size(1106, 656);
             this.groupBox3.TabIndex = 38;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
             // 
             // groupBox4
             // 
+            this.groupBox4.AutoSize = true;
             this.groupBox4.Controls.Add(this.PreprocessingCheckBox);
             this.groupBox4.Controls.Add(this.QueryBox);
             this.groupBox4.Controls.Add(this.SearchButton);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(536, 247);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1009, 129);
+            this.groupBox4.Size = new System.Drawing.Size(1009, 135);
             this.groupBox4.TabIndex = 39;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Search";
             // 
             // groupBox5
             // 
+            this.groupBox5.AutoSize = true;
             this.groupBox5.Controls.Add(this.ResultDirectoryText);
             this.groupBox5.Controls.Add(this.ResultMsg);
             this.groupBox5.Controls.Add(this.BrowseResultButton);
@@ -612,6 +617,7 @@ namespace EduSearchIS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.NumOfResultText);

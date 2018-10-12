@@ -535,5 +535,45 @@ namespace EduSearchAdvancedIS
         {
             this.SelectedSearchField = SelectField.SelectedItem.ToString();
         }
+
+        private void StatusLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QueryFileDirectory_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResultMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PageNumLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
