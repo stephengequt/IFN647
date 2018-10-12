@@ -166,12 +166,12 @@
             // 
             // QueryBox
             // 
-            this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.QueryBox.Location = new System.Drawing.Point(79, 112);
             this.QueryBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(1274, 41);
+            this.QueryBox.Size = new System.Drawing.Size(1274, 48);
             this.QueryBox.TabIndex = 8;
             this.QueryBox.Text = "Enter Query";
             this.QueryBox.TextChanged += new System.EventHandler(this.QueryBox_TextChanged);
@@ -207,7 +207,7 @@
             // 
             this.TimeTakenToSearch.AutoSize = true;
             this.TimeTakenToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(606, 78);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(1405, 138);
             this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
             this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
@@ -366,7 +366,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 127);
+            this.label2.Location = new System.Drawing.Point(12, 138);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 29);
@@ -377,18 +377,17 @@
             // FinalQueryText
             // 
             this.FinalQueryText.AutoSize = true;
-            this.FinalQueryText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FinalQueryText.Location = new System.Drawing.Point(173, 127);
+            this.FinalQueryText.Location = new System.Drawing.Point(165, 138);
             this.FinalQueryText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.FinalQueryText.Name = "FinalQueryText";
-            this.FinalQueryText.Size = new System.Drawing.Size(0, 29);
+            this.FinalQueryText.Size = new System.Drawing.Size(0, 40);
             this.FinalQueryText.TabIndex = 25;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 175);
+            this.label3.Location = new System.Drawing.Point(12, 185);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(206, 29);
@@ -400,11 +399,10 @@
             // 
             this.NumOfResultText.AutoSize = true;
             this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
-            this.NumOfResultText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumOfResultText.Location = new System.Drawing.Point(243, 165);
+            this.NumOfResultText.Location = new System.Drawing.Point(228, 185);
             this.NumOfResultText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.NumOfResultText.Name = "NumOfResultText";
-            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 40);
             this.NumOfResultText.TabIndex = 27;
             // 
             // ResultMsg

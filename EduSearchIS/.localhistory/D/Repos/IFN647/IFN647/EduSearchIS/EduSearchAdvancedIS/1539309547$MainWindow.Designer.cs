@@ -207,7 +207,7 @@
             // 
             this.TimeTakenToSearch.AutoSize = true;
             this.TimeTakenToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(606, 78);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(1405, 138);
             this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
             this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
