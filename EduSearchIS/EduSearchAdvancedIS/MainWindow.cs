@@ -14,23 +14,10 @@ namespace EduSearchAdvancedIS
     {
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
-        DataTable table = new DataTable();
         // source collection
+        private string documentPath = @"..\..\..\collection\crandocs";
+        private string IndexPath = @"..\..\..\assessment2Index";
 
-        static string stephenPath =
-            @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
-
-        static string soamPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\crandocs";
-
-        string aaronPath =
-            @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\crandocs";
-
-        static string stephenIndexPath =
-            @"D:\assessment2Index";
-
-        static string soamIndexPath = @"C:\Users\svege\Dropbox\Master sem 4\IR\Assignment\MainWindow";
-        private string documentPath = stephenPath;
-        private string IndexPath = stephenIndexPath;
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
         private int pageNum = 1;
@@ -495,8 +482,7 @@ namespace EduSearchAdvancedIS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            QueryFileDirectory.Text =
-                @"D:\Google Drive\QUT\Sem4\IFN647 Advanced Information Storage and Retrieval\Assessment2\collection\cran_information_needs.txt";
+            QueryFileDirectory.Text = @"..\..\..\collection\cran_information_needs.txt";
             string content = LuceneAdvancedSearchApplication.OutputFileContent(QueryFileDirectory.Text);
             string[] sections = LuceneAdvancedSearchApplication.SeparateQueryString(content);
             QueryInfo[] queryInfos = LuceneAdvancedSearchApplication.GetQueryInfo(sections);
