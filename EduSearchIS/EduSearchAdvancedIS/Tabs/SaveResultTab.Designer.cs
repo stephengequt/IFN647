@@ -119,7 +119,7 @@
             this.Controls.Add(this.groupBox5);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "SaveResultTab";
-            this.Size = new System.Drawing.Size(651, 554);
+            this.Size = new System.Drawing.Size(993, 650);
             this.Load += new System.EventHandler(this.SaveResultTab_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();

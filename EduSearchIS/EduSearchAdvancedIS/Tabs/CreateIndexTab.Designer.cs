@@ -49,11 +49,11 @@
             this.groupBox1.Controls.Add(this.CreateIndexButton);
             this.groupBox1.Controls.Add(this.TimeLabelToIndex);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(25, 36);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox1.Location = new System.Drawing.Point(11, 16);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1182, 602);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(507, 270);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Index";
@@ -62,10 +62,10 @@
             // 
             this.CollectionDirectoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CollectionDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(28, 71);
-            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionDirectoryTextBox.Location = new System.Drawing.Point(12, 32);
+            this.CollectionDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CollectionDirectoryTextBox.Name = "CollectionDirectoryTextBox";
-            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(800, 34);
+            this.CollectionDirectoryTextBox.Size = new System.Drawing.Size(345, 19);
             this.CollectionDirectoryTextBox.TabIndex = 5;
             this.CollectionDirectoryTextBox.Text = "Insert Collection Directory";
             this.CollectionDirectoryTextBox.TextChanged += new System.EventHandler(this.CollectionDirectoryTextBox_TextChanged);
@@ -74,20 +74,20 @@
             // 
             this.IndexDirectoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IndexDirectoryTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(28, 156);
-            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexDirectoryTextBox.Location = new System.Drawing.Point(12, 70);
+            this.IndexDirectoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IndexDirectoryTextBox.Name = "IndexDirectoryTextBox";
-            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(800, 34);
+            this.IndexDirectoryTextBox.Size = new System.Drawing.Size(345, 19);
             this.IndexDirectoryTextBox.TabIndex = 6;
             this.IndexDirectoryTextBox.Text = "Insert Index Directory";
             // 
             // CollectionButton
             // 
             this.CollectionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CollectionButton.Location = new System.Drawing.Point(863, 71);
-            this.CollectionButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CollectionButton.Location = new System.Drawing.Point(370, 32);
+            this.CollectionButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CollectionButton.Name = "CollectionButton";
-            this.CollectionButton.Size = new System.Drawing.Size(240, 42);
+            this.CollectionButton.Size = new System.Drawing.Size(103, 19);
             this.CollectionButton.TabIndex = 0;
             this.CollectionButton.Text = "Browse";
             this.CollectionButton.UseVisualStyleBackColor = true;
@@ -96,10 +96,10 @@
             // IndexButton
             // 
             this.IndexButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IndexButton.Location = new System.Drawing.Point(863, 156);
-            this.IndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.IndexButton.Location = new System.Drawing.Point(370, 70);
+            this.IndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IndexButton.Name = "IndexButton";
-            this.IndexButton.Size = new System.Drawing.Size(240, 42);
+            this.IndexButton.Size = new System.Drawing.Size(103, 19);
             this.IndexButton.TabIndex = 1;
             this.IndexButton.Text = "Browse";
             this.IndexButton.UseVisualStyleBackColor = true;
@@ -108,10 +108,10 @@
             // CreateIndexButton
             // 
             this.CreateIndexButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateIndexButton.Location = new System.Drawing.Point(349, 403);
-            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.CreateIndexButton.Location = new System.Drawing.Point(150, 181);
+            this.CreateIndexButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CreateIndexButton.Name = "CreateIndexButton";
-            this.CreateIndexButton.Size = new System.Drawing.Size(380, 85);
+            this.CreateIndexButton.Size = new System.Drawing.Size(163, 38);
             this.CreateIndexButton.TabIndex = 4;
             this.CreateIndexButton.Text = "Create Index";
             this.CreateIndexButton.UseVisualStyleBackColor = true;
@@ -121,20 +121,21 @@
             // 
             this.TimeLabelToIndex.AutoSize = true;
             this.TimeLabelToIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeLabelToIndex.Location = new System.Drawing.Point(242, 250);
-            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeLabelToIndex.Location = new System.Drawing.Point(104, 112);
+            this.TimeLabelToIndex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TimeLabelToIndex.Name = "TimeLabelToIndex";
-            this.TimeLabelToIndex.Size = new System.Drawing.Size(239, 29);
+            this.TimeLabelToIndex.Size = new System.Drawing.Size(108, 13);
             this.TimeLabelToIndex.TabIndex = 7;
             this.TimeLabelToIndex.Text = "Time Taken to Index:";
             // 
             // CreateIndexTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "CreateIndexTab";
-            this.Size = new System.Drawing.Size(1246, 806);
+            this.Size = new System.Drawing.Size(993, 650);
             this.Load += new System.EventHandler(this.CreateIndexTab_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

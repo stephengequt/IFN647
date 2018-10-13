@@ -324,7 +324,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(422, 300);
+            this.groupBox4.Size = new System.Drawing.Size(330, 300);
             this.groupBox4.TabIndex = 45;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Query File";
@@ -339,7 +339,7 @@
             this.QueryListView.GridLines = true;
             this.QueryListView.Location = new System.Drawing.Point(20, 102);
             this.QueryListView.Name = "QueryListView";
-            this.QueryListView.Size = new System.Drawing.Size(390, 179);
+            this.QueryListView.Size = new System.Drawing.Size(305, 179);
             this.QueryListView.TabIndex = 32;
             this.QueryListView.UseCompatibleStateImageBehavior = false;
             this.QueryListView.UseWaitCursor = true;
@@ -387,7 +387,7 @@
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "SearchTab";
-            this.Size = new System.Drawing.Size(1084, 694);
+            this.Size = new System.Drawing.Size(993, 650);
             this.Load += new System.EventHandler(this.SearchTab_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
