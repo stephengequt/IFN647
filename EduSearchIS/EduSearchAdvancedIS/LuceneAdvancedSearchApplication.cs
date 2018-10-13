@@ -95,8 +95,10 @@ namespace EduSearchAdvancedIS
         /// <summary>
         /// Creates the searcher object
         /// </summary>
-        public void CreateSearcher()
+        public void CreateSearcher(string indexPath)
         {
+            luceneIndexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
+
             searcher = new IndexSearcher(luceneIndexDirectory);
             //searcher.Similarity = newSimilarity; // Activity 9
         }
@@ -114,16 +116,15 @@ namespace EduSearchAdvancedIS
                 querytext = "\"" + querytext + "\"";
             }
 
-            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
+//            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
 //            Query query = parser.Parse(querytext);
 //            Query query = queryParser.Parse(querytext);
             // TODO: multified needs to be fixed
-//            string[] fields = new String[] {"title", "subject"};
+            string[] fields = new String[] {"Title", "Author"};
 
-//            QueryParser queryParser =  new MultiFieldQueryParser(VERSION,fields , analyzer);
+            MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer);
             Query query = queryParser.Parse(querytext);
-            
-            
+
             TopDocs results = searcher.Search(query, 100);
 
             int rank = 0;
@@ -442,4 +443,3 @@ namespace EduSearchAdvancedIS
         }
     }
 }
-

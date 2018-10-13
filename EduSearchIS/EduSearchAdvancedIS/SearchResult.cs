@@ -9,7 +9,7 @@ namespace EduSearchAdvancedIS
         public string finalQuery { get; set; }
     }
 
-    class DocInfo
+    public class DocInfo
     {
 //        private string Rank { get; set; }
         public string DocID { get; set; }

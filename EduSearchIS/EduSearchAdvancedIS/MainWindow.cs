@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using EduSearchAdvancedIS.Tabs;
 using Syn.WordNet;
 
 namespace EduSearchAdvancedIS
@@ -12,11 +13,15 @@ namespace EduSearchAdvancedIS
 {
     public partial class MainWindow : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
+
         LuceneAdvancedSearchApplication myLuceneApp = new LuceneAdvancedSearchApplication();
 
         // source collection
         private string documentPath = @"..\..\..\collection\crandocs";
-        private string IndexPath = @"..\..\..\assessment2Index";
+        public string IndexPath { get; set; } = @"..\..\..\assessment2Index";
+        private static string defaultIndexPath = @"..\..\..\assessment2Index";
 
         private string CollectionPathTextBox; //This variable is to store the Collection directory enter by user.
         private string IndexPathTextBox; //This variable is to store the Index directory enter by user.
@@ -26,10 +31,26 @@ namespace EduSearchAdvancedIS
         private int selectedDocIndex;
         private string SelectedSearchField;
 
+        CreateIndexTab _createIndexTab = new CreateIndexTab();
+        SearchTab _searchTab = new SearchTab(defaultIndexPath);
+        SaveResultTab _saveResultTab = new SaveResultTab(null, null);
+
 
         public MainWindow()
         {
             InitializeComponent();
+            IndexMenu.BackColor = SystemColors.ControlDarkDark;
+            SearchMenu.BackColor = Color.FromArgb(0, 173, 156);
+            SaveResultMenu.BackColor = SystemColors.ControlDarkDark;
+
+
+            DisplayPanel.Controls.Add(this._searchTab);
+            DisplayPanel.Controls.Add(this._createIndexTab);
+            DisplayPanel.Controls.Add(this._saveResultTab);
+            this._searchTab.BringToFront();
+            this._createIndexTab.Dock = DockStyle.Fill;
+            this._searchTab.Dock = DockStyle.Fill;
+            this._saveResultTab.Dock = DockStyle.Fill;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -202,59 +223,65 @@ namespace EduSearchAdvancedIS
             {
                 // Searching Code
                 DateTime startSearchTime = System.DateTime.Now;
-                myLuceneApp.CreateSearcher();
-
-                //Perform query expansion by connecting to NetWord
-                if (this.myLuceneApp.QueryExpansionOpt)
+                if (string.IsNullOrEmpty(this.IndexPath))
                 {
-                    // Firstly, return token based on query text
-                    char[] delims = {' ', '\n', '.', '\"'};
-                    string[] words = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (var word in words)
-                    {
-                        query += myLuceneApp.QueryExpansionByNetWord(word, this.myLuceneApp.wordNet);
-                    }
-                }
-
-
-                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
-
-                // Time for searching
-                DateTime endSearchTime = System.DateTime.Now;
-                var searchTime = endSearchTime - startSearchTime;
-                TimeTakenToSearch.Text = searchTime.ToString();
-
-                NumOfResultText.Text = searchResult.NumOfResult.ToString();
-                FinalQueryTextBox.Text = searchResult.finalQuery;
-                this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10) + 1;
-                if (maxPageNum > 10)
-                {
-                    maxPageNum = 10;
-                }
-
-                this.docList = searchResult.DocInfoList.ToArray();
-//                Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
-                myLuceneApp.CleanUpSearcher();
-
-                // Populate here with the codes to display the top 10 result
-                DataTable table = new DataTable();
-
-                if (this.docList.Length == 0)
-                {
-                    Console.WriteLine("No result.");
-                }
-                else if (this.pageNum == this.maxPageNum)
-                {
-                    table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
+                    MessageBox.Show("Please select index directory first!", "Error");
                 }
                 else
                 {
-                    table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
-                }
+                    myLuceneApp.CreateSearcher(this.IndexPath);
 
-                dataGridView1.DataSource = table;
-                TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
+                    //Perform query expansion by connecting to NetWord
+                    if (this.myLuceneApp.QueryExpansionOpt)
+                    {
+                        // Firstly, return token based on query text
+                        char[] delims = {' ', '\n', '.', '\"'};
+                        string[] words = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (var word in words)
+                        {
+                            query += myLuceneApp.QueryExpansionByNetWord(word, this.myLuceneApp.wordNet);
+                        }
+                    }
+
+                    SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
+
+                    // Time for searching
+                    DateTime endSearchTime = System.DateTime.Now;
+                    var searchTime = endSearchTime - startSearchTime;
+                    TimeTakenToSearch.Text = searchTime.ToString();
+
+                    NumOfResultText.Text = searchResult.NumOfResult.ToString();
+                    FinalQueryTextBox.Text = searchResult.finalQuery;
+                    this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10) + 1;
+                    if (maxPageNum > 10)
+                    {
+                        maxPageNum = 10;
+                    }
+
+                    this.docList = searchResult.DocInfoList.ToArray();
+                    //                Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
+                    myLuceneApp.CleanUpSearcher();
+
+                    // Populate here with the codes to display the top 10 result
+                    DataTable table = new DataTable();
+
+                    if (this.docList.Length == 0)
+                    {
+                        Console.WriteLine("No result.");
+                    }
+                    else if (this.pageNum == this.maxPageNum)
+                    {
+                        table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
+                    }
+                    else
+                    {
+                        table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
+                    }
+
+                    dataGridView1.DataSource = table;
+                    TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
+                }
             }
         }
 
@@ -474,11 +501,7 @@ namespace EduSearchAdvancedIS
         {
         }
 
-        private void saveResultToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveResultWindow saveResultWindow = new SaveResultWindow();
-            saveResultWindow.Show();
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -490,7 +513,7 @@ namespace EduSearchAdvancedIS
             {
                 var row = new string[] {queryInfo.QueryID, queryInfo.QueryContent};
                 var listViewItem = new ListViewItem(row);
-                listViewItem.Tag = queryInfo;
+//                listViewItem.Tag = queryInfo;
                 QueryListView.Items.Add(listViewItem);
             }
         }
@@ -600,5 +623,83 @@ namespace EduSearchAdvancedIS
                 Console.WriteLine("WordNet Loaded.");
             }
         }
+
+        private void QueryListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void MainWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void MainWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Really Quit?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void IndexMenu_Click(object sender, EventArgs e)
+        {
+            IndexMenu.BackColor = Color.FromArgb(0, 173, 156);
+            SearchMenu.BackColor = SystemColors.ControlDarkDark;
+            SaveResultMenu.BackColor = SystemColors.ControlDarkDark;
+
+//            if (!DisplayPanel.Controls.Contains(CreateIndexTab.Instance))
+//            {
+//                DisplayPanel.Controls.Add(CreateIndexTab.Instance);
+//                CreateIndexTab.Instance.Dock = DockStyle.Fill;
+//                CreateIndexTab.Instance.BringToFront();
+//            }
+//            else
+//            {
+//                CreateIndexTab.Instance.BringToFront();
+//            }
+
+            _createIndexTab.BringToFront();
+        }
+
+        private void SearchMenu_Click(object sender, EventArgs e)
+        {
+            IndexMenu.BackColor = SystemColors.ControlDarkDark;
+            SearchMenu.BackColor = Color.FromArgb(0, 173, 156);
+            SaveResultMenu.BackColor = SystemColors.ControlDarkDark;
+
+            if (_createIndexTab.indexChanged)
+            {
+                this._searchTab.IndexPath = _createIndexTab.IndexPath;
+            }
+
+            this._searchTab.BringToFront();
+        }
+
+        private void SaveResultMenu_Click(object sender, EventArgs e)
+        {
+            IndexMenu.BackColor = SystemColors.ControlDarkDark;
+            SearchMenu.BackColor = SystemColors.ControlDarkDark;
+            SaveResultMenu.BackColor = Color.FromArgb(0, 173, 156);
+
+            this._saveResultTab.BringToFront();
+        }
     }
 }
+

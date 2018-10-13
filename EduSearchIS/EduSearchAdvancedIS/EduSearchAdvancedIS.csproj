@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tabs\CreateIndexTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\CreateIndexTab.Designer.cs">
+      <DependentUpon>CreateIndexTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,12 +70,6 @@
     <Compile Include="LuceneAdvancedSearchApplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveResultWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaveResultWindow.Designer.cs">
-      <DependentUpon>SaveResultWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="SearchResult.cs" />
     <Compile Include="SettingWindow.cs">
       <SubType>Form</SubType>
@@ -77,7 +77,22 @@
     <Compile Include="SettingWindow.Designer.cs">
       <DependentUpon>SettingWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tabs\SaveResultTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\SaveResultTab.Designer.cs">
+      <DependentUpon>SaveResultTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs\SearchTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tabs\SearchTab.Designer.cs">
+      <DependentUpon>SearchTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="WordNet.cs" />
+    <EmbeddedResource Include="Tabs\CreateIndexTab.resx">
+      <DependentUpon>CreateIndexTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,8 +105,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SaveResultWindow.resx">
-      <DependentUpon>SaveResultWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Tabs\SaveResultTab.resx">
+      <DependentUpon>SaveResultTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabs\SearchTab.resx">
+      <DependentUpon>SearchTab.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
