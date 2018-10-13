@@ -70,6 +70,8 @@ namespace EduSearchBaselineIS
 //            Application.Run(new GUI());
 
 
+
+            // using Word Net
             WordNetEngine wordNet = WordNet.GetWordNetEngineInstance();
 
             while (true)
@@ -82,11 +84,11 @@ namespace EduSearchBaselineIS
 
                 foreach (var synSet in synSetList)
                 {
-                    var words = string.Join(", ", synSet.Words);
+                    var words = string.Join(" ", synSet.Words);
 
                     Console.WriteLine($"\nWords: {words}");
-                    Console.WriteLine($"POS: {synSet.PartOfSpeech}");
-                    Console.WriteLine($"Gloss: {synSet.Gloss}");
+                    //Console.WriteLine($"POS: {synSet.PartOfSpeech}");
+                    //Console.WriteLine($"Gloss: {synSet.Gloss}");
                 }
             }
 
