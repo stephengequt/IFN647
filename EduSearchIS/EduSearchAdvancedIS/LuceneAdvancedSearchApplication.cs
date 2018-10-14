@@ -23,10 +23,12 @@ namespace EduSearchAdvancedIS
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
         const string TEXT_FN = "Full text";
-        const string ID_FN = "ID";
-        const string FILEPATH_FN = "Filepath";
+//        const string ID_FN = "ID";
+//        const string FILEPATH_FN = "Filepath";
         const string TITLE_FN = "Title";
         const string AUTHOR_FN = "Author";
+        private const string BIB_FN = "Bib";
+        private const string ABS_FN = "Abs";
         public bool PreProcessOpt { get; set; }
         public bool QueryExpansionOpt { get; set; }
         public WordNetEngine wordNet { get; set; }
@@ -38,8 +40,8 @@ namespace EduSearchAdvancedIS
             writer = null;
 //            analyzer = new Lucene.Net.Analysis.WhitespaceAnalyzer();
 //            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
-            analyzer = new Lucene.Net.Analysis.StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
-            //analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
+//            analyzer = new Lucene.Net.Analysis.StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
+            analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
 //            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
 
 
@@ -69,14 +71,26 @@ namespace EduSearchAdvancedIS
             DocInfo docInfo = OutputSections(text);
             Lucene.Net.Documents.Field field = new Field(TEXT_FN, text, Field.Store.YES, Field.Index.ANALYZED,
                 Field.TermVector.YES);
-            Lucene.Net.Documents.Field docAuthorfield = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES,
+            // Add field Author
+            Lucene.Net.Documents.Field docAuthorField = new Field(AUTHOR_FN, docInfo.Author, Field.Store.YES,
                 Field.Index.ANALYZED, Field.TermVector.YES);
-            Lucene.Net.Documents.Field docTitlefield = new Field(TITLE_FN, docInfo.Title, Field.Store.YES,
+            // Add field Title
+            Lucene.Net.Documents.Field docTitleField = new Field(TITLE_FN, docInfo.Title, Field.Store.YES,
                 Field.Index.ANALYZED, Field.TermVector.YES);
+            //Add field Bibliography
+            Lucene.Net.Documents.Field docBibliographyField = new Field(BIB_FN, docInfo.Bibliography, Field.Store.YES,
+                Field.Index.ANALYZED, Field.TermVector.YES);
+            //Add field Abstract
+            Lucene.Net.Documents.Field docAbstractField = new Field(ABS_FN, docInfo.Abstract, Field.Store.YES,
+                Field.Index.ANALYZED, Field.TermVector.YES);
+
             Lucene.Net.Documents.Document doc = new Document();
+//            doc.Add(field);
+            doc.Add(docAuthorField);
+            doc.Add(docTitleField);
+            doc.Add(docBibliographyField);
+            doc.Add(docAbstractField);
             doc.Add(field);
-            doc.Add(docAuthorfield);
-            doc.Add(docTitlefield);
             writer.AddDocument(doc);
         }
 
@@ -111,16 +125,18 @@ namespace EduSearchAdvancedIS
         {
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
-            if (!PreProcessOpt)
+            if (PreProcessOpt)
             {
                 querytext = "\"" + querytext + "\"";
             }
 
+            searchField = TEXT_FN;
 //            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
 //            Query query = parser.Parse(querytext);
 //            Query query = queryParser.Parse(querytext);
             // TODO: multified needs to be fixed
-            string[] fields = new String[] {"Title", "Author"};
+            string[] fields = new String[] {TITLE_FN, AUTHOR_FN, BIB_FN, ABS_FN};
+//            string[] fields = new String[] {  ABS_FN };
 
             MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer);
             Query query = queryParser.Parse(querytext);
@@ -376,40 +392,62 @@ namespace EduSearchAdvancedIS
             return fileList;
         }
 
-        public static DataTable ViewCurrenPage(DataTable table, DocInfo[] docList, int pageNum)
+        public static DataGridView ViewCurrenPage(DataGridView dataGridView, DocInfo[] docList, int pageNum)
         {
             var pageIndex = pageNum - 1;
-            table.Columns.Add("Rank", typeof(int));
-            table.Columns.Add("Title", typeof(string));
-            table.Columns.Add("Author", typeof(string));
-            table.Columns.Add("Bibliography", typeof(string));
-            table.Columns.Add("1st sentence of the abstract", typeof(string));
+//            table.Columns.Add("Rank", typeof(int));
+//            table.Columns.Add("Title", typeof(string));
+//            table.Columns.Add("Author", typeof(string));
+//            table.Columns.Add("Bibliography", typeof(string));
+//            table.Columns.Add("1st sentence of the abstract", typeof(string));
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                dataGridView.Rows[i].Visible = false;
+            }            
+
+
             for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
             {
-                DocInfo docInfo = docList[i];
-//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
-                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+                dataGridView.Rows[i].Visible = true;
             }
 
-            return table;
+            //            for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
+            //            {
+            //                DocInfo docInfo = docList[i];
+            //                //                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+            //                dataGridView.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+            //            }
+
+            return dataGridView;
         }
 
-        public static DataTable ViewLastPage(DataTable table, DocInfo[] docList, int pageNum)
+        public static DataGridView ViewLastPage(DataGridView dataGridView, DocInfo[] docList, int pageNum)
         {
             var pageIndex = pageNum - 1;
-            table.Columns.Add("Rank", typeof(int));
-            table.Columns.Add("Title", typeof(string));
-            table.Columns.Add("Author", typeof(string));
-            table.Columns.Add("Bibliography", typeof(string));
-            table.Columns.Add("1st sentence of the abstract", typeof(string));
-            for (int i = pageIndex * 10; i < docList.Length; i++)
+//            table.Columns.Add("Rank", typeof(int));
+//            table.Columns.Add("Title", typeof(string));
+//            table.Columns.Add("Author", typeof(string));
+//            table.Columns.Add("Bibliography", typeof(string));
+//            table.Columns.Add("1st sentence of the abstract", typeof(string));
+//            for (int i = pageIndex * 10; i < docList.Length; i++)
+//            {
+//                DocInfo docInfo = docList[i];
+////                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
+//                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+//            }
+
+            for (int i = 0; i < dataGridView.RowCount; i++)
             {
-                DocInfo docInfo = docList[i];
-//                DocInfo docInfo = LuceneAdvancedSearchApplication.OutputSections(doc);
-                table.Rows.Add(i + 1, docInfo.Title, docInfo.Author, docInfo.Bibliography, docInfo.Sentence);
+                dataGridView.Rows[i].Visible = false;
             }
 
-            return table;
+
+            for (int i = 0 + pageIndex * 10; i <  dataGridView.RowCount; i++)
+            {
+                dataGridView.Rows[i].Visible = true;
+            }
+
+            return dataGridView;
         }
 
         public static DocInfo ViewSelectedDocInfo(DocInfo[] docList, int selectedDocIndex)
