@@ -40,7 +40,10 @@ namespace EduSearchAdvancedIS.Tabs
             this.IndexPath = indexPath;
             this.TopicIdChanged = false;
             PreviousButton.Enabled = false;
-            
+            FieldLevelBoostPanel.Enabled = false;
+            TitleBoostNum.Enabled = false;
+            AuthorboostNum.Enabled = false;
+
         }
 
         private void SearchTab_Load(object sender, EventArgs e)
@@ -269,6 +272,7 @@ namespace EduSearchAdvancedIS.Tabs
             }
             else
             {
+                dataGridView1.Rows.Clear();
                 myLuceneApp.CreateSearcher(this.IndexPath);
 
                 //Perform query expansion by connecting to NetWord
@@ -284,7 +288,7 @@ namespace EduSearchAdvancedIS.Tabs
                     }
                 }
 
-                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
+                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField, TitleBoostCheckBox.Enabled, AuthorBoostCheckBox.Enabled, TitleBoostNum.Value, AuthorboostNum.Value);
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
@@ -357,6 +361,29 @@ namespace EduSearchAdvancedIS.Tabs
         {
             MessageBox.Show((string)finalQuery, "Final Query");
 
+        }
+
+        private void FieldBoostCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (FieldBoostCheckBox.Checked)
+            {
+                FieldLevelBoostPanel.Enabled = true;
+            }
+            else
+            {
+                FieldLevelBoostPanel.Enabled = false;
+            }
+        }
+
+        private void TitleBoostCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            TitleBoostNum.Enabled = TitleBoostCheckBox.Checked;
+        }
+
+        private void AuthorBoostCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AuthorboostNum.Enabled = AuthorBoostCheckBox.Checked;
+//            AuthorboostNum.
         }
     }
 }

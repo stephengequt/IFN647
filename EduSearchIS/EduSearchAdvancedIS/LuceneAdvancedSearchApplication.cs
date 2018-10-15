@@ -8,6 +8,7 @@ using Lucene.Net.Documents;
 using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Search;
+using Lucene.Net.Support;
 using Syn.WordNet;
 
 namespace EduSearchAdvancedIS
@@ -22,14 +23,16 @@ namespace EduSearchAdvancedIS
         Similarity newSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
+
         const string TEXT_FN = "Full text";
+
 //        const string ID_FN = "ID";
 //        const string FILEPATH_FN = "Filepath";
         const string TITLE_FN = "Title";
         const string AUTHOR_FN = "Author";
         private const string BIB_FN = "Bib";
         private const string ABS_FN = "Abs";
-        public bool PreProcessOpt { get; set; }
+        public bool PreProcessOpt { get; set; } = true;
         public bool QueryExpansionOpt { get; set; }
         public WordNetEngine wordNet { get; set; }
 
@@ -42,7 +45,8 @@ namespace EduSearchAdvancedIS
 //            analyzer = new Lucene.Net.Analysis.SimpleAnalyzer(); // Activity 5
 //            analyzer = new Lucene.Net.Analysis.StopAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
 //            analyzer = new Lucene.Net.Analysis.Standard.StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30); // Activity 5
-            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30, "English"); // Activity 7
+            analyzer = new Lucene.Net.Analysis.Snowball.SnowballAnalyzer(Lucene.Net.Util.Version.LUCENE_30,
+                "English"); // Activity 7
 
 
             parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, TEXT_FN, analyzer);
@@ -121,11 +125,12 @@ namespace EduSearchAdvancedIS
         /// Searches the index for the querytext
         /// </summary>
         /// <param name="querytext">The text to search the index</param>
-        public SearchResult SearchText(string querytext, string searchField)
+        public SearchResult SearchText(string querytext, string searchField, bool ifTitleBoost, bool ifAuthorBoost,
+            decimal titleBoostNum, decimal authorBoostNum)
         {
             System.Console.WriteLine("Searching for " + querytext);
             querytext = querytext.ToLower();
-            if (PreProcessOpt)
+            if (!PreProcessOpt)
             {
                 querytext = "\"" + querytext + "\"";
             }
@@ -136,9 +141,21 @@ namespace EduSearchAdvancedIS
 //            Query query = queryParser.Parse(querytext);
             // TODO: multified needs to be fixed
             string[] fields = new String[] {TITLE_FN, AUTHOR_FN, BIB_FN, ABS_FN};
-//            string[] fields = new String[] {  ABS_FN };
+            //            string[] fields = new String[] {  ABS_FN };
 
-            MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer);
+            HashMap<string, float> boosts = new HashMap<string, float>();
+            //
+            if (ifTitleBoost)
+            {
+                boosts.Add(TITLE_FN, Convert.ToSingle(titleBoostNum));
+            }
+
+            if (ifAuthorBoost)
+            {
+                boosts.Add(AUTHOR_FN, Convert.ToSingle(authorBoostNum));
+            }
+
+            MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer, boosts);
             Query query = queryParser.Parse(querytext);
 
             TopDocs results = searcher.Search(query, 100);
@@ -275,47 +292,6 @@ namespace EduSearchAdvancedIS
             return docInfo;
         }
 
-        public TopDocs DTSearchText(string querytext, Label message)
-        {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            querytext = querytext.ToLower();
-            Query query = parser.Parse(querytext);
-            TopDocs results = searcher.Search(query, 6000);
-            watch.Stop();
-            var queryTime = watch.ElapsedMilliseconds;
-            int totalHits = results.TotalHits;
-            message.ForeColor = Color.Green;
-            message.Text = "Found " + totalHits + " documents (" + queryTime + "ms)";
-            return results;
-        }
-
-        //public DataTable DTResults(TopDocs results, Form form, DataTable dt)
-        //{
-        //    int rank = 1;
-        //    int totalHits = results.TotalHits;
-        //    dt.Clear();
-
-        //    foreach (ScoreDoc scoreDoc in results.ScoreDocs)
-        //    {
-        //        DataRow dr = dt.NewRow();
-
-        //        Lucene.Net.Documents.Document doc = searcher.Doc(scoreDoc.Doc);
-        //        string idValue = doc.Get(ID_FN).ToString();
-        //        string textValue = doc.Get(TEXT_FN).ToString();
-        //        string filepathValue = doc.Get(FILEPATH_FN).ToString();
-
-        //        int middleOftext = (int)(textValue.Length / 2);
-
-        //        dr[0] = idValue;
-        //        dr[1] = rank;
-        //        dr[2] = textValue.Trim().Substring(0, 10);
-        //        dr[3] = scoreDoc.Score;
-        //        dr[4] = filepathValue;
-        //        dt.Rows.Add(dr);
-        //        rank++;
-        //    }
-        //    return dt;
-        //}
 
         public void ResultBrowser(ScoreDoc[] docList, int pageIndex)
         {
@@ -403,7 +379,7 @@ namespace EduSearchAdvancedIS
             for (int i = 0; i < dataGridView.RowCount; i++)
             {
                 dataGridView.Rows[i].Visible = false;
-            }            
+            }
 
 
             for (int i = 0 + pageIndex * 10; i < 10 + pageIndex * 10; i++)
@@ -442,7 +418,7 @@ namespace EduSearchAdvancedIS
             }
 
 
-            for (int i = 0 + pageIndex * 10; i <  dataGridView.RowCount; i++)
+            for (int i = 0 + pageIndex * 10; i < dataGridView.RowCount; i++)
             {
                 dataGridView.Rows[i].Visible = true;
             }

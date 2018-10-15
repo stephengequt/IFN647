@@ -65,10 +65,10 @@
             // 
             this.DisplayPanel.BackColor = System.Drawing.Color.White;
             this.DisplayPanel.ForeColor = System.Drawing.Color.Black;
-            this.DisplayPanel.Location = new System.Drawing.Point(216, 108);
-            this.DisplayPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.DisplayPanel.Location = new System.Drawing.Point(96, 48);
+            this.DisplayPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.DisplayPanel.Name = "DisplayPanel";
-            this.DisplayPanel.Size = new System.Drawing.Size(2234, 1224);
+            this.DisplayPanel.Size = new System.Drawing.Size(993, 565);
             this.DisplayPanel.TabIndex = 44;
             // 
             // QueryFileBrowseButton
@@ -96,9 +96,10 @@
             this.panel3.Controls.Add(this.SearchButton);
             this.panel3.Controls.Add(this.QueryBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 1332);
+            this.panel3.Location = new System.Drawing.Point(0, 613);
+            this.panel3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2450, 238);
+            this.panel3.Size = new System.Drawing.Size(1089, 107);
             this.panel3.TabIndex = 46;
             // 
             // button1
@@ -106,9 +107,10 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(114, 107);
+            this.button1.Location = new System.Drawing.Point(51, 48);
+            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(433, 60);
+            this.button1.Size = new System.Drawing.Size(192, 27);
             this.button1.TabIndex = 41;
             this.button1.Text = "Quick Copy From Selected Query";
             this.button1.UseVisualStyleBackColor = false;
@@ -118,10 +120,9 @@
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(749, 124);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(333, 55);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(161, 29);
+            this.StatusLabel.Size = new System.Drawing.Size(74, 13);
             this.StatusLabel.TabIndex = 40;
             this.StatusLabel.Text = "Search Status";
             this.StatusLabel.Click += new System.EventHandler(this.StatusLabel_Click);
@@ -130,10 +131,10 @@
             // 
             this.TimeTakenToSearch.AutoSize = true;
             this.TimeTakenToSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeTakenToSearch.Location = new System.Drawing.Point(1064, 124);
-            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TimeTakenToSearch.Location = new System.Drawing.Point(473, 55);
+            this.TimeTakenToSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TimeTakenToSearch.Name = "TimeTakenToSearch";
-            this.TimeTakenToSearch.Size = new System.Drawing.Size(257, 29);
+            this.TimeTakenToSearch.Size = new System.Drawing.Size(116, 13);
             this.TimeTakenToSearch.TabIndex = 39;
             this.TimeTakenToSearch.Text = "Time Taken to Search:";
             this.TimeTakenToSearch.Click += new System.EventHandler(this.TimeTakenToSearch_Click);
@@ -143,10 +144,10 @@
             this.SearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
             this.SearchButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchButton.ForeColor = System.Drawing.Color.White;
-            this.SearchButton.Location = new System.Drawing.Point(1710, 42);
-            this.SearchButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.SearchButton.Location = new System.Drawing.Point(760, 19);
+            this.SearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(380, 73);
+            this.SearchButton.Size = new System.Drawing.Size(169, 32);
             this.SearchButton.TabIndex = 10;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = false;
@@ -156,10 +157,10 @@
             // 
             this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.QueryBox.Location = new System.Drawing.Point(114, 42);
-            this.QueryBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.QueryBox.Location = new System.Drawing.Point(51, 19);
+            this.QueryBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.QueryBox.Name = "QueryBox";
-            this.QueryBox.Size = new System.Drawing.Size(1532, 41);
+            this.QueryBox.Size = new System.Drawing.Size(683, 23);
             this.QueryBox.TabIndex = 9;
             this.QueryBox.Text = "Enter Query";
             // 
@@ -172,9 +173,9 @@
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
-            this.sidepanel.Margin = new System.Windows.Forms.Padding(2);
+            this.sidepanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.sidepanel.Name = "sidepanel";
-            this.sidepanel.Size = new System.Drawing.Size(216, 1332);
+            this.sidepanel.Size = new System.Drawing.Size(96, 613);
             this.sidepanel.TabIndex = 47;
             // 
             // SaveResultMenu
@@ -186,10 +187,10 @@
             this.SaveResultMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveResultMenu.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveResultMenu.ForeColor = System.Drawing.Color.Black;
-            this.SaveResultMenu.Location = new System.Drawing.Point(0, 320);
-            this.SaveResultMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.SaveResultMenu.Location = new System.Drawing.Point(0, 142);
+            this.SaveResultMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.SaveResultMenu.Name = "SaveResultMenu";
-            this.SaveResultMenu.Size = new System.Drawing.Size(216, 108);
+            this.SaveResultMenu.Size = new System.Drawing.Size(96, 48);
             this.SaveResultMenu.TabIndex = 4;
             this.SaveResultMenu.Text = "Save Result";
             this.SaveResultMenu.UseVisualStyleBackColor = false;
@@ -204,10 +205,10 @@
             this.SearchMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchMenu.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchMenu.ForeColor = System.Drawing.Color.Black;
-            this.SearchMenu.Location = new System.Drawing.Point(0, 212);
-            this.SearchMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchMenu.Location = new System.Drawing.Point(0, 94);
+            this.SearchMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.SearchMenu.Name = "SearchMenu";
-            this.SearchMenu.Size = new System.Drawing.Size(216, 108);
+            this.SearchMenu.Size = new System.Drawing.Size(96, 48);
             this.SearchMenu.TabIndex = 2;
             this.SearchMenu.Text = "Search";
             this.SearchMenu.UseVisualStyleBackColor = false;
@@ -222,10 +223,10 @@
             this.IndexMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.IndexMenu.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IndexMenu.ForeColor = System.Drawing.Color.Black;
-            this.IndexMenu.Location = new System.Drawing.Point(0, 104);
-            this.IndexMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.IndexMenu.Location = new System.Drawing.Point(0, 46);
+            this.IndexMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.IndexMenu.Name = "IndexMenu";
-            this.IndexMenu.Size = new System.Drawing.Size(216, 108);
+            this.IndexMenu.Size = new System.Drawing.Size(96, 48);
             this.IndexMenu.TabIndex = 1;
             this.IndexMenu.Text = "Create Index";
             this.IndexMenu.UseVisualStyleBackColor = false;
@@ -237,9 +238,9 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(216, 104);
+            this.panel1.Size = new System.Drawing.Size(96, 46);
             this.panel1.TabIndex = 0;
             // 
             // label4
@@ -247,10 +248,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.label4.Location = new System.Drawing.Point(23, 35);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(10, 16);
+            this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 34);
+            this.label4.Size = new System.Drawing.Size(81, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "EduSearch";
             // 
@@ -260,10 +261,10 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(216, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(96, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2234, 108);
+            this.panel2.Size = new System.Drawing.Size(993, 48);
             this.panel2.TabIndex = 48;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseMove);
@@ -274,9 +275,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.label1.Location = new System.Drawing.Point(588, 22);
+            this.label1.Location = new System.Drawing.Point(261, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(994, 72);
+            this.label1.Size = new System.Drawing.Size(447, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Kingsland University of Technology";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
@@ -290,31 +292,31 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(2180, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(962, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(54, 45);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(31, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 41);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(26, 22);
             this.toolStripMenuItem1.Text = "X";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(216F, 216F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(2450, 1570);
+            this.ClientSize = new System.Drawing.Size(1089, 720);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.sidepanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.DisplayPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
