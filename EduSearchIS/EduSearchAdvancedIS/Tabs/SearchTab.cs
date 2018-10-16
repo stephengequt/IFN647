@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Runtime.DesignerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -196,6 +197,12 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void QueryExpansionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+
+            this.FieldBoostCheckBox.Enabled = !QueryExpansionCheckBox.Checked;
+            if (QueryExpansionCheckBox.Checked)
+            {
+                this.FieldBoostCheckBox.Checked = false;
+            }
             this.myLuceneApp.QueryExpansionOpt = QueryExpansionCheckBox.Checked;
             if (this.myLuceneApp.QueryExpansionOpt)
             {
@@ -280,12 +287,21 @@ namespace EduSearchAdvancedIS.Tabs
                 {
                     // Firstly, return token based on query text
                     char[] delims = {' ', '\n', '.', '\"'};
-                    string[] words = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-                    query += " ";
-                    foreach (var word in words)
+                    string[] originalQueryWords = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+
+                    string weightedQuery = null;
+                    foreach (var word in originalQueryWords)
                     {
-                        query += myLuceneApp.QueryExpansionByNetWord(word, this.myLuceneApp.wordNet);
+                        string weightedWord = word + "^5";
+                        weightedQuery += " " + weightedWord;
                     }
+                    weightedQuery += " ";
+                    foreach (var word in originalQueryWords)
+                    {
+                        weightedQuery += myLuceneApp.QueryExpansionByNetWord(word, this.myLuceneApp.wordNet);
+                    }
+
+                    query = weightedQuery;
                 }
 
                 SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField, TitleBoostCheckBox.Enabled, AuthorBoostCheckBox.Enabled, TitleBoostNum.Value, AuthorboostNum.Value);
@@ -365,13 +381,12 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void FieldBoostCheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            FieldLevelBoostPanel.Enabled = FieldBoostCheckBox.Checked;
+            QueryExpansionCheckBox.Enabled = !FieldBoostCheckBox.Checked;
+
             if (FieldBoostCheckBox.Checked)
             {
-                FieldLevelBoostPanel.Enabled = true;
-            }
-            else
-            {
-                FieldLevelBoostPanel.Enabled = false;
+                QueryExpansionCheckBox.Checked = false;
             }
         }
 

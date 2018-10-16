@@ -20,7 +20,7 @@ namespace EduSearchAdvancedIS
         Lucene.Net.Index.IndexWriter writer;
         IndexSearcher searcher;
         QueryParser parser;
-        Similarity newSimilarity;
+        Similarity customizedSimilarity;
 
         const Lucene.Net.Util.Version VERSION = Lucene.Net.Util.Version.LUCENE_30;
 
@@ -50,6 +50,7 @@ namespace EduSearchAdvancedIS
 
 
             parser = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, TEXT_FN, analyzer);
+            customizedSimilarity = new CustomizedSimilarity();
             //newSimilarity = new NewSimilarity(); // Activity 9
         }
 
@@ -62,7 +63,7 @@ namespace EduSearchAdvancedIS
             luceneIndexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
             IndexWriter.MaxFieldLength mfl = new IndexWriter.MaxFieldLength(IndexWriter.DEFAULT_MAX_FIELD_LENGTH);
             writer = new Lucene.Net.Index.IndexWriter(luceneIndexDirectory, analyzer, true, mfl);
-            //writer.SetSimilarity(newSimilarity); // Activity 9
+            writer.SetSimilarity(customizedSimilarity); // Activity 9
         }
 
 
@@ -117,8 +118,7 @@ namespace EduSearchAdvancedIS
         {
             luceneIndexDirectory = Lucene.Net.Store.FSDirectory.Open(indexPath);
 
-            searcher = new IndexSearcher(luceneIndexDirectory);
-            //searcher.Similarity = newSimilarity; // Activity 9
+            searcher = new IndexSearcher(luceneIndexDirectory) {Similarity = customizedSimilarity};
         }
 
         /// <summary>
@@ -136,27 +136,36 @@ namespace EduSearchAdvancedIS
             }
 
             searchField = TEXT_FN;
-//            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
-//            Query query = parser.Parse(querytext);
-//            Query query = queryParser.Parse(querytext);
+            //            QueryParser queryParser = new QueryParser(VERSION, searchField, this.analyzer);
+            //            Query query = queryParser.Parse(querytext);
             // TODO: multified needs to be fixed
-            string[] fields = new String[] {TITLE_FN, AUTHOR_FN, BIB_FN, ABS_FN};
-            //            string[] fields = new String[] {  ABS_FN };
-
-            HashMap<string, float> boosts = new HashMap<string, float>();
-            //
-            if (ifTitleBoost)
+            Query query = null;
+            if (ifAuthorBoost || ifTitleBoost)
             {
-                boosts.Add(TITLE_FN, Convert.ToSingle(titleBoostNum));
+                string[] fields = {TITLE_FN, AUTHOR_FN, BIB_FN, ABS_FN};
+
+                HashMap<string, float> boosts = new HashMap<string, float>();
+                //
+                if (ifTitleBoost)
+                {
+                    boosts.Add(TITLE_FN, Convert.ToSingle(titleBoostNum));
+                }
+
+                if (ifAuthorBoost)
+                {
+                    boosts.Add(AUTHOR_FN, Convert.ToSingle(authorBoostNum));
+                }
+
+                MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer, boosts);
+                query = queryParser.Parse(querytext);
+            }
+            else
+            {
+                query = parser.Parse(querytext);
             }
 
-            if (ifAuthorBoost)
-            {
-                boosts.Add(AUTHOR_FN, Convert.ToSingle(authorBoostNum));
-            }
 
-            MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer, boosts);
-            Query query = queryParser.Parse(querytext);
+            // TODO: multiple an
 
             TopDocs results = searcher.Search(query, 100);
 
@@ -442,9 +451,20 @@ namespace EduSearchAdvancedIS
                 return " ";
             }
 
+            string wordExpansionWithoutOriginalWord = null;
+
             foreach (var synSet in synSetList)
             {
-                word = string.Join(" ", synSet.Words);
+                List<string> synSetWordWithoutOriginalWord = new List<string>();
+                foreach (var synSetWord in synSet.Words)
+                {
+                    if (synSetWord != word || !synSetWordWithoutOriginalWord.Contains(synSetWord.ToLower()))
+                    {
+                        synSetWordWithoutOriginalWord.Add(synSetWord);
+                    }
+                }
+
+                wordExpansionWithoutOriginalWord += " " + string.Join(" ", synSetWordWithoutOriginalWord);
             }
 //
 //            string[] array = thesaurus[queryTerm];
@@ -453,7 +473,7 @@ namespace EduSearchAdvancedIS
 //                expandedQuery += " " + a;
 //            }
 
-            return word;
+            return wordExpansionWithoutOriginalWord;
         }
     }
 }

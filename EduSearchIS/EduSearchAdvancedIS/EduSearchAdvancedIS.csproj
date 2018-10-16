@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomizedSimilarity.cs" />
     <Compile Include="Tabs\CreateIndexTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
