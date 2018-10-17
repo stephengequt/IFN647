@@ -32,10 +32,12 @@
             this.PreprocessingCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.PreviousButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.TotalPageLabel = new System.Windows.Forms.Label();
             this.NextButton = new System.Windows.Forms.Button();
             this.PageNumLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.AbstractButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.NumOfResultText = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -45,7 +47,6 @@
             this.Bibliography = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AbstractPreview = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
-            this.AbstractButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.FieldBoostCheckBox = new System.Windows.Forms.CheckBox();
             this.FieldLevelBoostPanel = new System.Windows.Forms.Panel();
@@ -80,11 +80,11 @@
             this.QueryExpansionCheckBox.AutoSize = true;
             this.QueryExpansionCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryExpansionCheckBox.Location = new System.Drawing.Point(21, 145);
-            this.QueryExpansionCheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.QueryExpansionCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.QueryExpansionCheckBox.Name = "QueryExpansionCheckBox";
             this.QueryExpansionCheckBox.Size = new System.Drawing.Size(361, 33);
             this.QueryExpansionCheckBox.TabIndex = 36;
-            this.QueryExpansionCheckBox.Text = "Query Expansion by NetWord";
+            this.QueryExpansionCheckBox.Text = "Query Expansion by WordNet";
             this.QueryExpansionCheckBox.UseVisualStyleBackColor = true;
             this.QueryExpansionCheckBox.CheckedChanged += new System.EventHandler(this.QueryExpansionCheckBox_CheckedChanged);
             // 
@@ -138,6 +138,21 @@
             this.PreviousButton.UseVisualStyleBackColor = false;
             this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(1428, 38);
+            this.button2.Margin = new System.Windows.Forms.Padding(7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(266, 69);
+            this.button2.TabIndex = 48;
+            this.button2.Text = "Display Final Query";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // TotalPageLabel
             // 
             this.TotalPageLabel.AutoSize = true;
@@ -188,6 +203,20 @@
             this.label1.Size = new System.Drawing.Size(74, 31);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
+            // 
+            // AbstractButton
+            // 
+            this.AbstractButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
+            this.AbstractButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AbstractButton.ForeColor = System.Drawing.Color.White;
+            this.AbstractButton.Location = new System.Drawing.Point(1734, 36);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.AbstractButton.Name = "AbstractButton";
+            this.AbstractButton.Size = new System.Drawing.Size(287, 71);
+            this.AbstractButton.TabIndex = 19;
+            this.AbstractButton.Text = "View Abstract";
+            this.AbstractButton.UseVisualStyleBackColor = false;
+            this.AbstractButton.Click += new System.EventHandler(this.AbstractButton_Click);
             // 
             // label6
             // 
@@ -286,20 +315,6 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Number of Result:";
             // 
-            // AbstractButton
-            // 
-            this.AbstractButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.AbstractButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AbstractButton.ForeColor = System.Drawing.Color.White;
-            this.AbstractButton.Location = new System.Drawing.Point(1734, 36);
-            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(287, 71);
-            this.AbstractButton.TabIndex = 19;
-            this.AbstractButton.Text = "View Abstract";
-            this.AbstractButton.UseVisualStyleBackColor = false;
-            this.AbstractButton.Click += new System.EventHandler(this.AbstractButton_Click);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button3);
@@ -323,7 +338,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(646, 105);
-            this.button3.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.button3.Margin = new System.Windows.Forms.Padding(7);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(159, 65);
             this.button3.TabIndex = 35;
@@ -351,7 +366,7 @@
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
             this.QueryListView.Location = new System.Drawing.Point(19, 183);
-            this.QueryListView.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.QueryListView.Margin = new System.Windows.Forms.Padding(7);
             this.QueryListView.Name = "QueryListView";
             this.QueryListView.Size = new System.Drawing.Size(1096, 278);
             this.QueryListView.TabIndex = 32;
@@ -374,7 +389,7 @@
             // 
             this.QueryFileDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryFileDirectory.Location = new System.Drawing.Point(19, 105);
-            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
             this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
@@ -388,7 +403,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(861, 105);
-            this.button1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.button1.Margin = new System.Windows.Forms.Padding(7);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(233, 65);
             this.button1.TabIndex = 30;
@@ -402,7 +417,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2233, 100);
             this.panel1.TabIndex = 47;
@@ -418,21 +433,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Search";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1428, 38);
-            this.button2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(266, 69);
-            this.button2.TabIndex = 48;
-            this.button2.Text = "Display Final Query";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -442,7 +442,7 @@
             this.panel2.Controls.Add(this.QueryExpansionCheckBox);
             this.panel2.Controls.Add(this.PreprocessingCheckBox);
             this.panel2.Location = new System.Drawing.Point(1171, 125);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(882, 459);
             this.panel2.TabIndex = 49;
@@ -451,7 +451,7 @@
             // 
             this.FieldBoostCheckBox.AutoSize = true;
             this.FieldBoostCheckBox.Location = new System.Drawing.Point(23, 192);
-            this.FieldBoostCheckBox.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.FieldBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
             this.FieldBoostCheckBox.Name = "FieldBoostCheckBox";
             this.FieldBoostCheckBox.Size = new System.Drawing.Size(232, 33);
             this.FieldBoostCheckBox.TabIndex = 37;
@@ -467,7 +467,7 @@
             this.FieldLevelBoostPanel.Controls.Add(this.TitleBoostCheckBox);
             this.FieldLevelBoostPanel.Enabled = false;
             this.FieldLevelBoostPanel.Location = new System.Drawing.Point(60, 230);
-            this.FieldLevelBoostPanel.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.FieldLevelBoostPanel.Margin = new System.Windows.Forms.Padding(7);
             this.FieldLevelBoostPanel.Name = "FieldLevelBoostPanel";
             this.FieldLevelBoostPanel.Size = new System.Drawing.Size(443, 102);
             this.FieldLevelBoostPanel.TabIndex = 38;
@@ -475,7 +475,7 @@
             // AuthorboostNum
             // 
             this.AuthorboostNum.Location = new System.Drawing.Point(152, 58);
-            this.AuthorboostNum.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.AuthorboostNum.Margin = new System.Windows.Forms.Padding(7);
             this.AuthorboostNum.Name = "AuthorboostNum";
             this.AuthorboostNum.Size = new System.Drawing.Size(280, 35);
             this.AuthorboostNum.TabIndex = 3;
@@ -483,7 +483,7 @@
             // TitleBoostNum
             // 
             this.TitleBoostNum.Location = new System.Drawing.Point(152, 9);
-            this.TitleBoostNum.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.TitleBoostNum.Margin = new System.Windows.Forms.Padding(7);
             this.TitleBoostNum.Name = "TitleBoostNum";
             this.TitleBoostNum.Size = new System.Drawing.Size(280, 35);
             this.TitleBoostNum.TabIndex = 2;
@@ -492,7 +492,7 @@
             // 
             this.AuthorBoostCheckBox.AutoSize = true;
             this.AuthorBoostCheckBox.Location = new System.Drawing.Point(7, 60);
-            this.AuthorBoostCheckBox.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.AuthorBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
             this.AuthorBoostCheckBox.Name = "AuthorBoostCheckBox";
             this.AuthorBoostCheckBox.Size = new System.Drawing.Size(114, 33);
             this.AuthorBoostCheckBox.TabIndex = 1;
@@ -504,7 +504,7 @@
             // 
             this.TitleBoostCheckBox.AutoSize = true;
             this.TitleBoostCheckBox.Location = new System.Drawing.Point(7, 9);
-            this.TitleBoostCheckBox.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.TitleBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
             this.TitleBoostCheckBox.Name = "TitleBoostCheckBox";
             this.TitleBoostCheckBox.Size = new System.Drawing.Size(93, 33);
             this.TitleBoostCheckBox.TabIndex = 0;
@@ -533,7 +533,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SearchTab";
             this.Size = new System.Drawing.Size(2233, 2137);
             this.Load += new System.EventHandler(this.SearchTab_Load);
