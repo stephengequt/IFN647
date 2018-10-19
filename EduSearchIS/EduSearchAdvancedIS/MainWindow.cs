@@ -56,7 +56,17 @@ namespace EduSearchAdvancedIS
             this._createIndexTab.Dock = DockStyle.Fill;
             this._searchTab.Dock = DockStyle.Fill;
             this._saveResultTab.Dock = DockStyle.Fill;
+
+//            QueryBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+////            List<string> list = new List<string>();
+//            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+//            collection.Add("super");
+//            collection.Add("sorry");
+//            collection.Add("summer");
+//            QueryBox.AutoCompleteCustomSource = collection;
         }
+
+        
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -87,7 +97,6 @@ namespace EduSearchAdvancedIS
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
         }
 
         private void IndexMenu_Click(object sender, MouseEventArgs e)
@@ -167,6 +176,7 @@ namespace EduSearchAdvancedIS
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            
             //GUI
             IndexMenu.BackColor = Color.FromArgb(237, 237, 237);
             IndexMenu.ForeColor = Color.FromArgb(99, 99, 99);
@@ -184,16 +194,12 @@ namespace EduSearchAdvancedIS
             }
 
             this._searchTab.BringToFront();
-
             TimeTakenToSearch.Text = "Search completed in " + _searchTab.LuceneSearch(QueryBox.Text) + " ms";
-           
         }
 
- 
 
         private void TimeTakenToSearch_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -203,8 +209,6 @@ namespace EduSearchAdvancedIS
 
         private void StatusLabel_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
-

@@ -10,8 +10,13 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lucene.Net.Analysis;
+using Lucene.Net.Documents;
+using Lucene.Net.Index;
 using Lucene.Net.Search;
+using Lucene.Net.Store;
 using Syn.WordNet;
+using SpellChecker = SpellChecker.Net.Search.Spell.SpellChecker;
 
 namespace EduSearchAdvancedIS.Tabs
 {
@@ -31,7 +36,9 @@ namespace EduSearchAdvancedIS.Tabs
         private int selectedDocIndex;
         public string TopicId { get; set; }
         public string QueryText { get; set; }
+
         public bool TopicIdChanged { get; set; }
+
 //        public bool QueryTextChanged { get; set; }
         private string finalQuery;
 
@@ -44,7 +51,6 @@ namespace EduSearchAdvancedIS.Tabs
             FieldLevelBoostPanel.Enabled = false;
             TitleBoostNum.Enabled = false;
             AuthorboostNum.Enabled = false;
-
         }
 
         private void SearchTab_Load(object sender, EventArgs e)
@@ -68,7 +74,7 @@ namespace EduSearchAdvancedIS.Tabs
                 pageNum--;
                 PageNumLabel.Text = pageNum.ToString();
                 NextButton.Enabled = true;
-                
+
                 //loadDataViewGrid();
                 DataTable table = new DataTable();
                 dataGridView1 = LuceneAdvancedSearchApplication.ViewCurrenPage(dataGridView1, this.docList, pageNum);
@@ -97,12 +103,14 @@ namespace EduSearchAdvancedIS.Tabs
                 }
                 else if (this.pageNum == this.maxPageNum)
                 {
-                    dataGridView1 = LuceneAdvancedSearchApplication.ViewLastPage(dataGridView1, this.docList, this.pageNum);
+                    dataGridView1 =
+                        LuceneAdvancedSearchApplication.ViewLastPage(dataGridView1, this.docList, this.pageNum);
                     NextButton.Enabled = false;
                 }
                 else
                 {
-                    dataGridView1 = LuceneAdvancedSearchApplication.ViewCurrenPage(this.dataGridView1, this.docList, this.pageNum);
+                    dataGridView1 =
+                        LuceneAdvancedSearchApplication.ViewCurrenPage(this.dataGridView1, this.docList, this.pageNum);
                 }
 
 //                dataGridView1.DataSource = table;
@@ -197,12 +205,12 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void QueryExpansionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-
             this.FieldBoostCheckBox.Enabled = !QueryExpansionCheckBox.Checked;
             if (QueryExpansionCheckBox.Checked)
             {
                 this.FieldBoostCheckBox.Checked = false;
             }
+
             this.myLuceneApp.QueryExpansionOpt = QueryExpansionCheckBox.Checked;
             if (this.myLuceneApp.QueryExpansionOpt)
             {
@@ -251,17 +259,16 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void SelectField_SelectedIndexChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-
             TopicId = e.Item.SubItems[0].Text;
             QueryText = e.Item.SubItems[1].Text;
 //            QueryBox.Text = subItem2;
             TopicIdChanged = true;
 //            QueryTextChanged = true;
-            
         }
 
         public string LuceneSearch(string query)
         {
+//            myLuceneApp.TestSpellChecker(query);
 //            string query = QueryBox.Text;
             string searchTime = null;
 //            if (query == "Enter Query")
@@ -282,6 +289,29 @@ namespace EduSearchAdvancedIS.Tabs
                 dataGridView1.Rows.Clear();
                 myLuceneApp.CreateSearcher(this.IndexPath);
 
+                //Perform spell check
+                if (false)
+                {
+                    // Firstly, return token based on query text
+                    char[] delims = {' ', '\n', '.', '\"'};
+                    string[] originalQueryWords = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+
+                    string spellCheckedQuery = null;
+                    //                    foreach (var word in originalQueryWords)
+                    //                    {
+                    //                        BingSpellCheck bingSpellCheck = new BingSpellCheck();
+                    //                        //            bingSpellCheck.SpellCheck("helo word");
+                    //                        string spellCheckeWord = bingSpellCheck.SpellCheckCorrection("c1a10976d73e469382f0860c0ab2dac4", word);
+                    //
+                    //                        spellCheckedQuery += " " + spellCheckeWord;
+                    //                    }
+                    BingSpellCheck bingSpellCheck = new BingSpellCheck();
+
+                    bingSpellCheck.SpellCheckCorrection("c1a10976d73e469382f0860c0ab2dac4", query);
+//                    bingSpellCheck.SpellCheck(query);
+//                        query = spellCheckedQuery;
+                }
+
                 //Perform query expansion by connecting to NetWord
                 if (this.myLuceneApp.QueryExpansionOpt)
                 {
@@ -295,6 +325,7 @@ namespace EduSearchAdvancedIS.Tabs
                         string weightedWord = word + "^5";
                         weightedQuery += " " + weightedWord;
                     }
+
                     weightedQuery += " ";
                     foreach (var word in originalQueryWords)
                     {
@@ -304,7 +335,8 @@ namespace EduSearchAdvancedIS.Tabs
                     query = weightedQuery;
                 }
 
-                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField, TitleBoostCheckBox.Enabled, AuthorBoostCheckBox.Enabled, TitleBoostNum.Value, AuthorboostNum.Value);
+                SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField,
+                    TitleBoostCheckBox.Enabled, AuthorBoostCheckBox.Enabled, TitleBoostNum.Value, AuthorboostNum.Value);
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
@@ -330,7 +362,8 @@ namespace EduSearchAdvancedIS.Tabs
 
                 for (int i = 0; i < docList.Length; i++)
                 {
-                    dataGridView1.Rows.Add(rank, docList[i].Title, docList[i].Author, docList[i].Bibliography, docList[i].Sentence);
+                    dataGridView1.Rows.Add(rank, docList[i].Title, docList[i].Author, docList[i].Bibliography,
+                        docList[i].Sentence);
                     rank++;
                 }
 
@@ -340,17 +373,17 @@ namespace EduSearchAdvancedIS.Tabs
                 }
                 else if (this.pageNum == this.maxPageNum)
                 {
-                    dataGridView1 = LuceneAdvancedSearchApplication.ViewLastPage(dataGridView1, this.docList, this.pageNum);
+                    dataGridView1 =
+                        LuceneAdvancedSearchApplication.ViewLastPage(dataGridView1, this.docList, this.pageNum);
                 }
                 else
                 {
-                    dataGridView1 = LuceneAdvancedSearchApplication.ViewCurrenPage(dataGridView1, this.docList, this.pageNum);
+                    dataGridView1 =
+                        LuceneAdvancedSearchApplication.ViewCurrenPage(dataGridView1, this.docList, this.pageNum);
                 }
 
                 //                dataGridView1.DataSource = table;
-                
 
-                
 
                 TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
             }
@@ -365,18 +398,15 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void QueryListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((string)finalQuery, "Final Query");
-
+            MessageBox.Show((string) finalQuery, "Final Query");
         }
 
         private void FieldBoostCheckBox_CheckedChanged(object sender, EventArgs e)
