@@ -24,9 +24,9 @@ namespace EduSearchAdvancedIS
         private string DocumentPath { get; set; } = @"..\..\..\collection\crandocs";
         public string IndexPath { get; set; } = @"..\..\..\assessment2Index";
         public bool indexChanged { get; set; } = false;
+
         public CreateIndexTab()
         {
-           
             InitializeComponent();
         }
 
@@ -57,12 +57,24 @@ namespace EduSearchAdvancedIS
 
         private void CreateIndexButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(CollectionDirectoryTextBox.Text))
+            {
+                MessageBox.Show((string) "Please select collection directory!", "Warning");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(IndexDirectoryTextBox.Text))
+            {
+                MessageBox.Show((string) "Please select index directory!", "Warning");
+                return;
+            }
+
             List<string> fileList = LuceneAdvancedSearchApplication.WalkDirectoryTree(this.DocumentPath);
 
             // Check if there is any file for indexing
             if (fileList.Count == 0)
             {
-                Console.WriteLine("Can't find any files in this directory.");
+                MessageBox.Show((string)"Can't find any files in this directory.", "Warning");
             }
             else
             {
