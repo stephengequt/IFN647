@@ -149,7 +149,7 @@ namespace EduSearchAdvancedIS
 
             try
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "bill gatas is a man", mode: "proof").Result;
+                var result = client.SpellCheckerWithHttpMessagesAsync(text: "A new service from micros oft from bill gatas", mode: "proof").Result;
                 Console.WriteLine("Correction for Query# \"bill gatas is a man\"");
                 
                 // SpellCheck Results
@@ -158,13 +158,13 @@ namespace EduSearchAdvancedIS
                     var result2 = result.Body;
                     // find the first spellcheck result
                     var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
-                    Console.WriteLine(firstspellCheckResult.Offset);
                     
 
                     if (firstspellCheckResult != null)
                     {
                         
                         Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
+                        Console.WriteLine("Offset:{0}",firstspellCheckResult.Offset);
                         Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
                         Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
                         Console.WriteLine("First SpellCheck Result Suggestion Count: {0} ",

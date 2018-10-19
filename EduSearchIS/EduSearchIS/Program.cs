@@ -65,32 +65,32 @@ namespace EduSearchBaselineIS
 //            Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
 //            myLuceneApp.CleanUpSearcher();
 
-//            Application.EnableVisualStyles();
-//            Application.SetCompatibleTextRenderingDefault(false);
-//            Application.Run(new GUI());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI());
 
 
 
             // using Word Net
-            WordNetEngine wordNet = WordNet.GetWordNetEngineInstance();
+//            WordNetEngine wordNet = WordNet.GetWordNetEngineInstance();
 
-            while (true)
-            {
-                Console.WriteLine("\nType first word");
-                var word = Console.ReadLine();
-                var synSetList = wordNet.GetSynSets(word);
-
-                if (synSetList.Count == 0) Console.WriteLine($"No SynSet found for '{word}'");
-
-                foreach (var synSet in synSetList)
-                {
-                    var words = string.Join(" ", synSet.Words);
-
-                    Console.WriteLine($"\nWords: {words}");
-                    //Console.WriteLine($"POS: {synSet.PartOfSpeech}");
-                    //Console.WriteLine($"Gloss: {synSet.Gloss}");
-                }
-            }
+//            while (true)
+//            {
+//                Console.WriteLine("\nType first word");
+//                var word = Console.ReadLine();
+//                var synSetList = wordNet.GetSynSets(word);
+//
+//                if (synSetList.Count == 0) Console.WriteLine($"No SynSet found for '{word}'");
+//
+//                foreach (var synSet in synSetList)
+//                {
+//                    var words = string.Join(" ", synSet.Words);
+//
+//                    Console.WriteLine($"\nWords: {words}");
+//                    //Console.WriteLine($"POS: {synSet.PartOfSpeech}");
+//                    //Console.WriteLine($"Gloss: {synSet.Gloss}");
+//                }
+//            }
 
 
             Console.ReadLine();
