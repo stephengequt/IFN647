@@ -56,6 +56,7 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void SearchTab_Load(object sender, EventArgs e)
         {
+            
         }
 
 //        private void SearchButton_Click(object sender, EventArgs e)
