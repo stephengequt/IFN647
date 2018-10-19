@@ -143,54 +143,62 @@ namespace EduSearchAdvancedIS
             return sb.ToString().Trim();
         }
 
-        public string SpellCheckCorrection(string subscriptionKey, string text)
+        public string SpellCheckCorrection(string text)
         {
+            string subscriptionKey = "c1a10976d73e469382f0860c0ab2dac4";
             var client = new SpellCheckClient(new ApiKeyServiceClientCredentials(subscriptionKey));
 
             try
             {
-                var result = client.SpellCheckerWithHttpMessagesAsync(text: "A new service from micros oft from bill gatas", mode: "proof").Result;
-                Console.WriteLine("Correction for Query# \"bill gatas is a man\"");
+                var result = client.SpellCheckerWithHttpMessagesAsync(text: text, mode: "proof").Result;
                 
                 // SpellCheck Results
                 if (result?.Body.FlaggedTokens?.Count > 0)
                 {
-                    var result2 = result.Body;
-                    // find the first spellcheck result
-                    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+//                    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+
+                    var spellCheckResult = result.Body.FlaggedTokens;
+                    StringBuilder sb = new StringBuilder(text);
+                    foreach (var spellingFlaggedToken in spellCheckResult)
+                    {
+                        string token = spellingFlaggedToken.Token;
+                        string suggestion = spellingFlaggedToken.Suggestions.FirstOrDefault().Suggestion;
+                        int startIndex = spellingFlaggedToken.Offset;
+                        int count = spellingFlaggedToken.Token.Length;
+                        sb.Replace(token, suggestion, startIndex, count);
+                    }
                     
+                    return sb.ToString();
 
-                    if (firstspellCheckResult != null)
-                    {
-                        
-                        Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
-                        Console.WriteLine("Offset:{0}",firstspellCheckResult.Offset);
-                        Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
-                        Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
-                        Console.WriteLine("First SpellCheck Result Suggestion Count: {0} ",
-                            firstspellCheckResult.Suggestions.Count);
-
-                        var suggestions = firstspellCheckResult.Suggestions;
-
-                        if (suggestions?.Count > 0)
-                        {
-                            var firstSuggestion = suggestions.FirstOrDefault();
-                            Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                            Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-                        }
-                        return firstspellCheckResult.Token;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't get any Spell check results!");
-                        return text;
-                    }
+                    //                    if (firstspellCheckResult != null)
+                    //                    {
+                    //                        
+                    //                        Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
+                    //                        Console.WriteLine("Offset:{0}",firstspellCheckResult.Offset);
+                    //                        Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
+                    //                        Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
+                    //                        Console.WriteLine("First SpellCheck Result Suggestion Count: {0} ",
+                    //                            firstspellCheckResult.Suggestions.Count);
+                    //
+                    //                        var suggestions = firstspellCheckResult.Suggestions;
+                    //
+                    //                        if (suggestions?.Count > 0)
+                    //                        {
+                    //                            var firstSuggestion = suggestions.FirstOrDefault();
+                    //                            Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+                    //                            Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
+                    //                        }
+                    //                        return firstspellCheckResult.Token;
+                    //                    }
+                    //                    else
+                    //                    {
+                    //                        Console.WriteLine("Couldn't get any Spell check results!");
+                    //                        return text;
+                    //                    }
                 }
-                else
-                {
-                    Console.WriteLine("Didn't see any SpellCheck results..");
-                    return text;
-                }
+
+                Console.WriteLine("Didn't see any SpellCheck results..");
+                return text;
             }
 
             catch (Exception ex)

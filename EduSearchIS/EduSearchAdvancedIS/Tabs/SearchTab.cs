@@ -294,7 +294,7 @@ namespace EduSearchAdvancedIS.Tabs
                 {
                     // Firstly, return token based on query text
                     char[] delims = {' ', '\n', '.', '\"'};
-                    string[] originalQueryWords = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
+//                    string[] originalQueryWords = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
                     string spellCheckedQuery = null;
                     //                    foreach (var word in originalQueryWords)
@@ -307,7 +307,7 @@ namespace EduSearchAdvancedIS.Tabs
                     //                    }
                     BingSpellCheck bingSpellCheck = new BingSpellCheck();
 
-                    bingSpellCheck.SpellCheckCorrection("c1a10976d73e469382f0860c0ab2dac4", query);
+                    bingSpellCheck.SpellCheckCorrection(query);
 //                    bingSpellCheck.SpellCheck(query);
 //                        query = spellCheckedQuery;
                 }
