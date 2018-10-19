@@ -290,7 +290,7 @@ namespace EduSearchAdvancedIS.Tabs
                 myLuceneApp.CreateSearcher(this.IndexPath);
 
                 //Perform spell check
-                if (false)
+                if (true)
                 {
                     // Firstly, return token based on query text
                     char[] delims = {' ', '\n', '.', '\"'};
