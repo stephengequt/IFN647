@@ -337,8 +337,8 @@ namespace EduSearchAdvancedIS
                 Title = sections[2],
                 Author = sections[3],
                 Bibliography = sections[4],
-                Sentence = firstLine,
-                Abstract = sections[5]
+                Sentence = firstLine.Trim(),
+                Abstract = sections[5].Trim()
             };
 
             return docInfo;

@@ -122,7 +122,10 @@ namespace EduSearchAdvancedIS.Tabs
         private void AbstractButton_Click(object sender, EventArgs e)
         {
             var selectedDocInfo = LuceneAdvancedSearchApplication.ViewSelectedDocInfo(this.docList, selectedDocIndex);
-            MessageBox.Show((string) selectedDocInfo.Abstract, selectedDocInfo.Title);
+            var contentFormat = "Title: " + selectedDocInfo.Title + "\n" + "\n" + "Author: " + selectedDocInfo.Author + "\n" + "\n" +
+                                "Abstrat: \n" + selectedDocInfo.Abstract;
+            var titleFormat = "DocID: " + selectedDocInfo.DocID;
+            MessageBox.Show((string)contentFormat, titleFormat);
         }
 
 

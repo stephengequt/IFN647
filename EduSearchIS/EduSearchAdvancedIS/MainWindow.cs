@@ -55,6 +55,7 @@ namespace EduSearchAdvancedIS
             DisplayPanel.Controls.Add(this._createIndexTab);
             DisplayPanel.Controls.Add(this._saveResultTab);
             this._searchTab.BringToFront();
+//            this._searchTab.Anchor = AnchorStyles.Top;
             this._createIndexTab.Dock = DockStyle.Fill;
             this._searchTab.Dock = DockStyle.Fill;
             this._saveResultTab.Dock = DockStyle.Fill;

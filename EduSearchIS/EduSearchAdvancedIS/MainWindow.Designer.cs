@@ -35,6 +35,8 @@
             this.QueryFileBrowseButton = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SpellCheckOptCheckBox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.StatusLabel = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,6 +66,7 @@
             // 
             // DisplayPanel
             // 
+            this.DisplayPanel.AutoScroll = true;
             this.DisplayPanel.BackColor = System.Drawing.Color.White;
             this.DisplayPanel.ForeColor = System.Drawing.Color.Black;
             this.DisplayPanel.Location = new System.Drawing.Point(216, 108);
@@ -91,8 +92,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.panel3.Controls.Add(this.textBox1);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.SpellCheckOptCheckBox);
@@ -107,6 +107,24 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2450, 238);
             this.panel3.TabIndex = 46;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(641, 178);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1382, 35);
+            this.textBox1.TabIndex = 44;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(486, 181);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 29);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Correction:";
             // 
             // SpellCheckOptCheckBox
             // 
@@ -226,10 +244,10 @@
             this.SaveResultMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveResultMenu.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveResultMenu.ForeColor = System.Drawing.Color.Black;
-            this.SaveResultMenu.Location = new System.Drawing.Point(0, 320);
+            this.SaveResultMenu.Location = new System.Drawing.Point(0, 402);
             this.SaveResultMenu.Margin = new System.Windows.Forms.Padding(2);
             this.SaveResultMenu.Name = "SaveResultMenu";
-            this.SaveResultMenu.Size = new System.Drawing.Size(216, 108);
+            this.SaveResultMenu.Size = new System.Drawing.Size(216, 149);
             this.SaveResultMenu.TabIndex = 4;
             this.SaveResultMenu.Text = "Save Result";
             this.SaveResultMenu.UseVisualStyleBackColor = false;
@@ -244,10 +262,10 @@
             this.SearchMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchMenu.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchMenu.ForeColor = System.Drawing.Color.Black;
-            this.SearchMenu.Location = new System.Drawing.Point(0, 212);
+            this.SearchMenu.Location = new System.Drawing.Point(0, 253);
             this.SearchMenu.Margin = new System.Windows.Forms.Padding(2);
             this.SearchMenu.Name = "SearchMenu";
-            this.SearchMenu.Size = new System.Drawing.Size(216, 108);
+            this.SearchMenu.Size = new System.Drawing.Size(216, 149);
             this.SearchMenu.TabIndex = 2;
             this.SearchMenu.Text = "Search";
             this.SearchMenu.UseVisualStyleBackColor = false;
@@ -265,7 +283,7 @@
             this.IndexMenu.Location = new System.Drawing.Point(0, 104);
             this.IndexMenu.Margin = new System.Windows.Forms.Padding(2);
             this.IndexMenu.Name = "IndexMenu";
-            this.IndexMenu.Size = new System.Drawing.Size(216, 108);
+            this.IndexMenu.Size = new System.Drawing.Size(216, 149);
             this.IndexMenu.TabIndex = 1;
             this.IndexMenu.Text = "Create Index";
             this.IndexMenu.UseVisualStyleBackColor = false;
@@ -344,24 +362,6 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 41);
             this.toolStripMenuItem1.Text = "X";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click_1);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(486, 181);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 29);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Correction:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(641, 178);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1382, 35);
-            this.textBox1.TabIndex = 44;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // MainWindow
             // 
