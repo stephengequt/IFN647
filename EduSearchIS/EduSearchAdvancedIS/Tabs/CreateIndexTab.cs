@@ -98,5 +98,10 @@ namespace EduSearchAdvancedIS
                 indexChanged = true;
             }
         }
+
+        private void IndexDirectoryTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
