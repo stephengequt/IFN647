@@ -36,7 +36,8 @@ namespace EduSearchAdvancedIS.Tabs
         private int selectedDocIndex;
         public string TopicId { get; set; }
         public string QueryText { get; set; }
-
+        public string searchTime { get; set; } = null;
+        public string SpellCheckText { get; set; } = null;
         public bool TopicIdChanged { get; set; }
 
 //        public bool QueryTextChanged { get; set; }
@@ -123,80 +124,6 @@ namespace EduSearchAdvancedIS.Tabs
             MessageBox.Show((string) selectedDocInfo.Abstract, selectedDocInfo.Title);
         }
 
-//        private void SearchButton_Click_1(object sender, EventArgs e)
-//        {
-//            string query = QueryBox.Text;
-//
-//            if (query == "Enter Query")
-//            {
-//                StatusLabel.ForeColor = Color.Red;
-//                StatusLabel.Text = "Search box is empty";
-//            }
-//            else
-//            {
-//                // Searching Code
-//                DateTime startSearchTime = System.DateTime.Now;
-//                if (string.IsNullOrEmpty(this.IndexPath))
-//                {
-//                    MessageBox.Show("Please select index directory first!", "Error");
-//                }
-//                else
-//                {
-//                    myLuceneApp.CreateSearcher(this.IndexPath);
-//
-//                    //Perform query expansion by connecting to NetWord
-//                    if (this.myLuceneApp.QueryExpansionOpt)
-//                    {
-//                        // Firstly, return token based on query text
-//                        char[] delims = { ' ', '\n', '.', '\"' };
-//                        string[] words = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-//
-//                        foreach (var word in words)
-//                        {
-//                            query += myLuceneApp.QueryExpansionByNetWord(word, this.myLuceneApp.wordNet);
-//                        }
-//                    }
-//
-//                    SearchResult searchResult = myLuceneApp.SearchText(query, this.SelectedSearchField);
-//
-//                    // Time for searching
-//                    DateTime endSearchTime = System.DateTime.Now;
-//                    var searchTime = endSearchTime - startSearchTime;
-//                    TimeTakenToSearch.Text = searchTime.ToString();
-//
-//                    NumOfResultText.Text = searchResult.NumOfResult.ToString();
-//                    FinalQueryTextBox.Text = searchResult.finalQuery;
-//                    this.maxPageNum = Convert.ToInt32(searchResult.NumOfResult / 10) + 1;
-//                    if (maxPageNum > 10)
-//                    {
-//                        maxPageNum = 10;
-//                    }
-//
-//                    this.docList = searchResult.DocInfoList.ToArray();
-//                    //                Console.WriteLine("Searching time: {0}", endSearchTime - startSearchTime);
-//                    myLuceneApp.CleanUpSearcher();
-//
-//                    // Populate here with the codes to display the top 10 result
-//                    DataTable table = new DataTable();
-//
-//                    if (this.docList.Length == 0)
-//                    {
-//                        Console.WriteLine("No result.");
-//                    }
-//                    else if (this.pageNum == this.maxPageNum)
-//                    {
-//                        table = LuceneAdvancedSearchApplication.ViewLastPage(table, this.docList, this.pageNum);
-//                    }
-//                    else
-//                    {
-//                        table = LuceneAdvancedSearchApplication.ViewCurrenPage(table, this.docList, this.pageNum);
-//                    }
-//
-//                    dataGridView1.DataSource = table;
-//                    TotalPageLabel.Text = "out of " + this.maxPageNum.ToString();
-//                }
-//            }
-//        }
 
         private void PreprocessingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -266,11 +193,10 @@ namespace EduSearchAdvancedIS.Tabs
 //            QueryTextChanged = true;
         }
 
-        public string LuceneSearch(string query)
+        public void LuceneSearch(string query, bool spellCheckOpt)
         {
 //            myLuceneApp.TestSpellChecker(query);
 //            string query = QueryBox.Text;
-            string searchTime = null;
 //            if (query == "Enter Query")
 //            {
 //                StatusLabel.ForeColor = Color.Red;
@@ -290,26 +216,12 @@ namespace EduSearchAdvancedIS.Tabs
                 myLuceneApp.CreateSearcher(this.IndexPath);
 
                 //Perform spell check
-                if (true)
+                if (spellCheckOpt)
                 {
-                    // Firstly, return token based on query text
-                    char[] delims = {' ', '\n', '.', '\"'};
-//                    string[] originalQueryWords = query.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-
-                    string spellCheckedQuery = null;
-                    //                    foreach (var word in originalQueryWords)
-                    //                    {
-                    //                        BingSpellCheck bingSpellCheck = new BingSpellCheck();
-                    //                        //            bingSpellCheck.SpellCheck("helo word");
-                    //                        string spellCheckeWord = bingSpellCheck.SpellCheckCorrection("c1a10976d73e469382f0860c0ab2dac4", word);
-                    //
-                    //                        spellCheckedQuery += " " + spellCheckeWord;
-                    //                    }
                     BingSpellCheck bingSpellCheck = new BingSpellCheck();
 
-                    bingSpellCheck.SpellCheckCorrection(query);
-//                    bingSpellCheck.SpellCheck(query);
-//                        query = spellCheckedQuery;
+                    this.SpellCheckText = bingSpellCheck.SpellCheckCorrection(query);
+                    query = this.SpellCheckText;
                 }
 
                 //Perform query expansion by connecting to NetWord
@@ -340,7 +252,7 @@ namespace EduSearchAdvancedIS.Tabs
 
                 // Time for searching
                 DateTime endSearchTime = System.DateTime.Now;
-                searchTime = (endSearchTime - startSearchTime).Milliseconds.ToString();
+                this.searchTime = (endSearchTime - startSearchTime).Milliseconds.ToString();
 //                TimeTakenToSearch.Text = searchTime.ToString();
 
                 NumOfResultText.Text = searchResult.NumOfResult.ToString();
@@ -389,7 +301,7 @@ namespace EduSearchAdvancedIS.Tabs
             }
 
 //            }
-            return searchTime;
+//            return searchTime;
         }
 
         private void FinalQueryTextBox_TextChanged(object sender, EventArgs e)
@@ -438,5 +350,7 @@ namespace EduSearchAdvancedIS.Tabs
         {
 
         }
+
+        
     }
 }

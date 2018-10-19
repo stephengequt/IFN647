@@ -29,7 +29,9 @@ namespace EduSearchAdvancedIS
         int maxPageNum = 0;
         private DocInfo[] docList;
         private int selectedDocIndex;
+
         private string SelectedSearchField;
+//        public bool SpellCheckOpt { get; set; } = false;
 
         CreateIndexTab _createIndexTab = new CreateIndexTab();
         SearchTab _searchTab = new SearchTab(defaultIndexPath);
@@ -57,6 +59,9 @@ namespace EduSearchAdvancedIS
             this._searchTab.Dock = DockStyle.Fill;
             this._saveResultTab.Dock = DockStyle.Fill;
 
+            textBox1.Visible = false;
+            label2.Visible = false;
+
 //            QueryBox.AutoCompleteMode = AutoCompleteMode.Suggest;
 ////            List<string> list = new List<string>();
 //            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
@@ -66,7 +71,6 @@ namespace EduSearchAdvancedIS
 //            QueryBox.AutoCompleteCustomSource = collection;
         }
 
-        
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -176,7 +180,6 @@ namespace EduSearchAdvancedIS
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            
             //GUI
             IndexMenu.BackColor = Color.FromArgb(237, 237, 237);
             IndexMenu.ForeColor = Color.FromArgb(99, 99, 99);
@@ -194,7 +197,20 @@ namespace EduSearchAdvancedIS
             }
 
             this._searchTab.BringToFront();
-            TimeTakenToSearch.Text = "Search completed in " + _searchTab.LuceneSearch(QueryBox.Text) + " ms";
+            if (QueryBox.Text == "Enter Query Here...")
+            {
+                StatusLabel.ForeColor = Color.Red;
+                StatusLabel.Text = "Search Status: Search box is empty";
+                return;
+            }
+
+            _searchTab.LuceneSearch(QueryBox.Text, SpellCheckOptCheckBox.Checked);
+            TimeTakenToSearch.Text = "Search completed in " + _searchTab.searchTime + " ms";
+
+            if (SpellCheckOptCheckBox.Checked)
+            {
+                textBox1.Text = _searchTab.SpellCheckText;
+            }
         }
 
 
@@ -209,6 +225,35 @@ namespace EduSearchAdvancedIS
 
         private void StatusLabel_Click(object sender, EventArgs e)
         {
+        }
+
+        private void SpellCheckOptCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+//            SpellCheckOpt = SpellCheckOptCheckBox.Checked;
+            textBox1.Visible = SpellCheckOptCheckBox.Checked;
+            label2.Visible = SpellCheckOptCheckBox.Checked;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void QueryBox_Enter(object sender, EventArgs e)
+        {
+            if (QueryBox.Text == "Enter Query Here...")
+            {
+                QueryBox.Text = "";
+                QueryBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void QueryBox_Leave(object sender, EventArgs e)
+        {
+            if (QueryBox.Text == "")
+            {
+                QueryBox.Text = "Enter Query Here...";
+                QueryBox.ForeColor = Color.Gray;
+            }
         }
     }
 }
