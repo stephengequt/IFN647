@@ -65,6 +65,7 @@
             this.AuthorBoostCheckBox = new System.Windows.Forms.CheckBox();
             this.TitleBoostCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.FolderToRead = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -79,10 +80,10 @@
             // 
             this.QueryExpansionCheckBox.AutoSize = true;
             this.QueryExpansionCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QueryExpansionCheckBox.Location = new System.Drawing.Point(21, 145);
-            this.QueryExpansionCheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.QueryExpansionCheckBox.Location = new System.Drawing.Point(12, 80);
+            this.QueryExpansionCheckBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.QueryExpansionCheckBox.Name = "QueryExpansionCheckBox";
-            this.QueryExpansionCheckBox.Size = new System.Drawing.Size(361, 33);
+            this.QueryExpansionCheckBox.Size = new System.Drawing.Size(217, 21);
             this.QueryExpansionCheckBox.TabIndex = 36;
             this.QueryExpansionCheckBox.Text = "Query Expansion by WordNet";
             this.QueryExpansionCheckBox.UseVisualStyleBackColor = true;
@@ -92,10 +93,10 @@
             // 
             this.PreprocessingCheckBox.AutoSize = true;
             this.PreprocessingCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreprocessingCheckBox.Location = new System.Drawing.Point(21, 94);
-            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreprocessingCheckBox.Location = new System.Drawing.Point(12, 52);
+            this.PreprocessingCheckBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PreprocessingCheckBox.Name = "PreprocessingCheckBox";
-            this.PreprocessingCheckBox.Size = new System.Drawing.Size(348, 33);
+            this.PreprocessingCheckBox.Size = new System.Drawing.Size(208, 21);
             this.PreprocessingCheckBox.TabIndex = 10;
             this.PreprocessingCheckBox.Text = "Pre-Processing not required";
             this.PreprocessingCheckBox.UseVisualStyleBackColor = true;
@@ -115,11 +116,11 @@
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(9, 593);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox3.Location = new System.Drawing.Point(5, 327);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox3.Size = new System.Drawing.Size(2044, 1495);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(1168, 825);
             this.groupBox3.TabIndex = 40;
             this.groupBox3.TabStop = false;
             // 
@@ -129,10 +130,10 @@
             this.PreviousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviousButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.PreviousButton.ForeColor = System.Drawing.Color.White;
-            this.PreviousButton.Location = new System.Drawing.Point(586, 1385);
-            this.PreviousButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.PreviousButton.Location = new System.Drawing.Point(335, 764);
+            this.PreviousButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(98, 67);
+            this.PreviousButton.Size = new System.Drawing.Size(56, 37);
             this.PreviousButton.TabIndex = 14;
             this.PreviousButton.Text = "<";
             this.PreviousButton.UseVisualStyleBackColor = false;
@@ -144,10 +145,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1428, 38);
-            this.button2.Margin = new System.Windows.Forms.Padding(7);
+            this.button2.Location = new System.Drawing.Point(816, 21);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(266, 69);
+            this.button2.Size = new System.Drawing.Size(152, 38);
             this.button2.TabIndex = 48;
             this.button2.Text = "Display Final Query";
             this.button2.UseVisualStyleBackColor = false;
@@ -158,10 +159,9 @@
             this.TotalPageLabel.AutoSize = true;
             this.TotalPageLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalPageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.TotalPageLabel.Location = new System.Drawing.Point(863, 1396);
-            this.TotalPageLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TotalPageLabel.Location = new System.Drawing.Point(493, 770);
             this.TotalPageLabel.Name = "TotalPageLabel";
-            this.TotalPageLabel.Size = new System.Drawing.Size(111, 31);
+            this.TotalPageLabel.Size = new System.Drawing.Size(65, 19);
             this.TotalPageLabel.TabIndex = 18;
             this.TotalPageLabel.Text = "out of 1";
             // 
@@ -171,10 +171,10 @@
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.NextButton.ForeColor = System.Drawing.Color.White;
-            this.NextButton.Location = new System.Drawing.Point(1022, 1383);
-            this.NextButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.NextButton.Location = new System.Drawing.Point(584, 763);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(98, 69);
+            this.NextButton.Size = new System.Drawing.Size(56, 38);
             this.NextButton.TabIndex = 15;
             this.NextButton.Text = ">";
             this.NextButton.UseVisualStyleBackColor = false;
@@ -185,10 +185,9 @@
             this.PageNumLabel.AutoSize = true;
             this.PageNumLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PageNumLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.PageNumLabel.Location = new System.Drawing.Point(824, 1396);
-            this.PageNumLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.PageNumLabel.Location = new System.Drawing.Point(471, 770);
             this.PageNumLabel.Name = "PageNumLabel";
-            this.PageNumLabel.Size = new System.Drawing.Size(29, 31);
+            this.PageNumLabel.Size = new System.Drawing.Size(18, 19);
             this.PageNumLabel.TabIndex = 17;
             this.PageNumLabel.Text = "1";
             // 
@@ -197,10 +196,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.label1.Location = new System.Drawing.Point(742, 1396);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Location = new System.Drawing.Point(424, 770);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 31);
+            this.label1.Size = new System.Drawing.Size(43, 19);
             this.label1.TabIndex = 16;
             this.label1.Text = "Page";
             // 
@@ -209,10 +207,10 @@
             this.AbstractButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
             this.AbstractButton.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AbstractButton.ForeColor = System.Drawing.Color.White;
-            this.AbstractButton.Location = new System.Drawing.Point(1734, 36);
-            this.AbstractButton.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.AbstractButton.Location = new System.Drawing.Point(991, 20);
+            this.AbstractButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AbstractButton.Name = "AbstractButton";
-            this.AbstractButton.Size = new System.Drawing.Size(287, 71);
+            this.AbstractButton.Size = new System.Drawing.Size(164, 39);
             this.AbstractButton.TabIndex = 19;
             this.AbstractButton.Text = "View Abstract";
             this.AbstractButton.UseVisualStyleBackColor = false;
@@ -222,10 +220,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(7, 38);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(4, 21);
+            this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 56);
+            this.label6.Size = new System.Drawing.Size(90, 31);
             this.label6.TabIndex = 35;
             this.label6.Text = "Result";
             // 
@@ -234,10 +232,9 @@
             this.NumOfResultText.AutoSize = true;
             this.NumOfResultText.BackColor = System.Drawing.SystemColors.Control;
             this.NumOfResultText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumOfResultText.Location = new System.Drawing.Point(508, 60);
-            this.NumOfResultText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NumOfResultText.Location = new System.Drawing.Point(290, 33);
             this.NumOfResultText.Name = "NumOfResultText";
-            this.NumOfResultText.Size = new System.Drawing.Size(0, 29);
+            this.NumOfResultText.Size = new System.Drawing.Size(0, 17);
             this.NumOfResultText.TabIndex = 27;
             // 
             // dataGridView1
@@ -256,8 +253,8 @@
             this.AbstractPreview});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(194)))), ((int)(((byte)(124)))));
-            this.dataGridView1.Location = new System.Drawing.Point(19, 118);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 65);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -266,7 +263,7 @@
             this.dataGridView1.RowTemplate.Height = 50;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(2002, 1258);
+            this.dataGridView1.Size = new System.Drawing.Size(1144, 694);
             this.dataGridView1.TabIndex = 12;
             // 
             // Rank
@@ -308,10 +305,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(291, 60);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Location = new System.Drawing.Point(166, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 29);
+            this.label3.Size = new System.Drawing.Size(122, 17);
             this.label3.TabIndex = 26;
             this.label3.Text = "Number of Result:";
             // 
@@ -323,11 +319,11 @@
             this.groupBox4.Controls.Add(this.QueryFileDirectory);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(9, 107);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.groupBox4.Location = new System.Drawing.Point(5, 59);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.groupBox4.Size = new System.Drawing.Size(1155, 477);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(660, 263);
             this.groupBox4.TabIndex = 45;
             this.groupBox4.TabStop = false;
             // 
@@ -337,10 +333,10 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(646, 105);
-            this.button3.Margin = new System.Windows.Forms.Padding(7);
+            this.button3.Location = new System.Drawing.Point(369, 58);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 65);
+            this.button3.Size = new System.Drawing.Size(91, 36);
             this.button3.TabIndex = 35;
             this.button3.Text = "Browse";
             this.button3.UseVisualStyleBackColor = false;
@@ -350,10 +346,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(7, 31);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(4, 17);
+            this.label5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(258, 56);
+            this.label5.Size = new System.Drawing.Size(148, 31);
             this.label5.TabIndex = 34;
             this.label5.Text = "Quick Start";
             // 
@@ -365,10 +361,10 @@
             this.QueryListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QueryListView.FullRowSelect = true;
             this.QueryListView.GridLines = true;
-            this.QueryListView.Location = new System.Drawing.Point(19, 183);
-            this.QueryListView.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryListView.Location = new System.Drawing.Point(11, 101);
+            this.QueryListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.QueryListView.Name = "QueryListView";
-            this.QueryListView.Size = new System.Drawing.Size(1096, 278);
+            this.QueryListView.Size = new System.Drawing.Size(628, 155);
             this.QueryListView.TabIndex = 32;
             this.QueryListView.UseCompatibleStateImageBehavior = false;
             this.QueryListView.UseWaitCursor = true;
@@ -388,13 +384,14 @@
             // QueryFileDirectory
             // 
             this.QueryFileDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QueryFileDirectory.Location = new System.Drawing.Point(19, 105);
-            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(7);
+            this.QueryFileDirectory.Location = new System.Drawing.Point(11, 58);
+            this.QueryFileDirectory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.QueryFileDirectory.Multiline = true;
             this.QueryFileDirectory.Name = "QueryFileDirectory";
-            this.QueryFileDirectory.Size = new System.Drawing.Size(583, 40);
+            this.QueryFileDirectory.Size = new System.Drawing.Size(335, 24);
             this.QueryFileDirectory.TabIndex = 33;
             this.QueryFileDirectory.Text = "Insert Query File Location";
+            this.QueryFileDirectory.TextChanged += new System.EventHandler(this.QueryFileDirectory_TextChanged);
             // 
             // button1
             // 
@@ -402,10 +399,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(861, 105);
-            this.button1.Margin = new System.Windows.Forms.Padding(7);
+            this.button1.Location = new System.Drawing.Point(492, 58);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 65);
+            this.button1.Size = new System.Drawing.Size(133, 36);
             this.button1.TabIndex = 30;
             this.button1.Text = "Insert Query File";
             this.button1.UseVisualStyleBackColor = false;
@@ -417,19 +414,19 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2233, 100);
+            this.panel1.Size = new System.Drawing.Size(1276, 55);
             this.panel1.TabIndex = 47;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(91, 16);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(52, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 72);
+            this.label4.Size = new System.Drawing.Size(117, 40);
             this.label4.TabIndex = 0;
             this.label4.Text = "Search";
             // 
@@ -441,19 +438,19 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.QueryExpansionCheckBox);
             this.panel2.Controls.Add(this.PreprocessingCheckBox);
-            this.panel2.Location = new System.Drawing.Point(1171, 125);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(669, 69);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(882, 459);
+            this.panel2.Size = new System.Drawing.Size(505, 254);
             this.panel2.TabIndex = 49;
             // 
             // FieldBoostCheckBox
             // 
             this.FieldBoostCheckBox.AutoSize = true;
-            this.FieldBoostCheckBox.Location = new System.Drawing.Point(23, 192);
-            this.FieldBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
+            this.FieldBoostCheckBox.Location = new System.Drawing.Point(13, 106);
+            this.FieldBoostCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FieldBoostCheckBox.Name = "FieldBoostCheckBox";
-            this.FieldBoostCheckBox.Size = new System.Drawing.Size(232, 33);
+            this.FieldBoostCheckBox.Size = new System.Drawing.Size(138, 21);
             this.FieldBoostCheckBox.TabIndex = 37;
             this.FieldBoostCheckBox.Text = "Field Level Boost";
             this.FieldBoostCheckBox.UseVisualStyleBackColor = true;
@@ -466,35 +463,35 @@
             this.FieldLevelBoostPanel.Controls.Add(this.AuthorBoostCheckBox);
             this.FieldLevelBoostPanel.Controls.Add(this.TitleBoostCheckBox);
             this.FieldLevelBoostPanel.Enabled = false;
-            this.FieldLevelBoostPanel.Location = new System.Drawing.Point(60, 230);
-            this.FieldLevelBoostPanel.Margin = new System.Windows.Forms.Padding(7);
+            this.FieldLevelBoostPanel.Location = new System.Drawing.Point(34, 127);
+            this.FieldLevelBoostPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FieldLevelBoostPanel.Name = "FieldLevelBoostPanel";
-            this.FieldLevelBoostPanel.Size = new System.Drawing.Size(443, 102);
+            this.FieldLevelBoostPanel.Size = new System.Drawing.Size(253, 56);
             this.FieldLevelBoostPanel.TabIndex = 38;
             // 
             // AuthorboostNum
             // 
-            this.AuthorboostNum.Location = new System.Drawing.Point(152, 58);
-            this.AuthorboostNum.Margin = new System.Windows.Forms.Padding(7);
+            this.AuthorboostNum.Location = new System.Drawing.Point(87, 32);
+            this.AuthorboostNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AuthorboostNum.Name = "AuthorboostNum";
-            this.AuthorboostNum.Size = new System.Drawing.Size(280, 35);
+            this.AuthorboostNum.Size = new System.Drawing.Size(160, 22);
             this.AuthorboostNum.TabIndex = 3;
             // 
             // TitleBoostNum
             // 
-            this.TitleBoostNum.Location = new System.Drawing.Point(152, 9);
-            this.TitleBoostNum.Margin = new System.Windows.Forms.Padding(7);
+            this.TitleBoostNum.Location = new System.Drawing.Point(87, 5);
+            this.TitleBoostNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TitleBoostNum.Name = "TitleBoostNum";
-            this.TitleBoostNum.Size = new System.Drawing.Size(280, 35);
+            this.TitleBoostNum.Size = new System.Drawing.Size(160, 22);
             this.TitleBoostNum.TabIndex = 2;
             // 
             // AuthorBoostCheckBox
             // 
             this.AuthorBoostCheckBox.AutoSize = true;
-            this.AuthorBoostCheckBox.Location = new System.Drawing.Point(7, 60);
-            this.AuthorBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
+            this.AuthorBoostCheckBox.Location = new System.Drawing.Point(4, 33);
+            this.AuthorBoostCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AuthorBoostCheckBox.Name = "AuthorBoostCheckBox";
-            this.AuthorBoostCheckBox.Size = new System.Drawing.Size(114, 33);
+            this.AuthorBoostCheckBox.Size = new System.Drawing.Size(72, 21);
             this.AuthorBoostCheckBox.TabIndex = 1;
             this.AuthorBoostCheckBox.Text = "Author";
             this.AuthorBoostCheckBox.UseVisualStyleBackColor = true;
@@ -503,10 +500,10 @@
             // TitleBoostCheckBox
             // 
             this.TitleBoostCheckBox.AutoSize = true;
-            this.TitleBoostCheckBox.Location = new System.Drawing.Point(7, 9);
-            this.TitleBoostCheckBox.Margin = new System.Windows.Forms.Padding(7);
+            this.TitleBoostCheckBox.Location = new System.Drawing.Point(4, 5);
+            this.TitleBoostCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TitleBoostCheckBox.Name = "TitleBoostCheckBox";
-            this.TitleBoostCheckBox.Size = new System.Drawing.Size(93, 33);
+            this.TitleBoostCheckBox.Size = new System.Drawing.Size(57, 21);
             this.TitleBoostCheckBox.TabIndex = 0;
             this.TitleBoostCheckBox.Text = "Title";
             this.TitleBoostCheckBox.UseVisualStyleBackColor = true;
@@ -516,16 +513,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(12, 13);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(386, 56);
+            this.label2.Size = new System.Drawing.Size(221, 31);
             this.label2.TabIndex = 36;
             this.label2.Text = "Advanced Search";
             // 
             // SearchTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
@@ -533,9 +530,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "SearchTab";
-            this.Size = new System.Drawing.Size(2233, 2137);
+            this.Size = new System.Drawing.Size(1276, 1179);
             this.Load += new System.EventHandler(this.SearchTab_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -555,6 +552,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.CheckBox QueryExpansionCheckBox;
         private System.Windows.Forms.CheckBox PreprocessingCheckBox;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -592,5 +590,6 @@
         private System.Windows.Forms.NumericUpDown TitleBoostNum;
         private System.Windows.Forms.CheckBox AuthorBoostCheckBox;
         private System.Windows.Forms.NumericUpDown AuthorboostNum;
+        private System.Windows.Forms.FolderBrowserDialog FolderToRead;
     }
 }

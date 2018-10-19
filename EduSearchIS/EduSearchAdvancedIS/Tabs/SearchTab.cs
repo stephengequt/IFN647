@@ -402,6 +402,9 @@ namespace EduSearchAdvancedIS.Tabs
 
         private void button3_Click(object sender, EventArgs e)
         {
+            FolderToRead.ShowDialog();
+            QueryFileDirectory.Text = FolderToRead.SelectedPath;
+            this.QueryFileDirectory.Text = FolderToRead.SelectedPath;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -429,6 +432,11 @@ namespace EduSearchAdvancedIS.Tabs
         {
             AuthorboostNum.Enabled = AuthorBoostCheckBox.Checked;
 //            AuthorboostNum.
+        }
+
+        private void QueryFileDirectory_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
