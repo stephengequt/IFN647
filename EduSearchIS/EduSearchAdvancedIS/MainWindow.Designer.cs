@@ -155,6 +155,23 @@
             // 
             // QueryBox
             // 
+            this.QueryBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "",
+            "what \"similarity laws\" must be obeyed when constructing aeroelastic models",
+            "of heated high speed aircraft",
+            "",
+            "what are the structural and aeroelastic problems associated with flight",
+            "of high speed aircraft",
+            "",
+            "how can the aerodynamic performance of channel flow ground effect",
+            "machines be calculated",
+            "",
+            "in summarizing theoretical and experimental work on the behaviour of a",
+            "typical aircraft structure in a noise environment is it possible to",
+            "develop a design procedure ",
+            "",
+            "has anyone developed an analysis which accurately establishes the large",
+            "deflection behaviour of \"conical shells\""});
             this.QueryBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.QueryBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.QueryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
