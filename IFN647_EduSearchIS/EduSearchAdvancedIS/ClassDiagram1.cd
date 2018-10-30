@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EduSearchAdvancedIS.BingSpellCheck" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAAAAAAAAAAAAAGAEAAAAAAAAAAAAgACAAAAAA=</HashCode>
+      <FileName>BingSpellCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EduSearchAdvancedIS.LuceneAdvancedSearchApplication" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAAAAIAAAQIACAABxIQAAAQaAFIBAAAQBAQAMEIAg=</HashCode>
+      <FileName>LuceneAdvancedSearchApplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EduSearchAdvancedIS.MainWindow" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BwAAAECAITAgEDAKAICCZUEaEKQIBCCBkMgQAUAEBCA=</HashCode>
+      <FileName>MainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EduSearchAdvancedIS.Program" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAEA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

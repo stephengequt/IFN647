@@ -163,7 +163,11 @@ namespace EduSearchAdvancedIS
             }
             else
             {
-                query = parser.Parse(querytext);
+                string[] fields = { TITLE_FN, AUTHOR_FN, BIB_FN, ABS_FN };
+
+                MultiFieldQueryParser queryParser = new MultiFieldQueryParser(VERSION, fields, analyzer);
+                query = queryParser.Parse(querytext);
+//                query = parser.Parse(querytext);
             }
 
 
